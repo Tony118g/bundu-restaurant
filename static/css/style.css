@@ -24,3 +24,31 @@
     font-weight: 100;
     color: white !important;
 }
+
+/* Hero section */
+
+#hero-image {
+    background: url("https://res.cloudinary.com/tony118g/image/upload/v1677526218/ciwakq2t5t476cwnppnw.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 80vh;
+    position: relative;
+    width: 100vw;
+}
+
+#hero-text {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px 0;
+}
+
+#hero-text h1 {
+    font-size: 5rem;
+    font-family:  "Lato", "sans-serif";
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+
+.sub-heading {
+    font-weight: 200;
+    letter-spacing: 1px;
+}
