@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 def home_page(request):
@@ -8,6 +8,17 @@ def home_page(request):
 def profile_page(request):
 
     if request.user.is_authenticated:
-        return render(request, 'profile.html')
+        f_name = request.user.first_name
+        l_name = request.user.last_name
+        username = request.user.username
+        email_address = request.user.email
+
+        context = {
+            'f_name': f_name,
+            'l_name': l_name,
+            'username': username,
+            'email_address': email_address,
+        }
+        return render(request, 'profile.html', context)
     else:
-        return render(request, "index.html")
+        return redirect('home')
