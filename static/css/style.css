@@ -1,3 +1,26 @@
-body {
-    background-color: red;
+/* Google font import */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+#nav-logo {
+    font-family: lato;
+    font-weight: 300;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: white;
+}
+
+#nav-logo:hover {
+    color: white;
+}
+
+.navbar {
+    background-color: #2D3E59;
+}
+
+.nav-link {
+    font-size: 1.2rem;
+    font-weight: 100;
+    color: white !important;
 }
