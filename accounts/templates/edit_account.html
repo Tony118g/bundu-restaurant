@@ -5,13 +5,14 @@
 
 <div class="container below-nav fill-screen pt-5">
     <h2>Edit your details</h2>
-<div class="form-group">
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <input type="submit" name="submit">
-    </form>
-</div>
+    <p>If you would like to change your password, click <a href="{% url 'account_change_password' %}">here</a></p>
+    <div class="form-group">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" name="submit">
+        </form>
+    </div>
 </div>
 
 {% endblock %}
