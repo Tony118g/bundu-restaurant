@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container below-nav fill-screen pt-5">
+    <h2>Edit your details</h2>
+<div class="form-group">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" name="submit">
+    </form>
+</div>
+</div>
+
+{% endblock %}
