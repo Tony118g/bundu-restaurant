@@ -4,7 +4,17 @@
 
  <!-- Hero section -->
 
-<section class="container-fluid">
+<section class="container-fluid below-nav">
+    {% if messages %}
+    {% for message in messages %}
+        <div class="text-center alert alert-dismissible fade show alert-{{ message.tags }}">
+               {{ message }}
+               <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+        </div>
+    {% endfor %}
+    {% endif %}
     <div class="row" id="hero-image" >
         <div id="hero-text" class="m-auto text-center text-white ">
             <h1>Bundu</h1>
