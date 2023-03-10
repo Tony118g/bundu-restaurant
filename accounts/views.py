@@ -49,3 +49,20 @@ def edit_account(request, pk):
     }
     return render(request, "edit_account.html", context)
 
+
+def delete_account(request, pk):
+
+    user_instance = get_object_or_404(User, id=pk)
+    if request.user == user_instance:
+        if request.method == 'POST':
+            user_instance.delete()
+            messages.success(request, ("Your account has been deleted"))
+            return redirect('home')
+    else:
+        messages.warning(request, ("You are not authorized to view this page"))
+        return redirect('profile_page')
+
+    context = {
+        'user_instance': user_instance
+    }
+    return render(request, 'delete_account.html', context)

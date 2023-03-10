@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container below-nav fill-screen">
+    <h2>WARNING!</h2>
+    <p>If you delete your account, all data will be lost including your account details and reservations.</p>
+
+    <form action="{% url 'delete_account' user.id %}" method="POST">
+
+        {% csrf_token %}
+        <a class="btn btn-primary" href="{% url 'home' %}">Cancel</a>
+
+        <input class="btn btn-danger" type="submit" name="Confirm" value="confirm Deletion">
+    </form>
+</div>
+
+{% endblock %}
