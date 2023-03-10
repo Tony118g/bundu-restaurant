@@ -15,3 +15,14 @@ class SignUpForm(UserCreationForm):
             'password1',
             'password2',
         )
+
+
+class EditUserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = (
+            'username',
+            'first_name',
+            'last_name',
+            'email',
+        )

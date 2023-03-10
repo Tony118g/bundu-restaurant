@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
-from django.views.generic.edit import UpdateView
-from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
+from django.contrib import messages
+from .forms import EditUserForm
 
 
 def home_page(request):
@@ -28,18 +28,24 @@ def profile_page(request):
         return redirect('home')
 
 
-class EditAccount(SuccessMessageMixin, UpdateView):
-    model = User
-    template_name = 'edit_account.html'
-    fields = [
-            'username',
-            'first_name',
-            'last_name',
-            'email',
-            ]
-    success_url = reverse_lazy('profile_page')
-    success_message = 'Account successfully Updated'
+def edit_account(request, pk):
+    user_instance = get_object_or_404(User, id=pk)
 
-    def get_queryset(self):
-        query_set = User.objects.filter(id=self.request.user.id)
-        return query_set
+    if request.user == user_instance:
+        form = EditUserForm(instance=user_instance)
+
+        if request.method == 'POST':
+            form = EditUserForm(request.POST, instance=user_instance)
+            if form.is_valid():
+                form.save()
+                messages.success(request, ("Account updated succesfully"))
+                return redirect('profile_page')
+    else:
+        messages.warning(request, ("You are not authorized to view this page"))
+        return redirect('profile_page')
+
+    context = {
+        'form': form
+    }
+    return render(request, "edit_account.html", context)
+
