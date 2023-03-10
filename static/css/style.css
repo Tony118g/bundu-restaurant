@@ -33,7 +33,6 @@
     background-size: cover;
     min-height: 80vh;
     position: relative;
-    width: 100vw;
 }
 
 #hero-text {
@@ -51,4 +50,20 @@
 .sub-heading {
     font-weight: 200;
     letter-spacing: 1px;
+}
+
+/* Footer */
+
+footer {
+    background-color: #2D3E59;
+}
+
+footer h4 {
+    border-bottom: 1px solid #887456;
+    width: 80%;
+    margin: 10px auto;
+}
+
+footer .row {
+    border-bottom: 1px solid #887456;
 }
