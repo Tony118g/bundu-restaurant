@@ -7,6 +7,7 @@
     <p><span class="fw-bold">Username</span>: {{ username }}</p>
     <p><span class="fw-bold">Email address</span>: {{ email_address }}</p>
     <a class="btn btn-warning" href="{% url 'edit_account' request.user.id %}">Edit Details</a>
+    <a class="btn btn-danger" href="{% url 'delete_account' request.user.id %}">Delete Account</a>
 </div>
 
 {%endblock%}
