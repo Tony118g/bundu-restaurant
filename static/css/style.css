@@ -12,6 +12,26 @@
     margin-top: 76px;
 }
 
+/* Alert messages */
+
+.alert {
+    width: fit-content;
+    height: fit-content;
+    margin: 40px auto 0 auto;
+    position: absolute;
+    left: 10%;
+    right: 10%;
+}
+
+.alert-dismissible {
+    padding-right: 0;
+}
+
+.close {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
 /* Navbar */
 
 #nav-logo {
