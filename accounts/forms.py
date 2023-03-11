@@ -5,6 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 
 class SignUpForm(UserCreationForm):
 
+    email = forms.EmailField(required=True)
+
     class Meta(UserCreationForm.Meta):
         model = User
         fields = (
@@ -18,6 +20,8 @@ class SignUpForm(UserCreationForm):
 
 
 class EditUserForm(forms.ModelForm):
+    email = forms.EmailField(required=True)
+
     class Meta:
         model = User
         fields = (
