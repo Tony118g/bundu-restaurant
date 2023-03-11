@@ -4,6 +4,14 @@
 
 /* General styles */
 
+body {
+    font-family:  "PT Sans", "sans-serif";
+}
+
+h1 {
+    font-size: 2rem;;
+}
+
 .fill-screen {
     min-height: calc(100vh - 76px);
 }
@@ -82,6 +90,18 @@
 .sub-heading {
     font-weight: 200;
     letter-spacing: 1px;
+}
+
+/* forms */
+
+.form-container {
+    margin-top: 100px;
+    margin-bottom: 20px;
+    padding: 2%;
+    border: 1px solid #2D3E59;
+    height: fit-content;
+    width: fit-content;
+    max-width: 90%;
 }
 
 /* Footer */
