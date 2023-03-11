@@ -38,7 +38,7 @@ def edit_account(request, pk):
             form = EditUserForm(request.POST, instance=user_instance)
             if form.is_valid():
                 form.save()
-                messages.success(request, ("Account updated succesfully"))
+                messages.success(request, ("Account updated successfully"))
                 return redirect('profile_page')
     else:
         messages.warning(request, ("You are not authorized to view this page"))
