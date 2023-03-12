@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.contrib import messages
+from reservations.models import Reservation
 from .forms import EditUserForm
 
 
@@ -17,11 +18,24 @@ def profile_page(request):
         username = request.user.username
         email_address = request.user.email
 
+        reservations = Reservation.objects.filter(user=request.user)
+        status = ''
+
+        for reservation in reservations:
+            if reservation.acknowledged and reservation.approved:
+                status = 'approved'
+            elif reservation.acknowledged and reservation.denied:
+                status = 'denied'
+            elif reservation.acknowledged is False:
+                status = 'pending'
+
         context = {
             'f_name': f_name,
             'l_name': l_name,
             'username': username,
             'email_address': email_address,
+            'reservations': reservations,
+            'status': status,
         }
         return render(request, 'profile.html', context)
     else:
