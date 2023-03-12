@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container below-nav fill-screen pt-5">
+    <h2>Reservation request failed</h2>
+    <p>It looks like already have a reservation request with the details you entered.</p>
+    <p>If you have waited for more than 24 hours for confirmation on a reservation, please phone the restaurant so we may assist you better.</p>
+    <p>If you would like to make a different reservation, then you can book again <a href="{% url 'reserve' %}">here</a>.</p>
+</div>
+
+{% endblock %}

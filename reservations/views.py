@@ -33,9 +33,9 @@ def make_reservation(request):
                 date=form_data.date,
                 time=form_data.time,
             ).exists():
-                print('already exists')
+                return render(request, 'double_booked.html')
             else:
                 form_data.save()
-                print('successful')
+                return render(request, 'reservation_success.html')
 
     return render(request, 'reserve.html', context)
