@@ -26,7 +26,16 @@ def make_reservation(request):
             reservation_form.instance.first_name = request.user.first_name
             reservation_form.instance.last_name = request.user.last_name
 
-            reservation_form.save()
-            return redirect('home')
+            form_data = reservation_form.save(commit=False)
+
+            if Reservation.objects.filter(
+                user=form_data.user,
+                date=form_data.date,
+                time=form_data.time,
+            ).exists():
+                print('already exists')
+            else:
+                form_data.save()
+                print('successful')
 
     return render(request, 'reserve.html', context)
