@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from reservations.models import Reservation
+from django.contrib import messages
 from .forms import ReservationForm
 
 
@@ -11,6 +12,10 @@ def make_reservation(request):
             "form": reservation_form,
         }
     else:
+        messages.info(
+            request,
+            ("Please login/signup if you would like to make a reservation")
+            )
         return redirect('account_login')
 
     if request.method == 'POST':
