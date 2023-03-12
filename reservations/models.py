@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 from django.contrib.auth.models import User
 
 
@@ -12,19 +13,19 @@ no_of_people_choices = (
     )
 
 reservation_times = (
-    ("08:00", "08:00"),
-    ("09:00", "09:00"),
-    ("10:00", "10:00"),
-    ("11:00", "11:00"),
-    ("12:00", "12:00"),
-    ("13:00", "13:00"),
-    ("14:00", "14:00"),
-    ("15:00", "15:00"),
-    ("16:00", "16:00"),
-    ("17:00", "17:00"),
-    ("18:00", "18:00"),
-    ("19:00", "19:00"),
-    ("20:00", "20:00"),
+    (datetime.strptime("0800", "%H%M").time(), "0800"),
+    (datetime.strptime("0900", "%H%M").time(), "0900"),
+    (datetime.strptime("1000", "%H%M").time(), "1000"),
+    (datetime.strptime("1100", "%H%M").time(), "1100"),
+    (datetime.strptime("1200", "%H%M").time(), "1200"),
+    (datetime.strptime("1300", "%H%M").time(), "1300"),
+    (datetime.strptime("1400", "%H%M").time(), "1400"),
+    (datetime.strptime("1500", "%H%M").time(), "1500"),
+    (datetime.strptime("1600", "%H%M").time(), "1600"),
+    (datetime.strptime("1700", "%H%M").time(), "1700"),
+    (datetime.strptime("1800", "%H%M").time(), "1800"),
+    (datetime.strptime("1900", "%H%M").time(), "1900"),
+    (datetime.strptime("2000", "%H%M").time(), "2000"),
     )
 
 
