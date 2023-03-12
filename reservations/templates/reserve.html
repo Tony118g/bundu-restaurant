@@ -1,9 +1,17 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
-<div class="fill-screen below-nav">
-    <h1>Make a reservation</h1>
+<div class="container below-nav fill-screen pt-5">
+    <h2>Make a reservation</h2>
+    <div class="form-group">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" name="submit">
+        </form>
+    </div>
 </div>
 
 {% endblock %}
