@@ -35,7 +35,7 @@ class Reservation(models.Model):
     first_name = models.CharField(max_length=35, null=False, blank=False)
     last_name = models.CharField(max_length=35, null=False, blank=False)
     email = models.EmailField(null=False, blank=False)
-    phone_number = models.IntegerField(blank=True, null=True)
+    phone_number = models.CharField(blank=True, null=True, max_length=15)
     no_of_people = models.IntegerField(choices=no_of_people_choices, default=1)
     date = models.DateField()
     time = models.TimeField(choices=reservation_times)
