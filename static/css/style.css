@@ -23,12 +23,25 @@ h1 {
 /* Alert messages */
 
 .alert {
+    margin: 100px auto -100px auto;
     width: fit-content;
     height: fit-content;
+}
+
+.alert-home {
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
     margin: 40px auto 0 auto;
     position: absolute;
     left: 10%;
     right: 10%;
+    border-radius: 10px;
+}
+
+.close span {
+    font-size: 1.2rem;
+    padding: 5px;
 }
 
 .alert-dismissible {

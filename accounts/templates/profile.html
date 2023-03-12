@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% if messages %}
+{% for message in messages %}
+    <div class="text-center alert alert-dismissible fade show alert-{{ message.tags }}">
+           {{ message }}
+           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+           </button>
+    </div>
+{% endfor %}
+{% endif %}
 
 <div class="container pt-5 fill-screen below-nav">
-    {% if messages %}
-    {% for message in messages %}
-        <div class="text-center alert alert-dismissible fade show alert-{{ message.tags }}">
-               {{ message }}
-               <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-        </div>
-    {% endfor %}
-    {% endif %}
     <h2>Welcome {{ f_name }} {{ l_name }}!</h2>
     <p><span class="fw-bold">Username</span>: {{ username }}</p>
     <p><span class="fw-bold">Email address</span>: {{ email_address }}</p>
