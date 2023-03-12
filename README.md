@@ -8,6 +8,16 @@ The Bundu Bar and Restaurant site is intended to be used as an advertising and m
 
 ## User Experience
 ### Epics
+During the planning stage of the project I created 7 epics which I then broke down further into a total of 44 user stories. These can be found in the [project kanban board](https://github.com/users/Tony118g/projects/8) or they can be viewed individually through the links below.
+
+1. [Initial Django Setup](https://github.com/Tony118g/bundu-restaurant/issues/1)
+2. [User Account Management](https://github.com/Tony118g/bundu-restaurant/issues/2)
+3. [User Reservation Management](https://github.com/Tony118g/bundu-restaurant/issues/3)
+4. [Site Content Interaction](https://github.com/Tony118g/bundu-restaurant/issues/4)
+5. [Staff Reservation Management](https://github.com/Tony118g/bundu-restaurant/issues/5)
+6. [Staff Menu Management](https://github.com/Tony118g/bundu-restaurant/issues/6)
+7. [User Menu Interaction](https://github.com/Tony118g/bundu-restaurant/issues/7)
+
 ### Customer User Stories
 ### Staff User Stories
 ### Site Owner User Stories
