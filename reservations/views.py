@@ -96,10 +96,25 @@ def delete_reservation(request, pk):
     a deletion confirmation page, and deletes the reservation
     if the confirmation form is submitted.
     """
-    res_instance = get_object_or_404(Reservation, id=pk)
 
-    context = {
-        'res_instance': res_instance,
-    }
+    if request.user.is_authenticated:
+        res_instance = get_object_or_404(Reservation, id=pk)
+
+        context = {
+            'res_instance': res_instance,
+        }
+
+    else:
+        messages.warning(
+            request,
+            ("You cannot view this page without logging in.")
+            )
+        return redirect('home')
+
+    if request.user == res_instance.user:
+        if request.method == 'POST':
+            res_instance.delete()
+            messages.success(request, 'The reservation has been cancelled')
+            return redirect('profile_page')
 
     return render(request, 'delete_reservation.html', context)
