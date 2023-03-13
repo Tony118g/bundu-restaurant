@@ -18,7 +18,7 @@
         <form action="{% url 'delete_reservation' res_instance.id %}" method="POST">
             {% csrf_token %}
             <a class="btn btn-primary" href="{% url 'profile_page' %}">Back</a>
-            <input class="btn btn-danger" type="submit" name="submit" value="confirm cancelation">
+            <input class="btn btn-danger" type="submit" name="submit" value="confirm">
         </form>
     </div>
 </div>

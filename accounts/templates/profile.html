@@ -57,11 +57,10 @@
             <p><span class="fw-bold">Last name: </span>{{ reservation.last_name }}</p>
             <p><span class="fw-bold">Number of people: </span>{{ reservation.no_of_people }}</p>
             <p><span class="fw-bold">Status: </span>{{ status }}</p>
-            {% if reservation.is_past_date %}
-
-            {% else %}
+            {% if reservation.is_past_date is False %}
             <a class="btn btn-primary" href="{% url 'edit_reservation' reservation.id %}">Edit</a>
             {% endif %}
+            <a class="btn btn-danger" href="{% url 'delete_reservation' reservation.id %}">Delete</a>
           </div>
         </div>
       </div>
