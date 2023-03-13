@@ -7,9 +7,12 @@ from .forms import ReservationForm
 def make_reservation(request):
 
     if request.user.is_authenticated:
+        heading = 'Make a reservation'
         reservation_form = ReservationForm()
+
         context = {
-            "form": reservation_form,
+            'heading': heading,
+            'form': reservation_form,
         }
     else:
         messages.info(
@@ -49,6 +52,17 @@ def edit_reservation(request, pk):
     if request.user.is_authenticated:
         res_instance = get_object_or_404(Reservation, id=pk)
         edit_form = ReservationForm(instance=res_instance)
+        editing = True
+        heading = 'Edit your reservation below'
+
+        context = {
+            'form': edit_form,
+            'heading': heading,
+            'editing': editing,
+        }
+
+        return render(request, "reserve.html", context)
+
     else:
         messages.warning(
             request,
@@ -74,8 +88,3 @@ def edit_reservation(request, pk):
                 else:
                     edit_data.save()
                     print('valid')
-
-    context = {
-        'form': edit_form,
-    }
-    return render(request, "reserve.html", context)
