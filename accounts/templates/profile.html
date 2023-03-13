@@ -57,6 +57,7 @@
             <p><span class="fw-bold">Last name: </span>{{ reservation.last_name }}</p>
             <p><span class="fw-bold">Number of people: </span>{{ reservation.no_of_people }}</p>
             <p><span class="fw-bold">Status: </span>{{ status }}</p>
+            <a class="btn btn-primary" href="{% url 'edit_reservation' reservation.id %}">Edit</a>
           </div>
         </div>
       </div>
