@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+from datetime import datetime, date
 from django.contrib.auth.models import User
 
 
@@ -46,3 +46,7 @@ class Reservation(models.Model):
 
     def __str__(self):
         return self.first_name
+
+    @property
+    def is_past_date(self):
+        return date.today() < self.date
