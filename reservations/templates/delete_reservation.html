@@ -4,17 +4,20 @@
 {% block content %}
 
 <div class="container below-nav fill-screen pt-5">
-    <h2>Reservation Cancelation</h2>
+    <h2 class="text-capitalize">{{ action }} reservation</h2>
     <ul class="list-unstyled">
         <li><span class="fw-bold">Date: </span>{{ res_instance.date }}</li>
         <li><span class="fw-bold">Time: </span>{{ res_instance.time }}</li>
         <li><span class="fw-bold">For: </span>{{ res_instance.no_of_people }}</li>
     </ul>
-    <p class="text-danger">Are you sure you want to cancel your reservation?</p>
+    <p class="text-danger">Are you sure you want to {{ action }} this reservation?</p>
+    {% if action == 'cancel' %}
+    <p class="text-danger">Canceling this reservation will also delete the record and you will not be able to view or access it.</p>
+    {% endif %}
     <div class="form-group">
         <form action="{% url 'delete_reservation' res_instance.id %}" method="POST">
             {% csrf_token %}
-            <a class="btn btn-primary" href="{% url 'home' %}">Back</a>
+            <a class="btn btn-primary" href="{% url 'profile_page' %}">Back</a>
             <input class="btn btn-danger" type="submit" name="submit" value="confirm cancelation">
         </form>
     </div>

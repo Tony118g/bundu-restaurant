@@ -98,10 +98,16 @@ def delete_reservation(request, pk):
     """
 
     if request.user.is_authenticated:
+        Action = ''
         res_instance = get_object_or_404(Reservation, id=pk)
+        if res_instance.is_past_date:
+            action = 'delete record of'
+        else:
+            action = 'cancel'
 
         context = {
             'res_instance': res_instance,
+            'action': action,
         }
 
     else:
