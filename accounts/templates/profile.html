@@ -58,6 +58,8 @@
             <p><span class="fw-bold">Number of people: </span>{{ reservation.no_of_people }}</p>
             <p><span class="fw-bold">Status: </span>{{ status }}</p>
             {% if reservation.is_past_date %}
+
+            {% else %}
             <a class="btn btn-primary" href="{% url 'edit_reservation' reservation.id %}">Edit</a>
             {% endif %}
           </div>
