@@ -61,8 +61,6 @@ def edit_reservation(request, pk):
             'editing': editing,
         }
 
-        return render(request, "reserve.html", context)
-
     else:
         messages.warning(
             request,
@@ -84,7 +82,9 @@ def edit_reservation(request, pk):
                     time=edit_data.time,
                     no_of_people=edit_data.no_of_people,
                 ).exists():
-                    print('no change')
+                    messages.info(request, 'No changes have been made')
                 else:
                     edit_data.save()
-                    print('valid')
+                    return render(request, 'reservation_success.html')
+
+    return render(request, "reserve.html", context)
