@@ -82,11 +82,14 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, "edit_account.html")
 
         self.user.username = 'tony'
+        form = {
+            'username': 'tony',
+            'first_name': 'tony',
+            'last_name': 'gum',
+            'email': 'test@example.com',
+        }
 
-        response = self.client.post(
-                                    '/accounts/edit_account/1/',
-                                    {'username': 'tony', }
-                                    )
+        response = self.client.post('/accounts/edit_account/1/', form)
 
         self.assertEqual(self.user.username, 'tony')
 
