@@ -88,3 +88,18 @@ def edit_reservation(request, pk):
                     return render(request, 'reservation_success.html')
 
     return render(request, "reserve.html", context)
+
+
+def delete_reservation(request, pk):
+    """
+    Gets the reservation for the provided id, displays
+    a deletion confirmation page, and deletes the reservation
+    if the confirmation form is submitted.
+    """
+    res_instance = get_object_or_404(Reservation, id=pk)
+
+    context = {
+        'res_instance': res_instance,
+    }
+
+    return render(request, 'delete_reservation.html', context)
