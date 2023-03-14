@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Staff reservation Approval</h1>
+
+<div class="container fill-screen below-nav">
+    {% if pending_list %}
+    <h2>Pending Reservations</h2>
+    <table class="table tabel-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">No of people</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for reservation in pending_list %}
+            <tr>
+                <td>{{reservation.date}}</td>
+                <td>{{reservation.time}}</td>
+                <td>{{reservation.no_of_people}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+    <p>There are no pending reservations at the moment.</p>
+    {% endif %}
+</div>
+{% endblock %}
