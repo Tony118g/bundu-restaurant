@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-# Create your views here.
+
+def staff_dashboard(request):
+
+    if request.user.is_staff:
+        return render(request, "dashboard.html")
+    else:
+        return redirect('home')
