@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from reservations.models import Reservation
+from django.contrib import messages
 
 
 def staff_dashboard(request):
@@ -45,6 +46,24 @@ def reservation_list(request, status):
             'status': status,
             }
         return render(request, 'reservations_list.html', context)
+    else:
+        messages.warning(request, ("You are not authorized to view this page"))
+        return redirect('home')
+
+
+def approve_reservation(request, pk):
+    """
+    Sets approved and acknowledged fields to true for specified reservation
+    """
+
+    reservation = get_object_or_404(Reservation, id=pk)
+
+    if request.user.is_staff:
+        reservation.approved = True
+        reservation.acknowledged = True
+        reservation.save()
+        print('approved')
+        return redirect('staff_dashboard')
     else:
         messages.warning(request, ("You are not authorized to view this page"))
         return redirect('home')
