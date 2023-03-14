@@ -59,11 +59,11 @@ def approve_reservation(request, pk):
     reservation = get_object_or_404(Reservation, id=pk)
 
     if request.user.is_staff:
+        next = request.POST.get('next')
         reservation.approved = True
         reservation.acknowledged = True
         reservation.save()
-        print('approved')
-        return redirect('staff_dashboard')
+        return redirect(next)
     else:
         messages.warning(request, ("You are not authorized to view this page"))
         return redirect('home')

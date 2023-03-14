@@ -20,6 +20,19 @@
                 <td>{{reservation.date}}</td>
                 <td>{{reservation.time}}</td>
                 <td>{{reservation.no_of_people}}</td>
+                {% if status == 'pending' %}
+                <td>
+                  <div class="row">
+                    <div class="col">
+                      <form action="{% url 'approve_reservation' reservation.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{request.path}}"/>
+                        <button class="btn btn-success" type="submit">Approve</button>
+                      </form>
+                    </div>
+                  </div>
+                </td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
