@@ -11,4 +11,8 @@ urlpatterns = [
         'staff/approve_reservation/<str:pk>/',
         views.approve_reservation, name='approve_reservation'
         ),
+    path(
+        'staff/deny_reservation/<str:pk>/',
+        views.deny_reservation, name='deny_reservation'
+        ),
 ]
