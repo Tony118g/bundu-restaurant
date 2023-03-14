@@ -5,6 +5,9 @@ from .forms import ReservationForm
 
 
 def make_reservation(request):
+    """
+    Handles reservation requests by users
+    """
 
     if request.user.is_authenticated:
         heading = 'Make a reservation'
@@ -93,9 +96,7 @@ def edit_reservation(request, pk):
 
 def delete_reservation(request, pk):
     """
-    Gets the reservation for the provided id, displays
-    a deletion confirmation page, and deletes the reservation
-    if the confirmation form is submitted.
+    Handles deletion of the specified reservation
     """
 
     if request.user.is_authenticated:

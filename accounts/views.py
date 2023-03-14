@@ -7,10 +7,16 @@ from .forms import EditUserForm
 
 
 def home_page(request):
+    """
+    Renders the home page
+    """
     return render(request, "index.html")
 
 
 def profile_page(request):
+    """
+    Renders a profile page with details specific to the user
+    """
 
     if request.user.is_authenticated:
         f_name = request.user.first_name
@@ -43,6 +49,10 @@ def profile_page(request):
 
 
 def edit_account(request, pk):
+    """
+    Handles the editing of the specified user
+    """
+
     user_instance = get_object_or_404(User, id=pk)
 
     if request.user == user_instance:
@@ -65,6 +75,9 @@ def edit_account(request, pk):
 
 
 def delete_account(request, pk):
+    """
+    Handles the deletion of a specified user
+    """
 
     user_instance = get_object_or_404(User, id=pk)
     if request.user == user_instance:

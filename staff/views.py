@@ -4,6 +4,9 @@ from reservations.models import Reservation
 
 
 def staff_dashboard(request):
+    """
+    Renders the staff dashboard if the user is staff
+    """
 
     if request.user.is_staff:
         user_count = User.objects.filter(
@@ -16,6 +19,10 @@ def staff_dashboard(request):
 
 
 def reservation_list(request, status):
+    """
+    Renders a page to display reservations
+    pertaining to the status provided
+    """
 
     if request.user.is_staff:
         if status == 'pending':
