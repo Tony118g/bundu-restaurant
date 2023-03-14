@@ -15,15 +15,29 @@ def staff_dashboard(request):
         return redirect('home')
 
 
-def pending_reservations(request):
+def reservation_list(request, status):
 
     if request.user.is_staff:
-        pending_list = Reservation.objects.filter(
-                                                acknowledged=False
-                                                ).order_by('date_of_request')
-        
-        context = {'pending_list': pending_list}
-        return render(request, 'pending_reservations.html', context)
+        if status == 'pending':
+            reservation_list = Reservation.objects.filter(
+                                                    acknowledged=False
+                                                    ).order_by(
+                                                        'date_of_request'
+                                                        )
+        elif status == 'approved':
+            reservation_list = Reservation.objects.filter(
+                                                    approved=True
+                                                    ).order_by('date')
+        elif status == 'denied':
+            reservation_list = Reservation.objects.filter(
+                                                    denied=True
+                                                    ).order_by('date')
+
+        context = {
+            'reservation_list': reservation_list,
+            'status': status,
+            }
+        return render(request, 'reservations_list.html', context)
     else:
         messages.warning(request, ("You are not authorized to view this page"))
         return redirect('home')
