@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from reservations.models import Reservation
 from django.contrib import messages
+from datetime import date
 
 
 def staff_dashboard(request):
@@ -85,3 +86,17 @@ def deny_reservation(request, pk):
     else:
         messages.warning(request, ("You are not authorized to view this page"))
         return redirect('home')
+
+
+def current_date_reservations(request):
+    """
+    Gets the approved reservations for the current date for staff to view
+    """
+
+    today_res_list = Reservation.objects.filter(
+        date=date.today(), approved=True
+        )
+
+    context = {'today_res_list': today_res_list}
+
+    return render(request, 'current_reservations.html', context)

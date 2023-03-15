@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Staff reservation Approval</h1>
+
+<div class="container fill-screen below-nav">
+    <h2 class="text-capitalize">Today's Reservations</h2>
+    {% if today_res_list %}
+    <table class="table tabel-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Time</th>
+            <th scope="col">No of people</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for reservation in today_res_list %}
+            <tr>
+                <td>{{reservation.first_name}}</td>
+                <td>{{reservation.last_name}}</td>
+                <td>{{reservation.time}}</td>
+                <td>{{reservation.no_of_people}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+    <p>There are no reservations booked for today.</p>
+    {% endif %}
+</div>
+{% endblock %}
