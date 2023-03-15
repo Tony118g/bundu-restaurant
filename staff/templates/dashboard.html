@@ -13,11 +13,18 @@
         <div class="col-md-6">
             <div class="card w-100 mt-3" style="width: 18rem;">
                 <div class="card-body text-center m-auto">
+                 <div class="row">
                   <h5 class="card-title">Reservations</h5>
                   <h6 class="card-subtitle mb-2 text-muted">Manage Reservations</h6>
-                  <a href="{% url 'reservation_list' 'pending' %}" class="d-block btn btn-success mt-3">Pending</a>
-                  <a href="{% url 'reservation_list' 'approved' %}" class="d-block btn btn-primary mt-3">Approved</a>
-                  <a href="{% url 'reservation_list' 'denied' %}" class="d-block btn btn-warning mt-3">Denied</a>
+                  <div class="col-6">
+                    <a href="{% url 'reservation_list' 'pending' %}" class="d-block btn btn-success mt-3">Pending</a>
+                    <a href="{% url 'reservation_list' 'approved' %}" class="d-block btn btn-primary mt-3">Approved</a>
+                    <a href="{% url 'reservation_list' 'denied' %}" class="d-block btn btn-warning mt-3">Denied</a>
+                    </div>
+                  <div class="col-6">
+                    <a href="{% url 'current_reservations' %}" class="d-block btn btn-primary mt-3">View today's</a>
+                  </div>
+                 </div>
                 </div>
             </div>
         </div>
