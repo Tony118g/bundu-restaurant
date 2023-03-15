@@ -23,4 +23,8 @@ urlpatterns = [
         'staff/search_date/',
         views.search_date, name='search_date'
         ),
+    path(
+        'staff/search_name/',
+        views.search_name, name='search_name'
+        ),
 ]

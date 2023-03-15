@@ -110,4 +110,22 @@ def search_date(request):
     search_results = Reservation.objects.filter(date=date, approved=True)
 
     context = {'search_results': search_results}
-    return render(request, 'search_results.html', context)
+    return render(request, 'date_search_results.html', context)
+
+
+def search_name(request):
+    """
+    Gets reservations for the name provided
+    """
+    search_name = request.GET['name']
+
+    all_reservations = Reservation.objects.all()
+
+    search_results = []
+    for reservation in all_reservations:
+        full_name = reservation.user.get_full_name()
+        if search_name in full_name:
+            search_results.append(reservation)
+
+    context = {'search_results': search_results}
+    return render(request, 'name_search_results.html', context)
