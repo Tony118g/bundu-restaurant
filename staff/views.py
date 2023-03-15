@@ -97,6 +97,18 @@ def deny_reservation(request, pk):
         reservation.denied = True
         reservation.acknowledged = True
         reservation.save()
+
+        context = {'reservation': reservation}
+
+        email_template = render_to_string('denied_email.html', context)
+        send_mail(
+            "Bundu Restaurant reservation denied",
+            email_template,
+            settings.EMAIL_HOST_USER,
+            [reservation.email],
+            fail_silently=False
+        )
+
         return redirect(next)
     else:
         messages.warning(request, ("You are not authorized to view this page"))
