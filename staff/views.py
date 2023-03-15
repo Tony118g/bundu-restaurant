@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
+from django.conf import settings
 from reservations.models import Reservation
 from django.contrib import messages
+from django.core.mail import send_mail
 from datetime import date
 
 
@@ -64,6 +66,18 @@ def approve_reservation(request, pk):
         reservation.approved = True
         reservation.acknowledged = True
         reservation.save()
+
+        context = {'reservation': reservation}
+
+        email_template = render_to_string('approved_email.html', context)
+        send_mail(
+            "Bundu Restaurant reservation approved",
+            email_template,
+            settings.EMAIL_HOST_USER,
+            [reservation.email],
+            fail_silently=False
+        )
+
         return redirect(next)
     else:
         messages.warning(request, ("You are not authorized to view this page"))
