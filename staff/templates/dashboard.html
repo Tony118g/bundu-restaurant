@@ -3,28 +3,30 @@
 {% block content %}
 
 <div class="container below-nav fill-screen pt-5">
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
+    <div class="row">
+        <div class="col-md-6">
           <h1 class="display-4">Staff Dashboard</h1>
           <p class="lead">Bundu restaurant currently has <span class="fw-bold">{{ user_count }}</span> registered customers.</p>
+        </div>
+        <div class="col-md-6 text-start text-md-end">
+          <form action="{% url 'search_date' %}" method="GET">
+            {% csrf_token %}
+            <label for="search">Search approved reservations</label>
+            <input id="search_date" type="date" name="date" required/>
+            <button class="btn" type="submit"><i class="fa fa-search"></i></button>
+          </form>
+          <a href="{% url 'current_reservations' %}" class="me-5 mt-3 btn btn-primary">Today's reservations</a>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <div class="card w-100 mt-3" style="width: 18rem;">
                 <div class="card-body text-center m-auto">
-                 <div class="row">
                   <h5 class="card-title">Reservations</h5>
                   <h6 class="card-subtitle mb-2 text-muted">Manage Reservations</h6>
-                  <div class="col-6">
                     <a href="{% url 'reservation_list' 'pending' %}" class="d-block btn btn-success mt-3">Pending</a>
                     <a href="{% url 'reservation_list' 'approved' %}" class="d-block btn btn-primary mt-3">Approved</a>
                     <a href="{% url 'reservation_list' 'denied' %}" class="d-block btn btn-warning mt-3">Denied</a>
-                    </div>
-                  <div class="col-6">
-                    <a href="{% url 'current_reservations' %}" class="d-block btn btn-primary mt-3">View today's</a>
-                  </div>
-                 </div>
                 </div>
             </div>
         </div>

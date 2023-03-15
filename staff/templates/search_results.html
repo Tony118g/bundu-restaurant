@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Staff reservation Approval</h1>
+
+<div class="container fill-screen below-nav">
+    <h2 class="text-capitalize">Search results</h2>
+    {% if search_results %}
+    <table class="table tabel-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Time</th>
+            <th scope="col">No of people</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for reservation in search_results %}
+            <tr>
+                <td>{{reservation.first_name}}</td>
+                <td>{{reservation.last_name}}</td>
+                <td>{{reservation.time}}</td>
+                <td>{{reservation.no_of_people}}</td>
+                {% if status == 'pending' %}
+                <td>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <form action="{% url 'approve_reservation' reservation.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{request.path}}"/>
+                        <button class="btn btn-success" type="submit">Approve</button>
+                      </form>
+                    </div>
+                    <div class="col-md-6">
+                      <form action="{% url 'deny_reservation' reservation.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{request.path}}"/>
+                        <button class="btn btn-warning" type="submit">Deny</button>
+                      </form>
+                    </div>
+                  </div>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+    <p>There are no results matching your search.</p>
+    {% endif %}
+</div>
+{% endblock %}

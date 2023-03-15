@@ -19,4 +19,8 @@ urlpatterns = [
         'staff/current_reservations/',
         views.current_date_reservations, name='current_reservations'
         ),
+    path(
+        'staff/search_date/',
+        views.search_date, name='search_date'
+        ),
 ]

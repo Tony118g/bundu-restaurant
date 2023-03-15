@@ -100,3 +100,14 @@ def current_date_reservations(request):
     context = {'today_res_list': today_res_list}
 
     return render(request, 'current_reservations.html', context)
+
+
+def search_date(request):
+    """
+    Gets reservations for the date provided
+    """
+    date = request.GET['date']
+    search_results = Reservation.objects.filter(date=date, approved=True)
+
+    context = {'search_results': search_results}
+    return render(request, 'search_results.html', context)
