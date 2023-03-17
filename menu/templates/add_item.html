@@ -6,7 +6,7 @@
 <div class="container below-nav fill-screen pt-5">
     <h2>Add menu item</h2>
     <div class="form-group">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form|crispy }}
             <input type="submit" name="submit">
