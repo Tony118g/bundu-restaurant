@@ -32,3 +32,19 @@ def add_menu_item(request):
             ("Only logged in staff members can view this page")
             )
         return redirect('home')
+
+
+def menu_page(request):
+    """
+    Renders the menu page
+    """
+    starter_items = MenuItem.objects.filter(status=0, category='starter')
+    main_items = MenuItem.objects.filter(status=0, category='main')
+    desert_items = MenuItem.objects.filter(status=0, category='desert')
+
+    context = {
+        'starter_items': starter_items,
+        'main_items': main_items,
+        'desert_items': desert_items,
+        }
+    return render(request, 'menu.html', context)

@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container below-nav fill-screen pt-5">
+  <div class="row">
+    <h1 class="text-center">Our Menu</h1>
+</div>
+
+{% if starter_items %}
+{% for menu_item in starter_items %}
+<div class="row  text-center">
+    <!-- Button trigger modal -->
+    <div class=" col-9">
+        <a class="btn fw-bold menu-modal-link" data-bs-toggle="modal" data-bs-target="#modal{{ menu_item.id }}">
+            {{menu_item.title}}
+            <p class="fw-light">{{menu_item.description}}</p>
+        </a>
+    </div>
+    <div class="col-3 my-auto">
+        <span >${{ menu_item.price }}</span>
+    </div>
+</div>
+<hr>
+
+<!-- Modal -->
+<div class="modal fade" id="modal{{ menu_item.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{ menu_item.title }}</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <img class="card-img-top" src=" {{ menu_item.featured_image.url }}">
+              
+        <p>{{menu_item.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% else %}
+<p>Sorry, this menu is currently unavailable.</p>
+{% endif %}
+
+<h2 class="text-center">Mains</h2>
+{% if main_items %}
+{% for menu_item in main_items %}
+
+<div class="row  text-center">
+    <!-- Button trigger modal -->
+    <div class=" col-9">
+        <a class="btn fw-bold menu-modal-link" data-bs-toggle="modal" data-bs-target="#modal{{ menu_item.id }}">
+            {{menu_item.title}}
+            <p class="fw-light">{{menu_item.description}}</p>
+        </a>
+    </div>
+    <div class="col-3 my-auto">
+        <span >${{ menu_item.price }}</span>
+    </div>
+</div>
+<hr>
+
+<!-- Modal -->
+<div class="modal fade" id="modal{{ menu_item.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{ menu_item.title }}</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <img class="card-img-top" src=" {{ menu_item.featured_image.url }}">
+              
+        <p>{{menu_item.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% else %}
+<p>Sorry, this menu is currently unavailable.</p>
+{% endif %}
+
+<h2 class="text-center">Deserts</h2>
+{% if desert_items %}
+{% for menu_item in desert_items %}
+<div class="row  text-center">
+    <!-- Button trigger modal -->
+    <div class=" col-9">
+        <a class="btn fw-bold menu-modal-link" data-bs-toggle="modal" data-bs-target="#modal{{ menu_item.id }}">
+            {{menu_item.title}}
+            <p class="fw-light">{{menu_item.description}}</p>
+        </a>
+    </div>
+    <div class="col-3 my-auto">
+        <span >${{ menu_item.price }}</span>
+    </div>
+</div>
+<hr>
+
+<!-- Modal -->
+<div class="modal fade" id="modal{{ menu_item.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{ menu_item.title }}</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <img class="card-img-top" src=" {{ menu_item.featured_image.url }}">
+              
+        <p>{{menu_item.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% else %}
+<p>Sorry, this menu is currently unavailable.</p>
+{% endif %}
+
+</div>
+{%endblock%}
