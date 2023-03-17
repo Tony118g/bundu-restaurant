@@ -9,18 +9,13 @@ class BookingAdmin(admin.ModelAdmin):
     """
     list_filter = (
         'user',
-        'approved',
-        'denied',
-        'acknowledged',
-        'date'
+        'date',
+        'status',
         )
     list_display = (
-        'id',
-        'user',
         'date',
         'time',
+        'user',
         'no_of_people',
-        'approved',
-        'denied',
-        'acknowledged'
+        'status',
         )

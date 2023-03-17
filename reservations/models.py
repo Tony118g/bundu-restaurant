@@ -3,6 +3,13 @@ from datetime import datetime, date
 from django.contrib.auth.models import User
 
 
+STATUS = (
+    ('pending', 'pending'),
+    ('approved', 'approved'),
+    ('denied', 'denied'),
+    )
+
+
 no_of_people_choices = (
     (1, "1 person"),
     (2, "2 people"),
@@ -40,9 +47,7 @@ class Reservation(models.Model):
     date = models.DateField()
     time = models.TimeField(choices=reservation_times)
     date_of_request = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)
-    denied = models.BooleanField(default=False)
-    acknowledged = models.BooleanField(default=False)
+    status = models.CharField(max_length=8, choices=STATUS, default="pending")
 
     def __str__(self):
         return self.first_name
