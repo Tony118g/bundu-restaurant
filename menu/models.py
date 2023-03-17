@@ -13,7 +13,9 @@ MENU_CATEGORIES = (
 class MenuItem(models.Model):
 
     title = models.CharField(max_length=200, unique=True)
-    featured_image = CloudinaryField('image', default='placeholder')
+    featured_image = CloudinaryField(
+        'image', default='default-menu-image_eeth2z.png'
+        )
     description = models.TextField(default='Menu item description')
     available = models.BooleanField(default=True)
     price = models.DecimalField(
