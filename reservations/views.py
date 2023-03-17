@@ -96,6 +96,7 @@ def edit_reservation(request, pk):
                 ).exists():
                     messages.info(request, 'No changes have been made')
                 else:
+                    res_instance.status = 'pending'
                     edit_data.save()
                     return render(request, 'reservation_success.html')
 
