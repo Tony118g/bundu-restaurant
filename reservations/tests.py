@@ -222,15 +222,12 @@ class TestReservationModels(TestCase):
             phone_number='+263 78 050 8241'
             )
 
-    def test_status_values_default_to_false(self):
+    def test_status_value_defaults_to_false(self):
         """
-        Tests that reservation values for approved, denied
-        and acknowledged field default to false
+        Tests that reservation value for status defaults to pending
         """
 
-        self.assertEqual(self.reservation.approved, False)
-        self.assertEqual(self.reservation.denied, False)
-        self.assertEqual(self.reservation.acknowledged, False)
+        self.assertEqual(self.reservation.status, 'pending')
 
     def test_model_returns_first_name_string(self):
         """

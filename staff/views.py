@@ -32,17 +32,17 @@ def reservation_list(request, status):
     if request.user.is_staff:
         if status == 'pending':
             reservation_list = Reservation.objects.filter(
-                                                    acknowledged=False
+                                                    status='pending'
                                                     ).order_by(
                                                         'date_of_request'
                                                         )
         elif status == 'approved':
             reservation_list = Reservation.objects.filter(
-                                                    approved=True
+                                                    status='approved'
                                                     ).order_by('date')
         elif status == 'denied':
             reservation_list = Reservation.objects.filter(
-                                                    denied=True
+                                                    status='denied'
                                                     ).order_by('date')
 
         context = {
@@ -57,15 +57,15 @@ def reservation_list(request, status):
 
 def approve_reservation(request, pk):
     """
-    Sets approved and acknowledged fields to true for specified reservation
+    Sets status to approved and sends an approval email
     """
 
     reservation = get_object_or_404(Reservation, id=pk)
 
     if request.user.is_staff:
         next = request.POST.get('next')
-        reservation.approved = True
-        reservation.acknowledged = True
+        reservation.status = 'approved'
+
         reservation.save()
 
         context = {'reservation': reservation}
@@ -87,15 +87,14 @@ def approve_reservation(request, pk):
 
 def deny_reservation(request, pk):
     """
-    Sets denied and acknowledged fields to true for specified reservation
+    Sets status to denied for the specified reservation
     """
 
     reservation = get_object_or_404(Reservation, id=pk)
 
     if request.user.is_staff:
         next = request.POST.get('next')
-        reservation.denied = True
-        reservation.acknowledged = True
+        reservation.status = 'denied'
         reservation.save()
 
         context = {'reservation': reservation}
@@ -121,7 +120,7 @@ def current_date_reservations(request):
     """
 
     today_res_list = Reservation.objects.filter(
-        date=date.today(), approved=True
+        date=date.today(), status='approved'
         )
 
     context = {'today_res_list': today_res_list}
@@ -134,7 +133,7 @@ def search_date(request):
     Gets reservations for the date provided
     """
     date = request.GET['date']
-    search_results = Reservation.objects.filter(date=date, approved=True)
+    search_results = Reservation.objects.filter(date=date, status='approved')
 
     context = {'search_results': search_results}
     return render(request, 'date_search_results.html', context)

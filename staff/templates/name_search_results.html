@@ -15,6 +15,7 @@
             <th scope="col">Time</th>
             <th scope="col">No of people</th>
             <th scope="col">Status</th>
+            <th scope="col">Staff Action</th>
           </tr>
         </thead>
         <tbody>
@@ -25,16 +26,8 @@
                 <td>{{reservation.date}}</td>
                 <td>{{reservation.time}}</td>
                 <td>{{reservation.no_of_people}}</td>
-                <td>
-                    {% if reservation.approved %}
-                    approved
-                    {% elif reservation.denied %}
-                    denied
-                    {% else %}
-                    pending
-                    {% endif %}
-                </td>
-                {% if status == 'pending' %}
+                <td>{{ reservation.status }}</td>
+                {% if reservation.status == 'pending' %}
                 <td>
                   <div class="row">
                     <div class="col-md-6">
@@ -53,6 +46,8 @@
                     </div>
                   </div>
                 </td>
+                {% else %}
+                <td>N/A</td>
                 {% endif %}
             </tr>
             {% endfor %}

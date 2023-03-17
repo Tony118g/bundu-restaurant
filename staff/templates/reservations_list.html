@@ -12,6 +12,9 @@
             <th scope="col">Date</th>
             <th scope="col">Time</th>
             <th scope="col">No of people</th>
+            {% if status == 'pending' %}
+            <th scope="col">Staff Action</th>
+            {% endif %}
           </tr>
         </thead>
         <tbody>

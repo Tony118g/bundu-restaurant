@@ -25,15 +25,6 @@ def profile_page(request):
         email_address = request.user.email
 
         reservations = Reservation.objects.filter(user=request.user)
-        status = ''
-
-        for reservation in reservations:
-            if reservation.acknowledged and reservation.approved:
-                status = 'approved'
-            elif reservation.acknowledged and reservation.denied:
-                status = 'denied'
-            elif reservation.acknowledged is False:
-                status = 'pending'
 
         context = {
             'f_name': f_name,
@@ -41,7 +32,6 @@ def profile_page(request):
             'username': username,
             'email_address': email_address,
             'reservations': reservations,
-            'status': status,
         }
         return render(request, 'profile.html', context)
     else:
