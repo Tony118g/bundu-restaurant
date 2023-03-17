@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from reservations.models import Reservation
 from django.contrib import messages
 from .forms import ReservationForm
+from datetime import date
 
 
 def make_reservation(request):
@@ -55,15 +56,22 @@ def edit_reservation(request, pk):
 
     if request.user.is_authenticated:
         res_instance = get_object_or_404(Reservation, id=pk)
-        edit_form = ReservationForm(instance=res_instance)
-        editing = True
-        heading = 'Edit your reservation below'
+        if res_instance.date > date.today():
+            edit_form = ReservationForm(instance=res_instance)
+            editing = True
+            heading = 'Edit your reservation below'
 
-        context = {
-            'form': edit_form,
-            'heading': heading,
-            'editing': editing,
-        }
+            context = {
+                'form': edit_form,
+                'heading': heading,
+                'editing': editing,
+            }
+        else:
+            messages.warning(
+                request,
+                ("You cannot edit a reservation for a past date.")
+                )
+            return redirect('profile_page')
 
     else:
         messages.warning(
