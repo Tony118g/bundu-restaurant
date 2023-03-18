@@ -17,6 +17,9 @@
         </a>
     </div>
     <div class="col-3 my-auto">
+        {% if menu_item.available == False %}
+        <span class="badge bg-danger me-lg-5">Unavailable</span>
+        {% endif %}
         <span >${{ menu_item.price }}</span>
     </div>
 </div>
@@ -59,6 +62,9 @@
         </a>
     </div>
     <div class="col-3 my-auto">
+        {% if menu_item.available == False %}
+        <span class="badge bg-danger me-lg-5">Unavailable</span>
+        {% endif %}
         <span >${{ menu_item.price }}</span>
     </div>
 </div>
@@ -100,6 +106,9 @@
         </a>
     </div>
     <div class="col-3 my-auto">
+        {% if menu_item.available == False %}
+        <span class="badge bg-danger me-lg-5">Unavailable</span>
+        {% endif %}
         <span >${{ menu_item.price }}</span>
     </div>
 </div>
