@@ -81,6 +81,7 @@ def edit_reservation(request, pk):
         return redirect('home')
 
     if request.user == res_instance.user:
+
         if request.method == 'POST':
             edit_form = ReservationForm(request.POST, instance=res_instance)
 
@@ -100,7 +101,14 @@ def edit_reservation(request, pk):
                     edit_data.save()
                     return render(request, 'reservation_success.html')
 
-    return render(request, "reserve.html", context)
+        return render(request, "reserve.html", context)
+
+    else:
+        messages.warning(
+                request,
+                ("You are not authorized to view this page.")
+                )
+        return render(request, "index.html")
 
 
 def delete_reservation(request, pk):
