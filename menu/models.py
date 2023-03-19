@@ -1,5 +1,8 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
+from django.db.models.signals import pre_save, post_save, post_delete
+from django.dispatch import receiver
+import cloudinary
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -28,3 +31,45 @@ class MenuItem(models.Model):
 
     def __str__(self):
         return self.title
+
+
+@receiver(pre_save, sender=MenuItem)
+def get_old_cloudinary_img(sender, instance, *args, **kwargs):
+    """
+    Gets the current image for the instance before the save
+    if it is an update
+    """
+
+    try:
+        old_img = sender.objects.get(id=instance.id).featured_image.public_id
+    except MenuItem.DoesNotExist:
+        old_img = None
+
+    instance.old_img = old_img
+
+
+@receiver(post_save, sender=MenuItem)
+def dlte_old_cloudinary_img_on_update(sender, instance, *args, **kwargs):
+    """
+    Deletes the old image in cloudinary if it has been updated
+    unless it is the default image
+    """
+
+    new_img = instance.featured_image.public_id
+    if (instance.old_img and
+            instance.old_img != new_img and
+            instance.old_img != 'default-menu-image_eeth2z'):
+
+        cloudinary.uploader.destroy(instance.old_img)
+
+
+@receiver(post_delete, sender=MenuItem)
+def dlte_cloudinary_img_on_instance_dlte(sender, instance, *args, **kwargs):
+    """
+    Deletes the cloudinary image when the related instance is deleted
+    unless it is the default image
+    """
+    instance_img = instance.featured_image.public_id
+
+    if instance_img != 'default-menu-image_eeth2z':
+        cloudinary.uploader.destroy(instance_img)
