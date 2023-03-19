@@ -142,4 +142,11 @@ def delete_reservation(request, pk):
             messages.success(request, 'The reservation has been cancelled')
             return redirect('profile_page')
 
-    return render(request, 'delete_reservation.html', context)
+        return render(request, 'delete_reservation.html', context)
+
+    else:
+        messages.warning(
+                request,
+                ("You are not authorized to view this page.")
+                )
+        return render(request, "index.html")
