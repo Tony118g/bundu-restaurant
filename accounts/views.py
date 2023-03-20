@@ -18,7 +18,7 @@ def profile_page(request):
     Renders a profile page with details specific to the user
     """
 
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.is_staff is False:
         f_name = request.user.first_name
         l_name = request.user.last_name
         username = request.user.username
@@ -45,7 +45,7 @@ def edit_account(request, pk):
 
     user_instance = get_object_or_404(User, id=pk)
 
-    if request.user == user_instance:
+    if request.user == user_instance and request.user.is_staff is False:
         form = EditUserForm(instance=user_instance)
 
         if request.method == 'POST':
@@ -70,7 +70,7 @@ def delete_account(request, pk):
     """
 
     user_instance = get_object_or_404(User, id=pk)
-    if request.user == user_instance:
+    if request.user == user_instance and request.user.is_staff is False:
         if request.method == 'POST':
             user_instance.delete()
             messages.success(request, ("Your account has been deleted"))
