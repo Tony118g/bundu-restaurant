@@ -63,8 +63,31 @@ I created basic wireframes of how I wanted the general layout of the site to loo
 ### Future Features
 
 ## Technologies Used
+* [Balsamiq](https://balsamiq.com/wireframes/)
+    * Used to create the wireframes during the planning stage of the project.
+* [HTML5](https://html.spec.whatwg.org/)
+    * Used to create structure and content for the site.
+* [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
+    * Used to add cutoms styles to the HTML.
+* [Django](https://www.djangoproject.com/)
+    * The python framework used to develop the site.
+* [Bootstrap](https://getbootstrap.com/)
+    * The CSS framework used to develop the site.
+* [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+    * Used to provide functionality to the site.
+* [JavaScript](https://www.javascript.com/)
+    * Used to enhance functionality and interactivity.
+* [Cloudinary](https://cloudinary.com/)
+    * Used to host media files.
+* [ElephantSQL](https://www.elephantsql.com/)
+    * Used to host the database used for the site in production.
+* [Gitpod](https://www.gitpod.io/#get-started)
+    * Used to create code/content and file structure for the respository.
+* [GitHub](https://github.com/)
+    * Used to store the repository.
 
 ## Python Packages Used
+
 
 ## Testing
 
