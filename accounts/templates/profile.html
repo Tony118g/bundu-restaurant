@@ -3,21 +3,34 @@
 {% block content %}
 {% if messages %}
 {% for message in messages %}
-    <div class="text-center alert alert-dismissible fade show alert-{{ message.tags }}">
-           {{ message }}
-           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
-             <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
-           </button>
-    </div>
+<div class="text-center alert alert-dismissible fade show alert-{{ message.tags }}">
+    {{ message }}
+    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+    </button>
+</div>
 {% endfor %}
 {% endif %}
 
-    <div class="container pt-5 fill-screen below-nav">
+<div class="container pt-5 fill-screen below-nav">
+    <div class="row">
+      <div class="col-md-6">
         <h2>Welcome {{ f_name }} {{ l_name }}!</h2>
         <p><span class="fw-bold">Username</span>: {{ username }}</p>
         <p><span class="fw-bold">Email address</span>: {{ email_address }}</p>
         <a class="btn btn-warning" href="{% url 'edit_account' request.user.id %}">Edit Details</a>
         <a class="btn btn-danger" href="{% url 'delete_account' request.user.id %}">Delete Account</a>
+      </div>
+      <div class="col-md-6 border-start mt-3">
+        <p class="lead">This is where you can manage your account and reservations!</p>
+        <ul>
+          <li>If you have made reservations, you will see details of such below.</li>
+          <li>If you would like to edit or cancel/delete a reservation, simply click on it to reveal more options.</li>
+          <li><span class="fw-bold">Please note:</span>You can only edit reservations for future dates, if you would like to make a reservation for today then please contact the restaurant directly.</li>
+        </ul>
+      </div>
+    </div>
+    
 
     <div class="container pt-5">
       <h2>Your Reservations</h2>
@@ -36,7 +49,7 @@
                 <td>{{ reservation.time }}</td>
                 <td>{{ reservation.status }}</td>
               </tr>
-              {% endfor %}
+            {% endfor %}
       </table>
     </div>
 
