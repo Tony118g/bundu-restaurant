@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import MenuItem
 from .forms import MenuItemForm
@@ -62,6 +62,47 @@ def menu_drafts(request):
         }
 
         return render(request, 'menu_drafts.html', context)
+
+    else:
+        messages.warning(
+            request,
+            ("Only logged in staff members can view this page")
+            )
+        return redirect('home')
+
+
+def edit_menu_item(request, pk):
+    """
+    Updates the specified menu item with the new details input by the user
+    """
+
+    item_instance = get_object_or_404(MenuItem, id=pk)
+
+    if request.user.is_staff:
+        form = MenuItemForm(instance=item_instance)
+
+        if request.method == 'POST':
+            form = MenuItemForm(
+                request.POST, request.FILES, instance=item_instance
+                )
+            if form.is_valid():
+                form.save()
+                if form.instance.status == 1:
+                    messages.success(
+                        request,
+                        ("Menu item has been edited and published.")
+                        )
+                else:
+                    messages.success(
+                        request,
+                        ("Menu item saved as draft.")
+                        )
+                return redirect('staff_dashboard')
+
+        context = {
+            'form': form
+        }
+        return render(request, "add_item.html", context)
 
     else:
         messages.warning(
