@@ -18,12 +18,25 @@
     {% if editing %}
     <p class="text-danger">Warning: if you edit your reservation, the old version will be lost and the new version will be subject to approval.</p>
     {% endif %}
-    <div class="form-group">
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <input type="submit" name="submit">
-        </form>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input class="btn btn-success" type="submit" name="submit">
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6 p-4">
+            <h3>A few things to keep in mind...</h3>
+            <hr>
+            <ul>
+                <li>All online reservations are subject to approval which may take up to 24 hours. If you have not received a response in this time then please get in touch.</li>
+                <li>Online reservations are only available for future dates so if you would like to reserve a spot for today then please contact us directly via phone call.</li>
+                <li>Although we are open untill 2200 on weekends and holidays, we only accept reservations untill 2000 everyday. The restaurant does not allow guests in past this time and only stays open for those who are already in the restaruant before 2000.</li>
+            </ul>
+        </div>
     </div>
 </div>
 
