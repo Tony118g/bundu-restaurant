@@ -33,6 +33,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">{{ menu_item.title }}</h5>
+          {% if user.is_staff %}
+          <span><a class="btn btn-primary" href="{% url 'edit_menu_item' menu_item.id %}">Edit</a></span>
+          {% endif %}
           <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -78,6 +81,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">{{ menu_item.title }}</h5>
+          {% if user.is_staff %}
+          <span><a class="btn btn-primary" href="{% url 'edit_menu_item' menu_item.id %}">Edit</a></span>
+          {% endif %}
           <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -122,6 +128,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">{{ menu_item.title }}</h5>
+          {% if user.is_staff %}
+          <span><a class="btn btn-primary" href="{% url 'edit_menu_item' menu_item.id %}">Edit</a></span>
+          {% endif %}
           <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
