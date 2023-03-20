@@ -54,4 +54,4 @@ class Reservation(models.Model):
 
     @property
     def is_past_date(self):
-        return date.today() > self.date
+        return date.today() >= self.date
