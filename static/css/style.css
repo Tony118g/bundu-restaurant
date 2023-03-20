@@ -155,6 +155,12 @@ h1 {
     box-shadow:  0px 6px 6px -5px #887456;
 }
 
+/* About us section */
+
+#about-us h3{
+    border-bottom: 2px solid #2D3E59;
+}
+
 /* menu page */
 
 .menu-modal-link:hover {
