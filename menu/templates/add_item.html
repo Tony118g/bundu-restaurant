@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="container below-nav fill-screen pt-5">
-    <h2>Add menu item</h2>
+    <h2>{{ heading }}</h2>
     <div class="form-group">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}

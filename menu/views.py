@@ -7,6 +7,8 @@ from .forms import MenuItemForm
 def add_menu_item(request):
 
     if request.user.is_staff:
+        heading = 'Add a menu item below'
+
         form = MenuItemForm()
         if request.method == 'POST':
             form = MenuItemForm(request.POST, request.FILES)
@@ -24,7 +26,10 @@ def add_menu_item(request):
                         )
                 return redirect('staff_dashboard')
         else:
-            context = {'form': form}
+            context = {
+                'form': form,
+                'heading': heading,
+                }
             return render(request, "add_item.html", context)
     else:
         messages.warning(
@@ -80,6 +85,7 @@ def edit_menu_item(request, pk):
 
     if request.user.is_staff:
         form = MenuItemForm(instance=item_instance)
+        heading = 'Edit the menu item below'
 
         if request.method == 'POST':
             form = MenuItemForm(
@@ -100,8 +106,9 @@ def edit_menu_item(request, pk):
                 return redirect('staff_dashboard')
 
         context = {
-            'form': form
-        }
+                'form': form,
+                'heading': heading,
+                }
         return render(request, "add_item.html", context)
 
     else:
