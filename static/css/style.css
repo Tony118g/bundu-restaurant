@@ -6,18 +6,38 @@
 
 body {
     font-family:  "PT Sans", "sans-serif";
+    letter-spacing: 1.3px;
 }
 
 h1 {
     font-size: 2rem;;
 }
 
+.main-heading {
+    font-size: 3rem;
+    border-bottom: 2px solid #2D3E59;
+    margin-bottom: 20px;
+}
+
+.section-heading {
+    border-bottom: 1px solid #887456;
+    margin: 20px auto;
+}
+
 .fill-screen {
-    min-height: calc(100vh - 76px);
+    min-height: calc(100vh - 325px);
 }
 
 .below-nav {
     margin-top: 76px;
+}
+
+.bg-brown {
+    background-color: #887456;
+}
+
+.bg-blue {
+    background-color: #2D3E59;
 }
 
 /* Alert messages */
@@ -103,6 +123,17 @@ h1 {
 .sub-heading {
     font-weight: 200;
     letter-spacing: 1px;
+}
+
+/* menu page */
+
+.menu-modal-link:hover {
+    color: #887456;
+    text-decoration: underline;
+}
+
+.badge {
+    margin-left: -20px;
 }
 
 /* forms */
