@@ -10,7 +10,7 @@ def make_reservation(request):
     Handles reservation requests by users
     """
 
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.is_staff is False:
         heading = 'Make a reservation'
         reservation_form = ReservationForm()
 
@@ -21,7 +21,7 @@ def make_reservation(request):
     else:
         messages.info(
             request,
-            ("Please login/signup if you would like to make a reservation")
+            ("Please login/signup as a customer to make a reservation")
             )
         return redirect('account_login')
 
@@ -108,7 +108,7 @@ def edit_reservation(request, pk):
                 request,
                 ("You are not authorized to view this page.")
                 )
-        return render(request, "index.html")
+        return redirect('home')
 
 
 def delete_reservation(request, pk):
