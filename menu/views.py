@@ -117,3 +117,35 @@ def edit_menu_item(request, pk):
             ("Only logged in staff members can view this page")
             )
         return redirect('home')
+
+
+def delete_menu_item(request, pk):
+    """
+    Deletes the specified menu item
+    """
+
+    item_instance = get_object_or_404(MenuItem, id=pk)
+
+    if item_instance.status == 0:
+        redirect_url_name = 'menu_drafts'
+    else:
+        redirect_url_name = 'menu_page'
+
+    if request.user.is_staff:
+
+        if request.method == 'POST':
+
+            item_instance.delete()
+            return redirect(redirect_url_name)
+
+        context = {
+                'item_instance': item_instance,
+                }
+        return render(request, "delete_item.html", context)
+
+    else:
+        messages.warning(
+            request,
+            ("Only logged in staff members can view this page")
+            )
+        return redirect('home')
