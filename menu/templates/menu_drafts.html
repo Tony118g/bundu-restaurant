@@ -28,7 +28,7 @@
                 <td><h4>{{ menu_draft.title }}</h4></td>
                 <td>
                     <span><a class="btn btn-primary me-md-3" href="{% url 'edit_menu_item' menu_draft.id %}">Edit</a></span>
-                    <span><a class="btn btn-danger ms-md-3" href="#">Delete</a></span>
+                    <span><a class="btn btn-danger ms-md-3" href="{% url 'delete_item' menu_draft.id %}">Delete</a></span>
                 </td>
             </tr>
         {% endfor %}
