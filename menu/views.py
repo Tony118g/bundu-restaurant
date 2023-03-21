@@ -136,6 +136,10 @@ def delete_menu_item(request, pk):
         if request.method == 'POST':
 
             item_instance.delete()
+            messages.success(
+                        request,
+                        ("Menu item has been deleted.")
+                        )
             return redirect(redirect_url_name)
 
         context = {
