@@ -14,12 +14,23 @@
 {% endif %}
 
 <div class="container below-nav fill-screen pt-5">
-  <div class="row">
+  <div class="row text-center">
     <h1 class="text-center main-heading">Our Menu</h1>
-    <p class="text-center lead bg-brown text-white p-3">Have a look at our tasty menu! Click on a menu item to see what it looks like! </p>
+
+      <div class="col-4">
+        <a href="#starters" class="sub-menu-link">Starters</a>
+      </div>
+      <div class="col-4">
+        <a href="#mains" class="sub-menu-link">Mains</a>
+      </div>
+      <div class="col-4">
+        <a href="#deserts" class="sub-menu-link">Deserts</a>
+      </div>
+
+    <p class="text-center lead bg-brown text-white mt-3 p-3">Have a look at our tasty menu! Click on a menu item to see what it looks like! </p>
   </div>
 
-  <h2 class="text-center bg-blue text-white section-heading">Starters</h2>
+  <h2 id="starters" class="text-center bg-blue text-white section-heading">Starters</h2>
   {% if starter_items %}
   {% for menu_item in starter_items %}
   <div class="row text-center">
@@ -67,7 +78,7 @@
   <p class="text-center text-danger">Sorry, this menu is currently unavailable.</p>
   {% endif %}
 
-  <h2 class="text-center bg-blue text-white section-heading">Mains</h2>
+  <h2 id="mains" class="text-center bg-blue text-white section-heading">Mains</h2>
   {% if main_items %}
   {% for menu_item in main_items %}
 
@@ -116,7 +127,7 @@
   <p class="text-center text-danger">Sorry, this menu is currently unavailable.</p>
   {% endif %}
 
-  <h2 class="text-center bg-blue text-white section-heading">Deserts</h2>
+  <h2 id="deserts" class="text-center bg-blue text-white section-heading">Deserts</h2>
   {% if desert_items %}
   {% for menu_item in desert_items %}
   <div class="row text-center">

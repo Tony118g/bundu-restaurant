@@ -40,6 +40,13 @@ h1 {
     background-color: #2D3E59;
 }
 
+/* stops anchor links from scrolling behind the navbar when navigated to */
+
+html {
+    scroll-padding-top: 5rem;
+  }
+
+
 /* Alert messages */
 
 .alert {
@@ -162,6 +169,19 @@ h1 {
 }
 
 /* menu page */
+
+.sub-menu-link {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: black;
+    padding: 10px;
+    border-bottom: 1px solid #2D3E59;
+}
+
+.sub-menu-link:hover {
+    border-bottom: 4px solid #887456;
+    color: black;
+}
 
 .menu-modal-link:hover {
     color: #887456;
