@@ -16,8 +16,16 @@ class TestViews(TestCase):
     """
 
     def setUp(self):
+
         self.user = User.objects.create_user(
             username="test", password="password", email="admin@example.com"
+        )
+
+        self.staff_user = User.objects.create_user(
+            username="staff",
+            password="staff_password",
+            email="admin@example.com",
+            is_staff=True
         )
 
     def test_home_page(self):
@@ -31,6 +39,18 @@ class TestViews(TestCase):
         url = reverse("home")
         self.assertEquals(resolve(url).func, home_page)
         self.assertTemplateUsed(response, "index.html")
+
+    def test_staff_login_dashboard_render(self):
+        """
+        Test dashboard page is rendered for staff users upon login
+        """
+        self.client.force_login(self.staff_user)
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+
+        url = reverse("home")
+        self.assertEquals(resolve(url).func, home_page)
+        self.assertTemplateUsed(response, "dashboard.html")
 
     def test_profile_page(self):
         """
@@ -129,4 +149,4 @@ class TestViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(str(messages[0]), 'Your account has been deleted')
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(User.objects.all().count(), 0)
+        self.assertEqual(User.objects.all().count(), 1)

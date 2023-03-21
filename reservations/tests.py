@@ -19,13 +19,25 @@ class TestReservationViews(TestCase):
     """
 
     def setUp(self):
+
         self.user = User.objects.create_user(
             username="test", password="password", email="admin@example.com"
+        )
+
+        self.user2 = User.objects.create_user(
+            username="tester", password="password1", email="test@example.com"
         )
 
         reservation = Reservation.objects.create(
             user=self.user,
             date='2023-11-11',
+            time='10:00:00',
+            no_of_people='2',
+        )
+
+        past_reservation = Reservation.objects.create(
+            user=self.user,
+            date='2022-11-11',
             time='10:00:00',
             no_of_people='2',
         )
@@ -40,8 +52,8 @@ class TestReservationViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'Please login/signup if you would '
-                        'like to make a reservation'
+                        'Please login/signup as a customer '
+                        'to make a reservation'
                         )
         self.assertEqual(response.status_code, 302)
 
@@ -138,6 +150,35 @@ class TestReservationViews(TestCase):
         self.assertEquals(resolve(url).func, make_reservation)
         self.assertTemplateUsed(response, "reservation_success.html")
 
+    def test_unauthorized_user_edit_response(self):
+        """
+        Tests if the correct response is given if a user tries to edit
+        another users reservations
+        """
+        self.client.force_login(self.user2)
+        response = self.client.get("/reservations/edit_reservation/1/")
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(
+                        str(messages[0]),
+                        'You are not authorized to view this page.'
+                        )
+        self.assertEqual(response.status_code, 302)
+
+    def test_edit_reservation_past_date_response(self):
+        """
+        Test to see if correct response is given when user tries to edit
+        a reservation on past date
+        """
+
+        self.client.force_login(self.user)
+        response = self.client.get("/reservations/edit_reservation/2/")
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(
+                        str(messages[0]),
+                        'You cannot edit a reservation for a past date.'
+                        )
+        self.assertEqual(response.status_code, 302)
+
     def test_no_changes_edit_response(self):
         """
         Test functionality for when user submits an edit form
@@ -178,11 +219,12 @@ class TestReservationViews(TestCase):
     def test_user_logged_in_delete_reservation(self):
         """
         Test delete reservation functionality works correctly
-        for logged in users
+        for logged in users for both past and futue dates
         """
 
         self.client.force_login(self.user)
         response = self.client.get("/reservations/delete_reservation/1/")
+        response = self.client.get("/reservations/delete_reservation/2/")
         self.assertEqual(response.status_code, 200)
 
         url = reverse("delete_reservation", args=[1])
@@ -197,7 +239,21 @@ class TestReservationViews(TestCase):
                         'The reservation has been cancelled'
                         )
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(Reservation.objects.all().count(), 0)
+        self.assertEqual(Reservation.objects.all().count(), 1)
+
+    def test_unauthorized_user_delete_response(self):
+        """
+        Tests if the correct response is given if a user tries to delete
+        another users reservation
+        """
+        self.client.force_login(self.user2)
+        response = self.client.get("/reservations/delete_reservation/1/")
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(
+                        str(messages[0]),
+                        'You are not authorized to view this page.'
+                        )
+        self.assertEqual(response.status_code, 302)
 
 
 class TestReservationModels(TestCase):
@@ -222,7 +278,7 @@ class TestReservationModels(TestCase):
             phone_number='+263 78 050 8241'
             )
 
-    def test_status_value_defaults_to_false(self):
+    def test_status_value_defaults_to_pending(self):
         """
         Tests that reservation value for status defaults to pending
         """
