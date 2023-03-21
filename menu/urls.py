@@ -10,5 +10,9 @@ urlpatterns = [
         views.edit_menu_item,
         name='edit_menu_item'
         ),
-    path('menu/delete_item/<str:pk>/', views.delete_menu_item, name='delete_item')
+    path(
+        'menu/delete_item/<str:pk>/',
+        views.delete_menu_item,
+        name='delete_item'
+        )
 ]
