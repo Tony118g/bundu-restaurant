@@ -39,11 +39,11 @@ def reservation_list(request, status):
         elif status == 'approved':
             reservation_list = Reservation.objects.filter(
                                                     status='approved'
-                                                    ).order_by('date')
+                                                    ).order_by('-date')
         elif status == 'denied':
             reservation_list = Reservation.objects.filter(
                                                     status='denied'
-                                                    ).order_by('date')
+                                                    ).order_by('-date')
 
         context = {
             'reservation_list': reservation_list,

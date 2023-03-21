@@ -28,7 +28,9 @@ def profile_page(request):
         username = request.user.username
         email_address = request.user.email
 
-        reservations = Reservation.objects.filter(user=request.user)
+        reservations = Reservation.objects.filter(
+            user=request.user
+            ).order_by('-date')
 
         context = {
             'f_name': f_name,
