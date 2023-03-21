@@ -199,3 +199,8 @@ footer h4 {
 footer .row {
     border-bottom: 1px solid #887456;
 }
+
+.social-icon {
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
