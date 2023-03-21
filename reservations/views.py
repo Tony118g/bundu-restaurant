@@ -149,4 +149,4 @@ def delete_reservation(request, pk):
                 request,
                 ("You are not authorized to view this page.")
                 )
-        return render(request, "index.html")
+        return redirect('home')
