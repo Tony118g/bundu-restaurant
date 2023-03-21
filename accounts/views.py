@@ -10,7 +10,11 @@ def home_page(request):
     """
     Renders the home page
     """
-    return render(request, "index.html")
+
+    if request.user.is_staff:
+        return render(request, "dashboard.html")
+    else:
+        return render(request, "index.html")
 
 
 def profile_page(request):
