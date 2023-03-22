@@ -33,6 +33,7 @@ class TestReservationViews(TestCase):
             date='2023-11-11',
             time='10:00:00',
             no_of_people='2',
+            phone_number='07456789342',
         )
 
         past_reservation = Reservation.objects.create(
