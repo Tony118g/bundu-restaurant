@@ -55,7 +55,11 @@ def dlte_old_cloudinary_img_on_update(sender, instance, *args, **kwargs):
     unless it is the default image
     """
 
-    new_img = instance.featured_image.public_id
+    try:
+        new_img = instance.featured_image.public_id
+    except AttributeError:
+        new_img = None
+
     if (instance.old_img and
             instance.old_img != new_img and
             instance.old_img != 'default-menu-image_eeth2z'):
