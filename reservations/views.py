@@ -53,32 +53,7 @@ def edit_reservation(request, pk):
     """
     Updates the specified reservation with new details input by the user.
     """
-
-    if request.user.is_authenticated:
-        res_instance = get_object_or_404(Reservation, id=pk)
-        if res_instance.date > date.today():
-            edit_form = ReservationForm(instance=res_instance)
-            editing = True
-            heading = 'Edit your reservation below'
-
-            context = {
-                'form': edit_form,
-                'heading': heading,
-                'editing': editing,
-            }
-        else:
-            messages.warning(
-                request,
-                ('You cannot edit a reservation for a past date')
-                )
-            return redirect('profile_page')
-
-    else:
-        messages.warning(
-            request,
-            ('You are not authorized to view this page')
-            )
-        return redirect('home')
+    res_instance = get_object_or_404(Reservation, id=pk)
 
     if request.user == res_instance.user:
 
@@ -94,6 +69,7 @@ def edit_reservation(request, pk):
                     date=edit_data.date,
                     time=edit_data.time,
                     no_of_people=edit_data.no_of_people,
+                    phone_number=edit_data.phone_number,
                 ).exists():
                     messages.info(request, 'No changes have been made')
                 else:
@@ -101,13 +77,29 @@ def edit_reservation(request, pk):
                     edit_data.save()
                     return render(request, 'reservation_success.html')
 
-        return render(request, "reserve.html", context)
+        if res_instance.date > date.today():
+            edit_form = ReservationForm(instance=res_instance)
+            editing = True
+            heading = 'Edit your reservation below'
+
+            context = {
+                'form': edit_form,
+                'heading': heading,
+                'editing': editing,
+            }
+            return render(request, "reserve.html", context)
+        else:
+            messages.warning(
+                request,
+                ('You cannot edit a reservation for a past date')
+                )
+            return redirect('profile_page')
 
     else:
         messages.warning(
-                request,
-                ('You are not authorized to view this page')
-                )
+            request,
+            ('You are not authorized to view this page')
+            )
         return redirect('home')
 
 
@@ -115,10 +107,15 @@ def delete_reservation(request, pk):
     """
     Handles deletion of the specified reservation
     """
+    res_instance = get_object_or_404(Reservation, id=pk)
 
-    if request.user.is_authenticated:
-        Action = ''
-        res_instance = get_object_or_404(Reservation, id=pk)
+    if request.user == res_instance.user:
+
+        if request.method == 'POST':
+            res_instance.delete()
+            messages.success(request, 'The reservation has been removed')
+            return redirect('profile_page')
+
         if res_instance.is_past_date:
             action = 'delete record of'
         else:
@@ -128,25 +125,11 @@ def delete_reservation(request, pk):
             'res_instance': res_instance,
             'action': action,
         }
+        return render(request, 'delete_reservation.html', context)
 
     else:
         messages.warning(
             request,
             ('You are not authorized to view this page')
             )
-        return redirect('home')
-
-    if request.user == res_instance.user:
-        if request.method == 'POST':
-            res_instance.delete()
-            messages.success(request, 'The reservation has been removed')
-            return redirect('profile_page')
-
-        return render(request, 'delete_reservation.html', context)
-
-    else:
-        messages.warning(
-                request,
-                ('You are not authorized to view this page')
-                )
         return redirect('home')
