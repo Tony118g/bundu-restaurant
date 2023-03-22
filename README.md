@@ -5,6 +5,11 @@ The Bundu Bar and Restaurant site is intended to be used as an advertising and m
 ## Contents
 
 ## Project Goals
+This site was developed for a fictional small restaurant to provide an easier way to manage reservations for both the restaurant staff and customers. The site also employs functionality for staff to manage the menu advertised to customers which allows control over what they offer as a restaurant.
+
+This version of the project includes necessary functionality for customers and staff to provide a pleasant user experience. In the future, the site may be further developed to include more features that may become necessary as the restaurant grows.
+
+This project was developed to showcase competency in web development particularly using the Django framework and agile methodology. It is purely for educational purposes.
 
 ## User Experience
 ### Epics
