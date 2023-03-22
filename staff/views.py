@@ -66,7 +66,7 @@ def approve_reservation(request, pk):
     reservation = get_object_or_404(Reservation, id=pk)
 
     if request.user.is_staff:
-        next = request.POST.get('next')
+        next = request.POST.get('next', '/')
         reservation.status = 'approved'
 
         reservation.save()
@@ -96,7 +96,7 @@ def deny_reservation(request, pk):
     reservation = get_object_or_404(Reservation, id=pk)
 
     if request.user.is_staff:
-        next = request.POST.get('next')
+        next = request.POST.get('next', '/')
         reservation.status = 'denied'
         reservation.save()
 
