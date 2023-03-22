@@ -119,7 +119,7 @@ class TestReservationViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'You cannot view this page without logging in.'
+                        'You are not authorized to view this page'
                         )
         self.assertEqual(response.status_code, 302)
 
@@ -160,7 +160,7 @@ class TestReservationViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'You are not authorized to view this page.'
+                        'You are not authorized to view this page'
                         )
         self.assertEqual(response.status_code, 302)
 
@@ -175,7 +175,7 @@ class TestReservationViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'You cannot edit a reservation for a past date.'
+                        'You cannot edit a reservation for a past date'
                         )
         self.assertEqual(response.status_code, 302)
 
@@ -212,7 +212,7 @@ class TestReservationViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'You cannot view this page without logging in.'
+                        'You are not authorized to view this page'
                         )
         self.assertEqual(response.status_code, 302)
 
@@ -236,7 +236,7 @@ class TestReservationViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'The reservation has been cancelled'
+                        'The reservation has been removed'
                         )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Reservation.objects.all().count(), 1)
@@ -251,7 +251,7 @@ class TestReservationViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'You are not authorized to view this page.'
+                        'You are not authorized to view this page'
                         )
         self.assertEqual(response.status_code, 302)
 

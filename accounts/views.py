@@ -58,10 +58,10 @@ def edit_account(request, pk):
             form = EditUserForm(request.POST, instance=user_instance)
             if form.is_valid():
                 form.save()
-                messages.success(request, ("Account updated successfully"))
+                messages.success(request, ('Account updated successfully'))
                 return redirect('profile_page')
     else:
-        messages.warning(request, ("You are not authorized to view this page"))
+        messages.warning(request, ('You are not authorized to view this page'))
         return redirect('profile_page')
 
     context = {
@@ -79,10 +79,10 @@ def delete_account(request, pk):
     if request.user == user_instance and request.user.is_staff is False:
         if request.method == 'POST':
             user_instance.delete()
-            messages.success(request, ("Your account has been deleted"))
+            messages.success(request, ('Your account has been deleted'))
             return redirect('home')
     else:
-        messages.warning(request, ("You are not authorized to view this page"))
+        messages.warning(request, ('You are not authorized to view this page'))
         return redirect('profile_page')
 
     context = {

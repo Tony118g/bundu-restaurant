@@ -69,14 +69,14 @@ def edit_reservation(request, pk):
         else:
             messages.warning(
                 request,
-                ("You cannot edit a reservation for a past date.")
+                ('You cannot edit a reservation for a past date')
                 )
             return redirect('profile_page')
 
     else:
         messages.warning(
             request,
-            ("You cannot view this page without logging in.")
+            ('You are not authorized to view this page')
             )
         return redirect('home')
 
@@ -106,7 +106,7 @@ def edit_reservation(request, pk):
     else:
         messages.warning(
                 request,
-                ("You are not authorized to view this page.")
+                ('You are not authorized to view this page')
                 )
         return redirect('home')
 
@@ -132,14 +132,14 @@ def delete_reservation(request, pk):
     else:
         messages.warning(
             request,
-            ("You cannot view this page without logging in.")
+            ('You are not authorized to view this page')
             )
         return redirect('home')
 
     if request.user == res_instance.user:
         if request.method == 'POST':
             res_instance.delete()
-            messages.success(request, 'The reservation has been cancelled')
+            messages.success(request, 'The reservation has been removed')
             return redirect('profile_page')
 
         return render(request, 'delete_reservation.html', context)
@@ -147,6 +147,6 @@ def delete_reservation(request, pk):
     else:
         messages.warning(
                 request,
-                ("You are not authorized to view this page.")
+                ('You are not authorized to view this page')
                 )
         return redirect('home')

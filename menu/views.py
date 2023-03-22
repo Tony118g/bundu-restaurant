@@ -17,12 +17,12 @@ def add_menu_item(request):
                 if form.instance.status == 1:
                     messages.success(
                         request,
-                        ("Menu item successfully published.")
+                        ('Menu item successfully published')
                         )
                 else:
                     messages.success(
                         request,
-                        ("Menu draft saved as draft.")
+                        ('Menu item saved as draft')
                         )
                 return redirect('staff_dashboard')
         else:
@@ -34,7 +34,7 @@ def add_menu_item(request):
     else:
         messages.warning(
             request,
-            ("Only logged in staff members can view this page")
+            ('You are not authorized to view this page')
             )
         return redirect('home')
 
@@ -71,7 +71,7 @@ def menu_drafts(request):
     else:
         messages.warning(
             request,
-            ("Only logged in staff members can view this page")
+            ('You are not authorized to view this page')
             )
         return redirect('home')
 
@@ -96,12 +96,12 @@ def edit_menu_item(request, pk):
                 if form.instance.status == 1:
                     messages.success(
                         request,
-                        ("Menu item has been edited and published.")
+                        ('Menu item successfully published')
                         )
                 else:
                     messages.success(
                         request,
-                        ("Menu item saved as draft.")
+                        ('Menu item saved as draft')
                         )
                 return redirect('staff_dashboard')
 
@@ -114,7 +114,7 @@ def edit_menu_item(request, pk):
     else:
         messages.warning(
             request,
-            ("Only logged in staff members can view this page")
+            ('You are not authorized to view this page')
             )
         return redirect('home')
 
@@ -138,7 +138,7 @@ def delete_menu_item(request, pk):
             item_instance.delete()
             messages.success(
                         request,
-                        ("Menu item has been deleted.")
+                        ('Menu item has been deleted')
                         )
             return redirect(redirect_url_name)
 
@@ -150,6 +150,6 @@ def delete_menu_item(request, pk):
     else:
         messages.warning(
             request,
-            ("Only logged in staff members can view this page")
+            ('You are not authorized to view this page')
             )
         return redirect('home')

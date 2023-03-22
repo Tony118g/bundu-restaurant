@@ -20,6 +20,9 @@ def staff_dashboard(request):
         context = {'user_count': user_count}
         return render(request, "dashboard.html", context)
     else:
+        messages.warning(
+            request, ('You are not authorized to view this page')
+            )
         return redirect('home')
 
 
@@ -51,7 +54,7 @@ def reservation_list(request, status):
             }
         return render(request, 'reservations_list.html', context)
     else:
-        messages.warning(request, ("You are not authorized to view this page"))
+        messages.warning(request, ('You are not authorized to view this page'))
         return redirect('home')
 
 
@@ -81,7 +84,7 @@ def approve_reservation(request, pk):
 
         return redirect(next)
     else:
-        messages.warning(request, ("You are not authorized to view this page"))
+        messages.warning(request, ('You are not authorized to view this page'))
         return redirect('home')
 
 
@@ -110,7 +113,7 @@ def deny_reservation(request, pk):
 
         return redirect(next)
     else:
-        messages.warning(request, ("You are not authorized to view this page"))
+        messages.warning(request, ('You are not authorized to view this page'))
         return redirect('home')
 
 
@@ -118,14 +121,17 @@ def current_date_reservations(request):
     """
     Gets the approved reservations for the current date for staff to view
     """
+    if request.user.is_staff:
+        today_res_list = Reservation.objects.filter(
+            date=date.today(), status='approved'
+            )
 
-    today_res_list = Reservation.objects.filter(
-        date=date.today(), status='approved'
-        )
+        context = {'today_res_list': today_res_list}
 
-    context = {'today_res_list': today_res_list}
-
-    return render(request, 'current_reservations.html', context)
+        return render(request, 'current_reservations.html', context)
+    else:
+        messages.warning(request, ('You are not authorized to view this page'))
+        return redirect('home')
 
 
 def search_date(request):

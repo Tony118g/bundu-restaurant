@@ -87,7 +87,7 @@ class TestMenuViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'Only logged in staff members can view this page'
+                        'You are not authorized to view this page'
                         )
         self.assertEqual(response.status_code, 302)
 
@@ -114,7 +114,7 @@ class TestMenuViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'Only logged in staff members can view this page'
+                        'You are not authorized to view this page'
                         )
         self.assertEqual(response.status_code, 302)
 
@@ -131,7 +131,7 @@ class TestMenuViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'Menu item successfully published.'
+                        'Menu item successfully published'
                         )
 
         self.assertEqual(response.status_code, 302)
@@ -151,7 +151,7 @@ class TestMenuViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'Menu draft saved as draft.'
+                        'Menu item saved as draft'
                         )
         self.assertEqual(MenuItem.objects.last().status, 0)
         self.assertEqual(response.status_code, 302)
@@ -192,11 +192,11 @@ class TestMenuViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'Menu item saved as draft.'
+                        'Menu item saved as draft'
                         )
         self.assertEqual(
                         str(messages[1]),
-                        'Menu item has been edited and published.'
+                        'Menu item successfully published'
                         )
 
         self.assertEqual(response.status_code, 302)
@@ -211,7 +211,7 @@ class TestMenuViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'Only logged in staff members can view this page'
+                        'You are not authorized to view this page'
                         )
         self.assertEqual(response.status_code, 302)
 
@@ -243,7 +243,7 @@ class TestMenuViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'Menu item has been deleted.'
+                        'Menu item has been deleted'
                         )
 
         self.assertEqual(response.status_code, 302)
@@ -258,7 +258,7 @@ class TestMenuViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'Only logged in staff members can view this page'
+                        'You are not authorized to view this page'
                         )
         self.assertEqual(response.status_code, 302)
 
