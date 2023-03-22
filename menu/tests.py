@@ -163,7 +163,7 @@ class TestMenuViews(TestCase):
         """
         self.client.force_login(self.staff_user)
 
-        response = self.client.get('/menu/edit_menu_item/1')
+        response = self.client.get('/menu/edit_menu_item/1/')
         self.assertEqual(response.status_code, 200)
 
         url = reverse('edit_menu_item', args=[1])
@@ -178,13 +178,13 @@ class TestMenuViews(TestCase):
         self.client.force_login(self.staff_user)
 
         response = self.client.post(
-            '/menu/edit_menu_item/1',
+            '/menu/edit_menu_item/1/',
             self.menu_draft_form
             )
         self.assertEqual(MenuItem.objects.last().status, 0)
 
         response = self.client.post(
-            '/menu/edit_menu_item/1',
+            '/menu/edit_menu_item/1/',
             self.menu_item_form
             )
         self.assertEqual(MenuItem.objects.last().status, 1)
@@ -207,7 +207,7 @@ class TestMenuViews(TestCase):
         a message if they try access the edit menu item page
         """
         self.client.force_login(self.user)
-        response = self.client.get('/menu/edit_menu_item/1')
+        response = self.client.get('/menu/edit_menu_item/1/')
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
