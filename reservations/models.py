@@ -54,4 +54,17 @@ class Reservation(models.Model):
 
     @property
     def is_past_date(self):
+        """
+        Returns True if the reservation date is either past or present
+        """
         return date.today() >= self.date
+
+    @property
+    def is_past_time(self):
+        """
+        Returns True if the reservation time is past or present
+        """
+        res_date_time = (str(self.date), str(self.time))
+        crrnt_dte_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        return crrnt_dte_str >= ' '.join(res_date_time)
