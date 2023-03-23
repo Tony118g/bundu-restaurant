@@ -47,7 +47,13 @@
               <tr class='clickable-row menu-modal-link' data-bs-toggle="modal" data-bs-target="#modal{{ reservation.id }}">
                 <td>{{ reservation.date }}</td>
                 <td>{{ reservation.time }}</td>
-                <td>{{ reservation.status }}</td>
+                <td>
+                  {% if reservation.is_past_time %}
+                  Expired
+                  {% else %}
+                  {{ reservation.status }}
+                  {% endif %}
+                </td>
               </tr>
             {% endfor %}
       </table>
@@ -69,7 +75,14 @@
             <p><span class="fw-bold">First name: </span>{{ reservation.first_name }}</p>
             <p><span class="fw-bold">Last name: </span>{{ reservation.last_name }}</p>
             <p><span class="fw-bold">Number of people: </span>{{ reservation.no_of_people }}</p>
-            <p><span class="fw-bold">Status: </span>{{ reservation.status }}</p>
+            <p>
+              <span class="fw-bold">Status: </span>
+              {% if reservation.is_past_time %}
+              Expired
+              {% else %}
+              {{ reservation.status }}
+              {% endif %}
+            </p>
             {% if reservation.is_past_date is False %}
             <a class="btn btn-primary" href="{% url 'edit_reservation' reservation.id %}">Edit</a>
             {% endif %}
