@@ -221,3 +221,21 @@ class TestStaffViews(TestCase):
         url = reverse('search_name')
         self.assertEquals(resolve(url).func, search_name)
         self.assertTemplateUsed(response, 'name_search_results.html')
+
+    def test_past_pending_reservations_automatically_denied(self):
+        """
+        Tests if pending reservations that have past are
+        automatically denied when a staff member
+        accesses the pending reservations page
+        """
+        past_reservation = Reservation.objects.create(
+            user=self.user,
+            date='2022-11-11',
+            time='10:00:00',
+            no_of_people='2',
+        )
+        self.assertEqual(Reservation.objects.last().status, 'pending')
+
+        self.client.force_login(self.staff_user)
+        response = self.client.get('/staff/reservations/pending/')
+        self.assertEqual(Reservation.objects.last().status, 'denied')

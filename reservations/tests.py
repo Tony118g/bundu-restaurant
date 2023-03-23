@@ -296,9 +296,18 @@ class TestReservationModels(TestCase):
 
     def test_is_past_date_method_returns_correct_boolean(self):
         """
-        Tests if the is_past_date method of reservation model
-        returns the correct boolean field
+        Tests if the is_past_date method of the reservation
+        model returns the correct boolean value
         """
 
         self.reservation.date = date.today() - timedelta(days=1)
         self.assertTrue(self.reservation.is_past_date)
+
+    def test_is_past_time_method_returns_correct_boolean(self):
+        """
+        Tests if the is_past_date method of the reservation
+        model returns the correct boolean value
+        """
+
+        self.reservation.date = '2023-03-23 09:00:00'
+        self.assertTrue(self.reservation.is_past_time)
