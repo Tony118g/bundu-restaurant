@@ -5,7 +5,7 @@ from django.conf import settings
 from reservations.models import Reservation
 from django.contrib import messages
 from django.core.mail import send_mail
-from datetime import date
+from datetime import date, datetime
 
 
 def staff_dashboard(request):
@@ -34,6 +34,32 @@ def reservation_list(request, status):
 
     if request.user.is_staff:
         if status == 'pending':
+            pending_list = Reservation.objects.filter(
+                                                    status='pending'
+                                                    ).order_by(
+                                                        'date_of_request'
+                                                        )
+            for reservation in pending_list:
+                current_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                res_datetime = ' '.join(
+                    (str(reservation.date), str(reservation.time))
+                    )
+                if current_datetime >= res_datetime:
+                    reservation.status = 'denied'
+                    reservation.save()
+
+                    context = {'reservation': reservation}
+                    email_template = render_to_string(
+                        'expired_feedback_email.html', context
+                        )
+                    send_mail(
+                        'Bundu Restaurant expired reservation feedback',
+                        email_template,
+                        settings.EMAIL_HOST_USER,
+                        [reservation.email],
+                        fail_silently=False
+                    )
+
             reservation_list = Reservation.objects.filter(
                                                     status='pending'
                                                     ).order_by(
