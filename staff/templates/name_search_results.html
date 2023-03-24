@@ -9,11 +9,11 @@
     <table class="table tabel-striped table-hover table-bordered">
         <thead>
           <tr>
-            <th scope="col">First name</th>
-            <th scope="col">Last name</th>
+            <th scope="col">Name</th>
             <th scope="col">Date</th>
             <th scope="col">Time</th>
-            <th scope="col">No of people</th>
+            <th scope="col">Number</th>
+            <th scope="col">Email</th>
             <th scope="col">Status</th>
             <th scope="col">Staff Action</th>
           </tr>
@@ -21,23 +21,23 @@
         <tbody>
             {% for reservation in search_results %}
             <tr>
-                <td>{{reservation.first_name}}</td>
-                <td>{{reservation.last_name}}</td>
+                <td class="text-capitalize">{{reservation.first_name}} {{reservation.last_name}}</td>
                 <td>{{reservation.date}}</td>
                 <td>{{reservation.time}}</td>
                 <td>{{reservation.no_of_people}}</td>
+                <td>{{reservation.email}}</td>
                 <td>{{ reservation.status }}</td>
                 {% if reservation.status == 'pending' %}
                 <td>
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-lg-6">
                       <form action="{% url 'approve_reservation' reservation.id %}" method="POST">
                         {% csrf_token %}
                         <input type="hidden" name="next" value="{{request.path}}"/>
                         <button class="btn btn-success" type="submit">Approve</button>
                       </form>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-lg-6">
                       <form action="{% url 'deny_reservation' reservation.id %}" method="POST">
                         {% csrf_token %}
                         <input type="hidden" name="next" value="{{request.path}}"/>

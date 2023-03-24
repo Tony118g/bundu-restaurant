@@ -9,9 +9,11 @@
           <tr>
             <th scope="col">Date</th>
             <th scope="col">Time</th>
-            <th scope="col">No of people</th>
+            <th scope="col">Number</th>
             {% if status == 'pending' %}
             <th scope="col">Staff Action</th>
+            {% else %}
+            <th scope="col">Email</th>
             {% endif %}
           </tr>
         </thead>
@@ -40,6 +42,8 @@
                     </div>
                   </div>
                 </td>
+                {% else %}
+                <td>{{reservation.email}}</td>
                 {% endif %}
             </tr>
             {% endfor %}
