@@ -8,7 +8,7 @@
     <div class="row" id="hero-image" >
         {% if messages %}
         {% for message in messages %}
-            <div id="msg" class="text-center alert-home alert alert-dismissible fade show alert-{{ message.tags }}" role="alert">
+            <div id="msg" class="alert-home alert alert-dismissible fade show alert-{{ message.tags }}" role="alert">
                 <span>{{ message }}</span>
                 <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>

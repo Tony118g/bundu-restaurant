@@ -4,7 +4,7 @@
 {% block content %}
 {% if messages %}
 {% for message in messages %}
-    <div class="text-center alert alert-dismissible fade show alert-{{ message.tags }}">
+    <div class="mx-auto alert alert-dismissible fade show alert-{{ message.tags }}">
            {{ message }}
            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
              <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>

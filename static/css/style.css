@@ -50,16 +50,28 @@ html {
 /* Alert messages */
 
 .alert {
-    margin: 100px auto -100px auto;
+    margin-top: 86px;
+    margin-bottom: -100px;
     width: fit-content;
     height: fit-content;
+    padding: 0.5rem;
+}
+
+.alert-block {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.alert-block ul {
+    list-style-type: none;
+    padding: 0 !important;
 }
 
 .alert-home {
     width: fit-content;
     height: fit-content;
-    padding: 20px;
-    margin: 40px auto 0 auto;
+    margin: 10px auto 0 auto;
+    padding: 0.5rem;
     position: absolute;
     left: 10%;
     right: 10%;
