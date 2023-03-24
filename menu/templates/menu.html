@@ -2,17 +2,6 @@
 
 {% block content %}
 
-{% if messages %}
-{% for message in messages %}
-    <div class="text-center alert alert-dismissible fade show alert-{{ message.tags }}" role="alert">
-        <span>{{ message }}</span>
-        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
-        </button>
-    </div>
-{% endfor %}
-{% endif %}
-
 <div class="container below-nav fill-screen pt-5">
   <div class="row text-center">
     <h1 class="text-center main-heading">Our Menu</h1>
