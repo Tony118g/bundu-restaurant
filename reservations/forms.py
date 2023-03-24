@@ -17,5 +17,4 @@ class ReservationForm(forms.ModelForm):
             'date',
             'time',
             'no_of_people',
-            'phone_number',
         )

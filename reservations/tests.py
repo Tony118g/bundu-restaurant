@@ -33,7 +33,6 @@ class TestReservationViews(TestCase):
             date='2023-11-11',
             time='10:00:00',
             no_of_people='2',
-            phone_number='07456789342',
         )
 
         past_reservation = Reservation.objects.create(
@@ -76,7 +75,6 @@ class TestReservationViews(TestCase):
             'date': '2023-05-10',
             'time': '10:00:00',
             'no_of_people': '2',
-            'phone_number': '07456789342',
         }
 
         response = self.client.post('/reservations/reserve/', form)
@@ -99,7 +97,6 @@ class TestReservationViews(TestCase):
             'date': '2023-11-11',
             'time': '10:00:00',
             'no_of_people': '2',
-            'phone_number': '07456789342',
         }
 
         response = self.client.post('/reservations/reserve/', form)
@@ -192,7 +189,6 @@ class TestReservationViews(TestCase):
             'date': '2023-11-11',
             'time': '10:00:00',
             'no_of_people': '2',
-            'phone_number': '07456789342',
         }
 
         response = self.client.post('/reservations/edit_reservation/1/', form)
@@ -276,7 +272,6 @@ class TestReservationModels(TestCase):
             email='test_@gmail.com',
             date='2023-11-12',
             time='12:00:00',
-            phone_number='+263 78 050 8241'
             )
 
     def test_status_value_defaults_to_pending(self):

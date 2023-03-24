@@ -69,7 +69,6 @@ def edit_reservation(request, pk):
                     date=edit_data.date,
                     time=edit_data.time,
                     no_of_people=edit_data.no_of_people,
-                    phone_number=edit_data.phone_number,
                 ).exists():
                     messages.info(request, 'No changes have been made')
                 else:

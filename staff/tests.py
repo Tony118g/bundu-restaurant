@@ -37,7 +37,6 @@ class TestStaffViews(TestCase):
             date='2023-11-11',
             time='10:00:00',
             no_of_people='2',
-            phone_number='07456789342',
         )
 
     def test_staff_dashboard_render(self):
