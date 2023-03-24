@@ -148,6 +148,40 @@ Although this project was developed by myself individually, the agile principles
     * Used to store the repository.
 
 ## Python Packages Used
+* [asgiref](https://pypi.org/project/asgiref/)
+    * A standard for Python asynchronous web apps and servers to communicate with each other.
+* [cloudinary](https://pypi.org/project/cloudinary/)
+    * Used for image management.
+* [coverage](https://pypi.org/project/coverage/)
+    * Used to measure code coverage for automated tests.
+* [crispy-bootstrap-5](https://pypi.org/project/crispy-bootstrap5/)
+    * The bootstrap5 template pack used for django-crispy-forms.
+* [dj-database-url](https://pypi.org/project/django-database-url/)
+    * Used to parse the database url in the production environment.
+* [dj3-cloudinary-storage](https://pypi.org/project/dj3-cloudinary-storage/)
+    * Used to provide Cloudinary storages for media files as well as management commands for removing unnecessary files.
+* [Django](https://pypi.org/project/Django/)
+    * The framework used to develop the project.
+* [django-allauth](https://pypi.org/project/django-allauth/)
+    * Used for the site's authentication system.
+* [django-crispy-forms](https://pypi.org/project/django-crispy-forms/)
+    * Used to render styled forms.
+* [gunicorn](https://pypi.org/project/gunicorn/)
+    * A Python HTTP server for WSGI applications used to run the Python application concurrently.
+* [oauthlib](https://pypi.org/project/oauthlib/)
+    * A framework used that implements the logic of OAuth1 or OAuth2 without assuming a specific HTTP request object or web framework.
+* [psycopg2](https://pypi.org/project/psycopg2/)
+    * Used as a PostgreSQL database adapter for the Python programming language.
+* [PyJWT](https://pypi.org/project/PyJWT/)
+    * A Python implementation of RFC 7519.
+* [python3-openid](https://pypi.org/project/python3-openid/)
+    * OpenID support for modern servers and consumers.
+* [pytz](https://pypi.org/project/pytz/)
+    * Allows accurate and cross platform timezone calculations.
+* [requests-oauthlib](https://pypi.org/project/requests-oauthlib/)
+    * OAuthlib authentication support for Requests.
+* [sqlparse](https://pypi.org/project/sqlparse/)
+    * A non-validating SQL parser for Python.
 
 
 ## Testing
