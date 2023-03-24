@@ -23,9 +23,60 @@ During the planning stage of the project I created 7 epics which I then broke do
 6. [Staff Menu Management](https://github.com/Tony118g/bundu-restaurant/issues/6)
 7. [User Menu Interaction](https://github.com/Tony118g/bundu-restaurant/issues/7)
 
-### Customer User Stories
-### Staff User Stories
-### Site Owner User Stories
+### User Stories
+The epics mentioned above were further broken down into user stories. These stories were developed using MoSCoW (must have, should have, could have, and won't have) prioritization and each story was assigned a label in accordance with its level of priority. Each story was also assigned user story points using labels. I assigned the story points based on my best estimation of the time and difficulty of completing each user story.
+
+As well as labels, each user story has acceptance criteria and tasks associated with it. This was a great way of ensuring all requirements for each story were known as they were developed. This also helped keep track of progress.
+
+A few user stories were created based on an ideal scenario of the project while it was known that it was highly unlikely they would be completed for this first development and release of the site. These stories were not essential to the project however I may revisit them in a future development along with any other features that may be required as the restaurant grows.
+
+All user stories can be found in the [project kanban board](https://github.com/users/Tony118g/projects/8)
+
+Below are the completed user stories for this version of the project's release listed by epic.
+
+* Epic - initial django setup
+    * As a developer I want to set up Django and install the initial supporting libraries needed so that I can begin development of the site.
+    * As a developer I want to set up the environment to secure secret configuration variables so that I can ensure sensitive data is kept private.
+    * As a developer I want to deploy the site to Heroku so that I can ensure the site works in a production environment and share the completed site publicly.
+
+* Epic - user account management
+    * As a user I can register an account so that I can log in and out of the site.
+    * As a user I can log in and logout of my account so that I can use the site and keep my account secure
+    * As a user I can view my account details so that I can be sure that I am using my account and in case I forget my details.
+    * As a user I can edit my account details so that I can keep my account information up to date.
+    * As a user I can delete my account so that I can remove my details and stop using the site at my will.
+    * As a user I can change my password so that I can keep my account secure.
+    * As a user I can reset my password so that I can still access my account if I forget my password.
+
+* Epic - site content interaction
+    * As a user I can view my account page so that I can view and manage information and reservations specific to me.
+    * As a user I can view the restaurant menu so that I know what food options are available.
+    * As a staff member I can view the staff dashboard so that I can manage the restaurant site and reservations.
+    * As a site owner I want to restrict certain features to registered users so that it encourages people to register to the site and ensures reservations are recorded for known customers.
+    * As a site owner I want to restrict certain features to staff members so that I can ensure unauthorized users cannot tamper with the running of the site.
+
+* Epic - user reservation management
+    * As a user I can make a reservation request so that I can reserve a time and place in the restaurant.
+    * As a user I can receive feedback on whether my reservation has been approved or not so that I can visit the restaurant or make a new reservation.
+    * As a user I can view my reservations so that I can be sure of my reservations.
+    * As a user I can edit my reservations so that I can change reservation details if I want to.
+    * As a user I can cancel my reservation so that I can avoid unnecessary reservations if I change my mind.
+
+* Epic - staff reservation management
+    * As a staff member I can view all reservations in categories so that I can manage all reservations that come through the site.
+    * As a staff member I can view all reservations for the current date so that I know what to plan for on the day at the restaurant.
+    * As a staff member I can search reservations according to their date so that I can find out the reservation status of the restaurant on a given date.
+    * As a staff member I can search reservations pertaining to a name so that I can find out the reservation status of the restaurant for a given name.
+    * As a staff member I can approve or deny reservations so that I can be in control of reservations at the restaurant.
+
+* Epic - staff menu management
+    * As a staff member I can add a menu item so that I can keep the menu up to date with new options.
+    * As a staff member I can edit menu items so that I can ensure the correct menu information is displayed.
+    * As a staff member I can delete menu items so that I can remove old menu items that are no longer relevant.
+    * As a staff member I can mark a menu item as unavailable so that I can still display the item but inform customers that it is currently unavailable.
+
+* Epic - user menu interaction
+    * As a user I can view images of menu items so that I can visualize the food item.
 
 ### Site Structure
 
