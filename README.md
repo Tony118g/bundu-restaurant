@@ -62,7 +62,12 @@ I created basic wireframes of how I wanted the general layout of the site to loo
 ### Design Choices
 
 ### Project Management
+I used agile methodology throughout the development of this project utilising GitHub projects and issues. 
+Using issues I was able to create epics and user stories which I could then label and categorize. I then added these 
+issues to the project kandban board where I could easily manage the development process. I found this extremely useful 
+in helping me break down the development process into individual sections and stages which improved the overall efficiency and quality  of development.
 
+Although this project was developed by myself individually, the agile principles enabled me to track my progress in all aspects and ensure the site can be easily maintained in future. If a team were to collaborate on the project, this agile aproach would be extremely beneficial.
 ## Features
 ### Existing Features
 ### Future Features
