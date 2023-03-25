@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{% if messages %}
+{% for message in messages %}
+    <div class="mx-auto alert alert-dismissible fade show alert-{{ message.tags }}" role="alert">
+        <span>{{ message }}</span>
+        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+        </button>
+    </div>
+{% endfor %}
+{% endif %}
+
 <div class="container pt-5 fill-screen below-nav">
     <div class="row">
       <div class="col-lg-6">
@@ -46,12 +57,12 @@
                 <td colspan="2" data-label="Staff Action">
                   <form class="d-inline" action="{% url 'deny_reservation' reservation.id %}" method="POST">
                     {% csrf_token %}
-                    <input type="hidden" name="next" value="{{request.path}}"/>
+                    <input type="hidden" name="next" value="{{request.get_full_path}}"/>
                     <button class="btn btn-warning py-0 px-2" type="submit">Deny</button>
                   </form>
                   <form class="d-inline" action="{% url 'approve_reservation' reservation.id %}" method="POST">
                     {% csrf_token %}
-                    <input type="hidden" name="next" value="{{request.path}}"/>
+                    <input type="hidden" name="next" value="{{request.get_full_path}}"/>
                     <button class="btn btn-success py-0 px-2" type="submit">Approve</button>
                   </form>
                 </td>
