@@ -11,37 +11,17 @@
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Time</th>
-            <th scope="col">Number</th>
+            <th scope="col">&#8470</th>
             <th scope="col">Email</th>
           </tr>
         </thead>
         <tbody>
             {% for reservation in search_results %}
             <tr>
-                <td class="text-capitalize">{{reservation.first_name}} {{reservation.last_name}}</td>
-                <td>{{reservation.time}}</td>
-                <td>{{reservation.no_of_people}}</td>
-                <td>{{reservation.email}}</td>
-                {% if status == 'pending' %}
-                <td>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <form action="{% url 'approve_reservation' reservation.id %}" method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="next" value="{{request.path}}"/>
-                        <button class="btn btn-success" type="submit">Approve</button>
-                      </form>
-                    </div>
-                    <div class="col-md-6">
-                      <form action="{% url 'deny_reservation' reservation.id %}" method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="next" value="{{request.path}}"/>
-                        <button class="btn btn-warning" type="submit">Deny</button>
-                      </form>
-                    </div>
-                  </div>
-                </td>
-                {% endif %}
+                <td data-label="Name" class="text-capitalize">{{reservation.first_name}} {{reservation.last_name}}</td>
+                <td data-label="Time">{{reservation.time}}</td>
+                <td data-label="Number">{{reservation.no_of_people}}</td>
+                <td data-label="Email">{{reservation.email}}</td>
             </tr>
             {% endfor %}
         </tbody>

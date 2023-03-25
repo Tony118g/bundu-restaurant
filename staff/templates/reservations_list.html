@@ -20,9 +20,9 @@
           <tr>
             <th scope="col">Date</th>
             <th scope="col">Time</th>
-            <th scope="col">Number</th>
+            <th scope="col">&#8470</th>
             {% if status == 'pending' %}
-            <th scope="col">Staff Action</th>
+            <th scope="col" colspan="2">Staff Action</th>
             {% else %}
             <th scope="col">Email</th>
             {% endif %}
@@ -31,35 +31,31 @@
         <tbody>
             {% for reservation in reservation_list %}
             <tr>
-                <td>{{reservation.date}}</td>
-                <td>{{reservation.time}}</td>
-                <td>{{reservation.no_of_people}}</td>
+                <td data-label="Date">{{reservation.date}}</td>
+                <td data-label="Time">{{reservation.time}}</td>
+                <td data-label="Number">{{reservation.no_of_people}}</td>
                 {% if status == 'pending' %}
-                <td>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <form action="{% url 'approve_reservation' reservation.id %}" method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="next" value="{{request.path}}"/>
-                        <button class="btn btn-success" type="submit">Approve</button>
-                      </form>
-                    </div>
-                    <div class="col-md-6">
-                      <form action="{% url 'deny_reservation' reservation.id %}" method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="next" value="{{request.path}}"/>
-                        <button class="btn btn-warning" type="submit">Deny</button>
-                      </form>
-                    </div>
-                  </div>
+                <td colspan="2" data-label="Staff Action">
+                  <form class="d-inline" action="{% url 'deny_reservation' reservation.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{request.path}}"/>
+                    <button class="btn btn-warning py-0 px-2" type="submit">Deny</button>
+                  </form>
+                  <form class="d-inline" action="{% url 'approve_reservation' reservation.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{request.path}}"/>
+                    <button class="btn btn-success py-0 px-2 ms-5" type="submit">Approve</button>
+                  </form>
                 </td>
                 {% else %}
-                <td>{{reservation.email}}</td>
+                <td data-label="Email">{{reservation.email}}</td>
                 {% endif %}
             </tr>
             {% endfor %}
         </tbody>
       </table>
+
+      
     {% else %}
     <p>There are no {{ status }} reservations at the moment.</p>
     {% endif %}

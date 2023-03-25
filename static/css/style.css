@@ -240,3 +240,32 @@ footer .row {
     margin-top: 20px;
     font-size: 1.2rem;
 }
+
+/* Styles for screens smaller than 1200px */
+  
+  @media screen and (max-width: 1200px) {
+
+    /* tables for small screens */
+    /* Idea on how to style table to be responsive was taken from https://codepen.io/AllThingsSmitty/pen/MyqmdM */
+    
+    table thead {
+      overflow: hidden;
+      position: absolute;
+      width: 1px;
+    }
+
+    table td {
+      display: block;
+      font-size: .8em;
+      text-align: right;
+      min-width: fit-content;
+    }
+    
+    table td::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+  
