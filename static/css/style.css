@@ -204,6 +204,18 @@ html {
     margin-left: -20px;
 }
 
+/* tables */
+
+.clickable-row:hover {
+    cursor: pointer;
+    background-color: #887456;
+}
+
+.clickable-row:hover td {
+    color: white;
+    text-decoration: none !important;
+}
+
 /* forms */
 
 form {
@@ -248,24 +260,24 @@ footer .row {
     /* tables for small screens */
     /* Idea on how to style table to be responsive was taken from https://codepen.io/AllThingsSmitty/pen/MyqmdM */
     
-    table thead {
+    table thead:not(.customer-res-thead) {
       overflow: hidden;
       position: absolute;
       width: 1px;
     }
 
-    table td {
+    table td:not(.customer-res-td) {
       display: block;
       font-size: .8em;
       text-align: right;
       min-width: fit-content;
     }
     
-    table td::before {
+    table td:not(.customer-res-td)::before {
       content: attr(data-label);
       float: left;
       font-weight: bold;
       text-transform: uppercase;
     }
+
   }
-  

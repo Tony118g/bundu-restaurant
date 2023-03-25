@@ -16,12 +16,13 @@
     <div class="row">
       <div class="col-md-6">
         <h2>Welcome {{ f_name }} {{ l_name }}!</h2>
+        <hr>
         <p><span class="fw-bold">Username</span>: {{ username }}</p>
         <p><span class="fw-bold">Email address</span>: {{ email_address }}</p>
         <a class="btn btn-warning" href="{% url 'edit_account' request.user.id %}">Edit Details</a>
         <a class="btn btn-danger" href="{% url 'delete_account' request.user.id %}">Delete Account</a>
       </div>
-      <div class="col-md-6 border-start mt-3">
+      <div class="col-md-6 border-start border-5 border-md mt-3">
         <p class="lead">This is where you can manage your account and reservations!</p>
         <ul>
           <li>If you have made reservations, you will see details of such below.</li>
@@ -34,9 +35,10 @@
 
     <div class="container pt-5">
       <h2>Your Reservations</h2>
+      <hr>
       {% if reservations %}
-      <table class="table tabel-striped table-hover table-bordered">
-        <thead>
+      <table class="table tabel-striped mb-5">
+        <thead class="customer-res-thead">
           <tr>
             <th scope="col">Date</th>
             <th scope="col">Time</th>
@@ -45,9 +47,9 @@
         </thead>
             {% for reservation in reservations %}
               <tr class='clickable-row menu-modal-link' data-bs-toggle="modal" data-bs-target="#modal{{ reservation.id }}">
-                <td>{{ reservation.date }}</td>
-                <td>{{ reservation.time }}</td>
-                <td>
+                <td class="customer-res-td">{{ reservation.date }}</td>
+                <td class="customer-res-td">{{ reservation.time }}</td>
+                <td class="customer-res-td">
                   {% if reservation.is_past_time %}
                   Expired
                   {% else %}
