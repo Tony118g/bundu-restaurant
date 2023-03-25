@@ -9,7 +9,7 @@
     <form action="{% url 'delete_account' user.id %}" method="POST">
 
         {% csrf_token %}
-        <a class="btn btn-primary" href="{% url 'home' %}">Cancel</a>
+        <button onclick="window.history.back();" class="btn btn-primary" type="button">Cancel</button>
 
         <input class="btn btn-danger" type="submit" name="Confirm" value="confirm Deletion">
     </form>

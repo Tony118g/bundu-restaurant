@@ -10,7 +10,8 @@
         <form action="" method="POST">
             {% csrf_token %}
             {{ form|crispy }}
-            <input type="submit" name="submit">
+            <button onclick="window.history.back();" class="btn btn-primary" type="button">Cancel</button>
+            <input class="btn btn-success" type="submit" name="submit">
         </form>
     </div>
     <p>
