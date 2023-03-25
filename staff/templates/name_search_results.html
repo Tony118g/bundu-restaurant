@@ -26,8 +26,13 @@
                 <td data-label="Time">{{reservation.time}}</td>
                 <td data-label="Number">{{reservation.no_of_people}}</td>
                 <td data-label="Email" colspan="2">{{reservation.email}}</td>
-                <td data-label="Status">{{ reservation.status }}</td>
-                {% if reservation.status == 'pending' %}
+                <td data-label="Status">
+                  {{ reservation.status }}
+                  {% if reservation.is_past_date %}
+                  (Expired)
+                  {% endif %}
+                </td>
+                {% if reservation.status == 'pending' and reservation.is_past_time is False %}
                 <td colspan="2" data-label="Staff Action">
                   <form class="d-inline" action="{% url 'deny_reservation' reservation.id %}" method="POST">
                     {% csrf_token %}
