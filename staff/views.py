@@ -107,7 +107,7 @@ def approve_reservation(request, pk):
             [reservation.email],
             fail_silently=False
         )
-
+        messages.success(request, ('Reservation has been approved'))
         return redirect(next)
     else:
         messages.warning(request, ('You are not authorized to view this page'))
@@ -136,7 +136,7 @@ def deny_reservation(request, pk):
             [reservation.email],
             fail_silently=False
         )
-
+        messages.success(request, ('Reservation has been denied'))
         return redirect(next)
     else:
         messages.warning(request, ('You are not authorized to view this page'))

@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{% if messages %}
+{% for message in messages %}
+    <div id="msg" class="mx-auto alert alert-dismissible fade show alert-{{ message.tags }}" role="alert">
+        <span>{{ message }}</span>
+        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+        </button>
+    </div>
+{% endfor %}
+{% endif %}
+
 <div class="container fill-screen below-nav">
     <h2 class="text-capitalize">{{ status }} Reservations</h2>
     {% if reservation_list %}
