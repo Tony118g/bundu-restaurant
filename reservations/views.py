@@ -61,11 +61,17 @@ def edit_reservation(request, pk):
             edit_form = ReservationForm(request.POST, instance=res_instance)
 
             if edit_form.is_valid():
+                edit_form.instance.first_name = request.user.first_name
+                edit_form.instance.last_name = request.user.last_name
+                edit_form.instance.email = request.user.email
 
                 edit_data = edit_form.save(commit=False)
 
                 if Reservation.objects.filter(
                     user=edit_data.user,
+                    first_name=edit_data.first_name,
+                    last_name=edit_data.last_name,
+                    email=edit_data.email,
                     date=edit_data.date,
                     time=edit_data.time,
                     no_of_people=edit_data.no_of_people,
