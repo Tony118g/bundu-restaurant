@@ -181,7 +181,9 @@ def search_name(request):
 
     search_results = []
     for reservation in all_reservations:
-        full_name = reservation.user.get_full_name()
+        full_name = ' '.join(
+                    (str(reservation.first_name), str(reservation.last_name))
+                    )
         if search_name in full_name:
             search_results.append(reservation)
 
