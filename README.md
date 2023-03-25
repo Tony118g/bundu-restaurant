@@ -112,6 +112,18 @@ I created basic wireframes of how I wanted the general layout of the site to loo
 
 ### Design Choices
 
+#### Typography
+* The fonts used throughout the site are "Lato" and "PT Sans" with "sans-serif" as a secondary font.
+    * I chose to use these fonts as they are elegant and easy to read. This helps give a modern touch to the site whilst maintaining a degree of professionalism.
+
+#### Colour Palette
+![Colour pallete](documentation/color-palette.png)
+* The color palette was chosen with the help of [coolers](https://coolors.co/) and consists of two simple colours as seen above.
+* This simple combination creates an attractive and minimalistic look and does not overwhelm the user or distract them from the site content.
+    * The blue (2D3E59) is the main colour featured throughout the site and is most evident in the navbar and footer.
+    * The brown (887456) is used to contrast the blue and is in keeping with the restaurant theme.
+    * A few of the bootstrap standard colours are utilized as well for buttons and emphasis on certain text and messages.
+
 ### Project Management
 I used agile methodology throughout the development of this project utilising GitHub projects and issues. 
 Using issues I was able to create epics and user stories which I could then label and categorize. I then added these 
