@@ -15,24 +15,26 @@
 
 <div class="container below-nav fill-screen pt-5">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-xl-6">
           <h1 class="display-4">Staff Dashboard</h1>
           <p class="lead">Bundu restaurant currently has <span class="fw-bold">{{ user_count }}</span> registered customers.</p>
         </div>
-        <div class="col-md-6 text-start text-md-end">
-          <form action="{% url 'search_date' %}" method="GET">
+        <div class="col-xl-6">
+          <form class="float-start float-xl-end" action="{% url 'search_date' %}" method="GET">
             {% csrf_token %}
             <label class="d-block d-md-inline" for="search">Search approved reservations by date</label>
             <input id="search_date" type="date" name="date" required/>
             <button class="btn" type="submit"><i class="fa fa-search"></i></button>
           </form>
-          <form action="{% url 'search_name' %}" method="GET">
+          <form class="float-start float-xl-end" action="{% url 'search_name' %}" method="GET">
             {% csrf_token %}
             <label class="d-block d-md-inline" for="search_name">Search all reservations by name</label>
             <input id="search_name" type="text" name="name" required/>
             <button class="btn" type="submit"><i class="fa fa-search"></i></button>
           </form>
-          <a href="{% url 'current_reservations' %}" class="me-5 mt-3 btn btn-primary">Today's reservations</a>
+          <div class="col-md-12">
+            <a href="{% url 'current_reservations' %}" class="float-xl-end mb-3 btn btn-primary">Today's reservations</a>
+          </div>
         </div>
     </div>
     <div class="row">
