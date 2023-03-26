@@ -194,7 +194,7 @@ def search_name(request):
         full_name = ' '.join(
                     (str(reservation.first_name), str(reservation.last_name))
                     )
-        if search_name in full_name:
+        if search_name.casefold() in full_name:
             search_results.append(reservation)
 
     context = {'search_results': search_results}
