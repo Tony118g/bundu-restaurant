@@ -110,6 +110,15 @@ I created basic wireframes of how I wanted the general layout of the site to loo
 ##### Staff Reservations Page Wireframe
 ![home page wireframe](documentation/staff-reservations-wireframe.png)
 
+#### Database Schema
+For this project I utilised the built in Django User Model for user accounts and created two other custom models for reservations and the menu. The reservation model is linked to the user model through a foreign key. I decided that when a user makes a reservation, their personal details would be automatically filled in using their user account information to create a better user experience. A separate model was created for menu items to be created and stored.
+
+The database schema seen below was created using [DrawSql.app](https://drawsql.app/). Limitations within the app prevented some of the field types from being labelled correctly as there was no option to overide the available types which did not include all the fields used in the app models such as cloudinary and email fields however the diagram still shows the general layout of the models.
+
+The true field choices are reflected in the models within the project apps.
+
+![The Database schema](documentation/database-schema.png)
+
 ### Design Choices
 
 #### Typography
