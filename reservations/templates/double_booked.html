@@ -5,9 +5,11 @@
 <div class="container below-nav fill-screen pt-5">
     <h2>Reservation request failed</h2>
     <hr>
-    <p>It looks like already have a reservation request with the details you entered.</p>
-    <p>If you have waited for more than 24 hours for confirmation on a reservation, please phone the restaurant so we may assist you better.</p>
+    <p>It looks like we already have a reservation request from you for that date and time.</p>
+    <p>You can edit the existing reservation in your profile page if you so wish.</p>
+    <p>If you have waited for more than 24 hours for a response to a reservation, please phone the restaurant so we may assist you better.</p>
     <p>If you would like to make a different reservation, then you can book again <a href="{% url 'reserve' %}">here</a>.</p>
+    <a class="btn btn-primary mb-5" href="{% url 'profile_page' %}">View my profile</a>
 </div>
 
 {% endblock %}

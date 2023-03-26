@@ -6,9 +6,11 @@
     <h2>Reservation request sent</h2>
     <hr>
     <p>Your reservation request has been sent.</p>
-    <p>Please allow up to 24 hours to receive feedback in regards to your request.</p>
+    <p>Please allow up to 24 hours to receive feedback in regards to your request if the requested time is not within 24 hours.</p>
     <p>Our staff will assess the request and either approve or deny it depending on availibility.</p>
-    <p>If you have not received feedback please phone the restaurant for assistance.</p>
+    <p>If you have not received feedback within 24 hours please phone the restaurant for assistance.</p>
+    <p>If your requested time is less than 24 hours from now then please feel free to contact us if you feel the need to ensure we respond to it in time.</p>
+    <a class="btn btn-primary mb-5" href="{% url 'profile_page' %}">View my profile</a>
 </div>
 
 {% endblock %}

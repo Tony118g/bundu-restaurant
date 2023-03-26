@@ -76,7 +76,7 @@ def edit_reservation(request, pk):
                     time=edit_data.time,
                     no_of_people=edit_data.no_of_people,
                 ).exists():
-                    messages.info(request, 'No changes have been made')
+                    messages.info(request, 'Reservation details already exist')
                 else:
                     res_instance.status = 'pending'
                     edit_data.save()
