@@ -5,19 +5,18 @@
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
 {% block content %}
-<div class="fill-screen">
-  <div class="mx-auto form-container">
+<div class="fill-screen container">
+  <div class="below-nav">
     <h1>{% trans "Log Out" %}</h1>
-
+    <hr>
     <p>{% trans 'Are you sure you want to log out?' %}</p>
-
     <form method="post" action="{% url 'account_logout' %}">
       {% csrf_token %}
       {% if redirect_field_value %}
       <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
       {% endif %}
       <button onclick="window.history.back();" class="btn btn-primary" type="button">No</button>
-      <button class="btn btn-success" type="submit">{% trans 'Log Out' %}</button>
+      <button class="btn btn-success ms-5" type="submit">{% trans 'Log Out' %}</button>
     </form>
   </div>
 </div>

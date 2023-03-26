@@ -3,21 +3,22 @@
 {% block content %}
 
 <div class="container below-nav fill-screen pt-5">
-    <h2 class="text-center">Menu Item Drafts</h2>
+    <h2>Menu Item Drafts</h2>
+    <hr>
     {% if menu_drafts %}
-    <table class="table tabel-striped table-hover table-bordered text-center">
-        <thead>
-            <tr>
+    <table class="table tabel-striped table-hover text-center">
+        <thead class="menu-thead">
+            <tr class="menu-tr">
                 <th class="w-50" scope="col">Title</th>
                 <th class="w-50" scope="col">Management Options</th>
             </tr>
         </thead>
         {% for menu_draft in menu_drafts %}
-            <tr>
-                <td><h4>{{ menu_draft.title }}</h4></td>
-                <td>
-                    <span><a class="btn btn-primary me-md-3" href="{% url 'edit_menu_item' menu_draft.id %}">Edit</a></span>
-                    <span><a class="btn btn-danger ms-md-3" href="{% url 'delete_item' menu_draft.id %}">Delete</a></span>
+            <tr class="menu-tr">
+                <td class="menu-td"><p class="lead mb-0 mt-2">{{ menu_draft.title }}</p></td>
+                <td class="menu-td">
+                    <span><a class="btn btn-primary me-md-3 mt-2" href="{% url 'edit_menu_item' menu_draft.id %}">Edit</a></span>
+                    <span><a class="btn btn-danger ms-md-3 mt-2" href="{% url 'delete_item' menu_draft.id %}">Delete</a></span>
                 </td>
             </tr>
         {% endfor %}

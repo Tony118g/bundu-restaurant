@@ -5,10 +5,11 @@
 
 <div class="fill-screen container">
     <div class="row">
-        <div class="col-lg-9 col-12 below-nav pt-5 mx-auto">
+        <div class="col-lg-9 col-12 below-nav mx-auto">
             <h2>{{ heading }}</h2>
+            <hr>
             <div class="form-group">
-                <form method="POST" enctype="multipart/form-data">
+                <form class="mb-5" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form|crispy }}
                     <input class="btn btn-success" type="submit" name="submit">

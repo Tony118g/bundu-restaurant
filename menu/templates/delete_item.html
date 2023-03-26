@@ -3,7 +3,9 @@
 {% block content %}
 
 <div class="fill-screen">
-    <div class="form-container mx-auto below-nav">
+    <div class="container mx-auto below-nav">
+        <h1>Delete menu item</h1>
+        <hr>
         <p class="lead">Are you sure you want to delete the menu item ("{{item_instance}}")?</p>
     
         <form action="{% url 'delete_item' item_instance.id %}" method="POST">

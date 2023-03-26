@@ -22,7 +22,7 @@
         <a class="btn btn-warning" href="{% url 'edit_account' request.user.id %}">Edit Details</a>
         <a class="btn btn-danger" href="{% url 'delete_account' request.user.id %}">Delete Account</a>
       </div>
-      <div class="col-md-6 border-start border-5 border-md mt-3">
+      <div class="col-md-6 border-start border-5 mt-3">
         <p class="lead">This is where you can manage your account and reservations!</p>
         <ul>
           <li>If you have made reservations, you will see details of such below.</li>
@@ -39,14 +39,14 @@
       {% if reservations %}
       <table class="table tabel-striped mb-5">
         <thead class="customer-res-thead">
-          <tr>
+          <tr class="customer-res-tr">
             <th scope="col">Date</th>
             <th scope="col">Time</th>
             <th scope="col">Status</th>
           </tr>
         </thead>
             {% for reservation in reservations %}
-              <tr class='clickable-row menu-modal-link' data-bs-toggle="modal" data-bs-target="#modal{{ reservation.id }}">
+              <tr class='clickable-row customer-res-tr' data-bs-toggle="modal" data-bs-target="#modal{{ reservation.id }}">
                 <td class="customer-res-td">{{ reservation.date }}</td>
                 <td class="customer-res-td">{{ reservation.time }}</td>
                 <td class="customer-res-td">
@@ -63,7 +63,7 @@
 
     <!-- Modal -->
     {% for reservation in reservations %}
-    <div class="modal fade " id="modal{{ reservation.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="modal{{ reservation.id }}" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">

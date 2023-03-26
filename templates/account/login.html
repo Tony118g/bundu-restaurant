@@ -9,7 +9,7 @@
 {% block content %}
 {% if messages %}
 {% for message in messages %}
-  <div class="text-center alert alert-dismissible fade show alert-{{ message.tags }}">
+  <div class="mx-auto alert alert-dismissible fade show alert-{{ message.tags }}">
       <span>{{ message }}</span>
       <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
            <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
@@ -21,7 +21,7 @@
 <div class="fill-screen">
   <div class="form-container mx-auto">
     <h1>{% trans "Log In" %}</h1>
-  
+    <hr>
     <p>{% blocktrans %}If you have not created an account yet, then please
     <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
   

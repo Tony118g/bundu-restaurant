@@ -17,23 +17,24 @@
     <div class="row">
         <div class="col-xl-6">
           <h1 class="display-4">Staff Dashboard</h1>
+          <hr>
           <p class="lead">Bundu restaurant currently has <span class="fw-bold">{{ user_count }}</span> registered customers.</p>
         </div>
-        <div class="col-xl-6">
-          <form class="float-start float-xl-end" action="{% url 'search_date' %}" method="GET">
+        <div class="col-xl-6 border-start border-5">
+          <form class="float-start float-xl-end mb-2" action="{% url 'search_date' %}" method="GET">
             {% csrf_token %}
             <label class="d-block d-md-inline" for="search">Search approved reservations by date</label>
             <input id="search_date" type="date" name="date" required/>
             <button class="btn" type="submit"><i class="fa fa-search"></i></button>
           </form>
-          <form class="float-start float-xl-end" action="{% url 'search_name' %}" method="GET">
+          <form class="float-start float-xl-end mb-2" action="{% url 'search_name' %}" method="GET">
             {% csrf_token %}
             <label class="d-block d-md-inline" for="search_name">Search all reservations by name</label>
             <input id="search_name" type="text" name="name" required/>
             <button class="btn" type="submit"><i class="fa fa-search"></i></button>
           </form>
-          <div class="col-md-12">
-            <a href="{% url 'current_reservations' %}" class="float-xl-end mb-3 btn btn-primary">Today's reservations</a>
+          <div class="col-6 col-md-12">
+            <a href="{% url 'current_reservations' %}" class=" float-start float-md-end mb-3 mb-3 btn btn-primary">Today's reservations</a>
           </div>
         </div>
     </div>
@@ -41,7 +42,8 @@
         <div class="col-md-6">
             <div class="card w-100 mt-3" style="width: 18rem;">
                 <div class="card-body text-center m-auto">
-                  <h5 class="card-title">Reservations</h5>
+                  <h5>Reservations</h5>
+                  <hr>
                   <h6 class="card-subtitle mb-2 text-muted">Manage Reservations</h6>
                     <a href="{% url 'reservation_list' 'pending' %}" class="d-block btn btn-success mt-3">Pending</a>
                     <a href="{% url 'reservation_list' 'approved' %}" class="d-block btn btn-primary mt-3">Approved</a>
@@ -52,7 +54,8 @@
         <div class="col-md-6">
           <div class="card w-100 mt-3" style="width: 18rem;">
             <div class="card-body text-center m-auto">
-              <h5 class="card-title">Menu</h5>
+              <h5>Menu</h5>
+              <hr>
               <h6 class="card-subtitle mb-2 text-muted">Manage The Menu</h6>
               <a href="{% url 'add_menu_item' %}" class="d-block btn btn-success mt-3">Add Menu Item</a>
               <a href="{% url 'menu_drafts' %}" class="d-block btn btn-primary mt-3">Manage Drafts</a>

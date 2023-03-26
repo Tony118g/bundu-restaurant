@@ -25,11 +25,11 @@ h1 {
 }
 
 .fill-screen {
-    min-height: calc(100vh - 325px);
+    min-height: calc(100vh - 100px);
 }
 
 .below-nav {
-    margin-top: 76px;
+    margin-top: 100px;
 }
 
 .bg-brown {
@@ -125,6 +125,7 @@ html {
     background-size: cover;
     min-height: 40vh;
     position: relative;
+    margin-top: 76px;
 }
 
 #hero-text {
@@ -218,10 +219,6 @@ html {
 
 /* forms */
 
-form {
-    margin-bottom: 40px;
-}
-
 .form-container {
     margin-top: 100px;
     margin-bottom: 20px;
@@ -259,25 +256,30 @@ footer .row {
 
     /* tables for small screens */
     /* Idea on how to style table to be responsive was taken from https://codepen.io/AllThingsSmitty/pen/MyqmdM */
+
+    table tr:not(.customer-res-tr, .menu-tr) {
+        margin-bottom: 20px;
+        display: block
+    }
     
-    table thead:not(.customer-res-thead) {
-      overflow: hidden;
-      position: absolute;
-      width: 1px;
+    table thead:not(.customer-res-thead, .menu-thead) {
+        overflow: hidden;
+        position: absolute;
+        width: 1px;
     }
 
-    table td:not(.customer-res-td) {
-      display: block;
-      font-size: .8em;
-      text-align: right;
-      min-width: fit-content;
+    table td:not(.customer-res-td, .menu-td) {
+        display: block;
+        font-size: .8em;
+        text-align: right;
+        min-width: fit-content;
     }
     
-    table td:not(.customer-res-td)::before {
-      content: attr(data-label);
-      float: left;
-      font-weight: bold;
-      text-transform: uppercase;
+    table td:not(.customer-res-td, .menu-td)::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
     }
 
   }
