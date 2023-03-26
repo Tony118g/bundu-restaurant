@@ -89,10 +89,14 @@ def approve_reservation(request, pk):
     Sets status to approved and sends an approval email
     """
 
-    reservation = get_object_or_404(Reservation, id=pk)
+    next = request.POST.get('next', '/')
+    try:
+        reservation = Reservation.objects.get(id=pk)
+    except Reservation.DoesNotExist:
+        messages.warning(request, ('This reservation no longer exists'))
+        return redirect(next)
 
     if request.user.is_staff:
-        next = request.POST.get('next', '/')
         reservation.status = 'approved'
 
         reservation.save()
@@ -119,10 +123,16 @@ def deny_reservation(request, pk):
     Sets status to denied for the specified reservation
     """
 
-    reservation = get_object_or_404(Reservation, id=pk)
+    next = request.POST.get('next', '/')
+    try:
+        reservation = Reservation.objects.get(id=pk)
+    except Reservation.DoesNotExist:
+        messages.warning(request, ('This reservation no longer exists'))
+        return redirect(next)
+
+    print(reservation)
 
     if request.user.is_staff:
-        next = request.POST.get('next', '/')
         reservation.status = 'denied'
         reservation.save()
 
