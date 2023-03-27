@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <form action="" method="POST">
+                <form method="POST">
                     {% csrf_token %}
                     {{ form|crispy }}
                     <button onclick="window.history.back();" class="btn btn-primary" type="button">Go Back</button>

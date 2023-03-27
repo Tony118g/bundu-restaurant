@@ -21,7 +21,7 @@
         <form class="float-start float-lg-end" action="{% url 'search_name' %}" method="GET">
           {% csrf_token %}
           <label class="d-block d-md-inline" for="search_name">Search again</label>
-          <input id="search_name" type="text" name="name" required/>
+          <input id="search_name" type="text" name="name" required>
           <button class="btn" type="submit"><i class="fa fa-search"></i></button>
         </form>
       </div>
@@ -30,23 +30,23 @@
     <table class="table tabel-striped table-hover table-bordered">
         <thead>
           <tr>
-            <th scope="col" colspan="2">Name</th>
+            <th scope="col">Name</th>
             <th scope="col" >Date</th>
             <th scope="col" >Time</th>
-            <th scope="col" >&#8470</th>
-            <th scope="col" colspan="2">Email</th>
+            <th scope="col" >&#8470;</th>
+            <th scope="col" >Email</th>
             <th scope="col">Status</th>
-            <th scope="col" colspan="2" min-width="175px">Staff Action</th>
+            <th scope="col">Staff Action</th>
           </tr>
         </thead>
         <tbody>
             {% for reservation in search_results %}
             <tr>
-                <td data-label="Name" class="text-capitalize" colspan="2">{{reservation.first_name}} {{reservation.last_name}}</td>
+                <td data-label="Name" class="text-capitalize">{{reservation.first_name}} {{reservation.last_name}}</td>
                 <td data-label="Date">{{reservation.date}}</td>
                 <td data-label="Time">{{reservation.time}}</td>
                 <td data-label="Number">{{reservation.no_of_people}}</td>
-                <td data-label="Email" colspan="2">{{reservation.email}}</td>
+                <td data-label="Email">{{reservation.email}}</td>
                 <td data-label="Status">
                   {{ reservation.status }}
                   {% if reservation.is_past_date %}
@@ -54,20 +54,20 @@
                   {% endif %}
                 </td>
                 {% if reservation.status == 'pending' and reservation.is_past_time is False %}
-                <td colspan="2" data-label="Staff Action">
+                <td data-label="Staff Action">
                   <form class="d-inline" action="{% url 'deny_reservation' reservation.id %}" method="POST">
                     {% csrf_token %}
-                    <input type="hidden" name="next" value="{{request.get_full_path}}"/>
+                    <input type="hidden" name="next" value="{{request.get_full_path}}">
                     <button class="btn btn-warning py-0 px-2" type="submit">Deny</button>
                   </form>
                   <form class="d-inline" action="{% url 'approve_reservation' reservation.id %}" method="POST">
                     {% csrf_token %}
-                    <input type="hidden" name="next" value="{{request.get_full_path}}"/>
+                    <input type="hidden" name="next" value="{{request.get_full_path}}">
                     <button class="btn btn-success py-0 px-2" type="submit">Approve</button>
                   </form>
                 </td>
                 {% else %}
-                <td colspan="2" data-label="Staff Action">N/A</td>
+                <td data-label="Staff Action">N/A</td>
                 {% endif %}
             </tr>
             {% endfor %}

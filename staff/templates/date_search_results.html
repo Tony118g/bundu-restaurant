@@ -9,8 +9,8 @@
       <div class="col-lg-6">
         <form class="float-start float-lg-end" action="{% url 'search_date' %}" method="GET">
           {% csrf_token %}
-          <label class="d-block d-md-inline" for="search">Search again</label>
-          <input id="search_date" type="date" name="date" required/>
+          <label class="d-block d-md-inline" for="search_date">Search again</label>
+          <input id="search_date" type="date" name="date" required>
           <button class="btn" type="submit"><i class="fa fa-search"></i></button>
         </form>
       </div>
@@ -21,7 +21,7 @@
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Time</th>
-            <th scope="col">&#8470</th>
+            <th scope="col">&#8470;</th>
             <th scope="col">Email</th>
           </tr>
         </thead>

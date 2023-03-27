@@ -21,9 +21,9 @@
           <tr>
             <th scope="col">Date</th>
             <th scope="col">Time</th>
-            <th scope="col">&#8470</th>
+            <th scope="col">&#8470;</th>
             {% if status == 'pending' %}
-            <th scope="col" colspan="2">Staff Action</th>
+            <th scope="col">Staff Action</th>
             {% else %}
             <th scope="col">Email</th>
             {% endif %}
@@ -36,15 +36,15 @@
                 <td data-label="Time">{{reservation.time}}</td>
                 <td data-label="Number">{{reservation.no_of_people}}</td>
                 {% if status == 'pending' %}
-                <td colspan="2" data-label="Staff Action">
+                <td data-label="Staff Action">
                   <form class="d-inline" action="{% url 'deny_reservation' reservation.id %}" method="POST">
                     {% csrf_token %}
-                    <input type="hidden" name="next" value="{{request.path}}"/>
+                    <input type="hidden" name="next" value="{{request.path}}">
                     <button class="btn btn-warning py-0 px-2" type="submit">Deny</button>
                   </form>
                   <form class="d-inline" action="{% url 'approve_reservation' reservation.id %}" method="POST">
                     {% csrf_token %}
-                    <input type="hidden" name="next" value="{{request.path}}"/>
+                    <input type="hidden" name="next" value="{{request.path}}">
                     <button class="btn btn-success py-0 px-2 ms-5" type="submit">Approve</button>
                   </form>
                 </td>

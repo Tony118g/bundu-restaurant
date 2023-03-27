@@ -7,7 +7,7 @@
     <h2>Edit your details</h2>
     <p>If you would like to change your password, click <a href="{% url 'account_change_password' %}">here</a></p>
     <div class="form-group">
-        <form action="" method="POST">
+        <form method="POST">
             {% csrf_token %}
             {{ form|crispy }}
             <button onclick="window.history.back();" class="btn btn-primary" type="button">Cancel</button>
