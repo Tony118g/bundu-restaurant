@@ -140,9 +140,241 @@ issues to the project kandban board where I could easily manage the development 
 in helping me break down the development process into individual sections and stages which improved the overall efficiency and quality  of development.
 
 Although this project was developed by myself individually, the agile principles enabled me to track my progress in all aspects and ensure the site can be easily maintained in future. If a team were to collaborate on the project, this agile aproach would be extremely beneficial.
+
 ## Features
+
 ### Existing Features
+The site includes various features that work together to create desired functionality and a pleasant user experience. Some features differ depending on whether the user is a staff member or just a normal customer user.
+
+#### The Landing page And General Site  Content
+* ##### The Navigation Bar
+    * The navigation bar is fully responsive and adaptive to different users.
+    * An extra link for the profile page is displayed in the navbar for logged in users and the link to register is removed.
+    ![Navigation bar](documentation/readme-images/full-navbar.png)
+    ![Mobile Navigation bar](documentation/readme-images/mobile-navbar.png)
+    * The navbar links are different for staff users as the only options are for the dashboard and to logout.
+    ![Mobile Navigation bar](documentation/readme-images/staff-navbar.png)
+
+* ##### The Home Page Content
+    * The home page is rendered to all users that are not logged in and to logged-in users that are not staff.
+    * This page is essential as it is the first impression on the user when they visit the site. It helps intice users to sign up and make reservations to the restaurant.
+    * The home page also contains key informational content about the restaurant.
+    * At the top is an attrative hero section displaying the name of the restaurant.
+    ![Hero section image](documentation/readme-images/hero-section.png)
+    ![home page main section image](documentation/readme-images/home-main-section.png)
+    ![About us image](documentation/readme-images/about-us.png)
+
+* ##### The Staff Dashboard
+    * When staff users log in, they are directed to the staff dashboard instead of the home page.
+    * This is where staff are able to access and manage reservations and menu items.
+    * The dashboard also shows how many registered customers the site has.
+    * Normal users do not have access to this page.
+    ![Staff dashboard image](documentation/readme-images/dashboard.png)
+
+* ##### The Footer
+    * The footer helps provide structure to the site. It contains important information regarding contact details and restaurant operating hours.
+    ![Hero section image](documentation/readme-images/footer.png)
+
+#### User Permissions
+* The site functionality and interactivity is different for staff users and customer users. To maintain security and correct use of the site, I have added functionality to restrict access to certain features depending on the type of user.
+    * **Customer users can:**
+        * Register, login and logout.
+        * View the home page.
+        * View the menu.
+        * Perform full crud functionality on reservations (they cannot however approve or deny them and cannot manage other users reservations).
+        * Perform full crud functionality on their own user account details.
+    
+    * **Staff users can:**
+        * Login and logout.
+        * View the dashboard page.
+        * View and search all reservations.
+        * Approve or deny reservations.
+
+* If either type of user tries to access any features that are not mentioned above for each one, they will be redirected and presented with a message stating that they are not authorized to do so.
+
+![Not authorized access message image](documentation/readme-images/not-authorized-message.png)
+
+
+#### User Accounts
+* ##### Account management
+    * **Creating a user account** - Customers are able to create their own user account by signing up to the site. This can be done via the register option in the navbar and there is also a link to do so in the login page.
+        * When a user creates an account, they are required to enter personal details which can be referred to in reservations. To enable this I made use of the [Django Allauth](https://django-allauth.readthedocs.io/en/latest/installation.html) package.
+        * Due to the fact that this project is purely for educational purposes, I decided not to include email verification so that users wanting to view the site are not forced to share private contact information and may use a fake email if they so wish.
+
+        ![Signup image](documentation/readme-images/signup.png)
+
+    * **Login and Logout** - Registered users have the ability to login and logout of the site as they please. This can be done via the navbar links. When a user is logged in, an option to logout is available in the navbar and vice versa.
+        * When a user wants to log in, they have to fill in a form with their username and password for authentication.
+
+        ![Login image](documentation/readme-images/login.png)
+
+        * When a user wants to log out, they have to confirm their intention to logout first. If they confirm the log out, then the user is logged out of the site, otherwise they are returned to the previous page
+
+        ![Logout image](documentation/readme-images/logout.png)
+    
+    * **User profile page** - Registered users have access to a profile page where they are able to manage all information related to them including account details and reservations.
+
+    ![Profile page image](documentation/readme-images/profile-page.png)
+
+    * **Editing an account** - Registered users have the option in their profile page to edit their account details. This gives users full control of their information which I think is an important feature to have especially for an educationally-based project.
+        * When a user selects the option to edit their account, they are presented with a form that is prepopulated with their current details. Once they submit new details, their account is updated. If they change their mind they also have the option to cancel. Information is also provided to warn the user that any old reservations will contain their old details however this is not a problem as the user can edit reservations with their new details and even if they don't, the reservations are still linked to their account.
+
+        ![Edit account image](documentation/readme-images/edit-account.png)
+
+        Once a user has edited their account details, a message is displayed to inform them.
+
+        ![Account updated successfuly message image](documentation/readme-images/account-updated-message.png)
+    
+    * **Password change and reset** - Registered users are able to change their passwords if they are logged in. The option to do so is in the page used to edit account details. If a user forgets their password, they have the ability to reset it via a link in the login form using their account email address.
+        * This functionality is provided by Django Allauth and I adapted the templates to suit the theme of the site..
+
+    * **Deleting an account** - Registered users also have an option in their profile page to delete their account. I decided that users should have the ability to remove all of their records and information from the site. Since this is a fictional site and is made for educational purposes I thought it was especially important to allow users to have full control of their data.
+        * When a user selects the option to delete their account, they are prompted to confirm their intent to do so first. In the confirmation prompt, a warning is provided to inform the users that all their data will be lost including all their account details and reservations.
+
+        ![Account deletion prompt image](documentation/readme-images/account-deletion-prompt.png)
+
+        If the user confirms the deletion, the users account and all related reservations are deleted. The user is logged out, directed to the home page and a message is displayed to inform them of the deletion.
+
+        ![Account deletion success message image](documentation/readme-images/account-deletion-success-message.png)
+
+#### The Menu
+* ##### User Menu Display
+    * The menu page is available to all users. This is where users can view the restaurant menu. Menu items include details such as the item description, price and availability.
+    * The page is separated into three sections for starters, mains and deserts.
+    * When a menu item is clicked, a modal appears with a picture of the food item.
+    * If a custom image has not been added then a default image is used to inform the user that a picture of the item is not available yet.
+    * If the staff user marks the item as unavailable, a label will appear to inform users that the item is unavailable. This enables the restaurant to still advertise an item but make it known that it is currently not available.
+
+    ![Menu page image](documentation/readme-images/menu-page.png)
+    ![Menu item image](documentation/readme-images/menu-item.png)
+    ![Menu item modal image](documentation/readme-images/menu-item-modal.png)
+    
+* ##### Staff Menu Management
+    * Staff users are able to perform full crud functionality on menu items.
+
+    * In the staff dashboard there is a section dedicated to menu management.
+
+    ![Staff menu management section image](documentation/readme-images/menu-management-section.png)
+
+    * For staff users, in the menu item modals, there are options to edit or delete the item.
+
+    ![Staff menu item modal image](documentation/readme-images/staff-menu-item-modal.png)
+
+    * **Creating a menu item** - Staff can fill in a form and save menu items either to the site menu or to a menu drafts page.
+
+    ![Staff menu item modal image](documentation/readme-images/add-menu-item.png)
+
+    * **Menu drafts page** - If a staff user saves a menu as a draft, they are able to view it in the menu drafts page. Here they are able to edit or delete the item.
+
+    ![Staff menu item draft image](documentation/readme-images/menu-item-draft.png)
+
+    * **Editing a menu item** - When a staff user chooses an option to edit a menu item, they are presented with the same form as they were when they created one. This form however will be prepopulated with existing data and when submitted it will update the item instead of creating a new one. The heading also changes to indicate that the item is being edited.
+
+    * **Deleting menu items** - When staff users choose the option to delete a menu item, they are prompted to confirm the deletion first. If they confirm it, the item is deleted, otherwise they are returned to the previous page.
+
+    ![Staff delete menu item image](documentation/readme-images/menu-item-delete-confirmation.png)
+
+#### Reservations
+
+* ##### User reservation management
+    * **Login required** - Users are required to be logged in for them to make a reservation. If they are not logged in, when they click the options to book, they are directed to the login page with a message prompting them to login before booking.
+
+    * **Customers only** - For this version of the project, staff members do not have the ability to make reservations within the site except in the admin panel as a superuser. It was decided that it is not essential and since reservations use user account data then a new model and functionality would be required for staff  members to book reservations on behalf of guests. If staff were to be allowed to make reservations using the functionality of this current version of the project, the reservations would be booked for the staff member themself and would result in confusing and counterproductive records. For these reasons staff members are restricted from making reservations. This may be revisited in a future development of the site if the need were to arise with the growth of the restaurant.
+
+    * **Creating reservations** - When a user selects the option to book, they are presented with a form to make a reservation. Along with the form is a section for informational content regarding reservations. Once they submit the form they are presented with relevant feedback for their request.
+        * Reservations can only be made for future dates so the form includes functionality not to allow the user to select a current or past date.
+        * Date and time fields are chosen from a list of options.
+        * Personal details are automaticaly filled in using the users account details.
+
+    ![Reservation form image](documentation/readme-images/reservation-form.png)
+
+    * **Reservation request feedback** - When a user submits a reservation request, a check takes place to confirm whether or not the request already exists and presents them with relevant feedback. This is in place to reduce the risk of double bookings. If the check passes, the request is saved with a status of pending.
+
+    ![Successful reservation request image](documentation/readme-images/successful-reservation-request.png)
+
+    ![Failed reservation request image](documentation/readme-images/failed-reservation-request.png)
+
+    * **Customer reservations display** - When users navigate to their profile page, they are able to view their reservations in a table. If they don't have any reservations, then a message is provided stating so. The table displays the reservation date, time and status (pending, approved or denied).
+
+    ![Customer reservations image](documentation/readme-images/profile-reservations.png)
+
+    For reservations that have a past time, the status field will be displayed as "expired".
+
+    ![Customer expired reservation image](documentation/readme-images/expired-profile-reservation.png)
+
+    When the user clicks on a reservation, a modal appears containing the full reservation details as well as options to edit or delete it. The edit option is not available for expired reservations.
+
+    ![Reservation modal image](documentation/readme-images/reservation-modal.png)
+
+    * **Editing reservations** - When a user selects the option to edit a reservation, they are presented with the same form as they were when they created one. This form however will be prepopulated with existing data and when submitted it will update the reservation instead of creating a new one. The updated reservation automatically has a pending status regardless of the status before the edit as a staff member will need to assess the new details. The heading also changes to indicate that the reservation is being edited and a warning message is displayed to warn the user that the update will be subject to approval.
+        * If the update is successful, the user is directed to the same feedback page as they are when making a reservation.
+        * If no details are changed or the entered details are the same as another reservation, a message appears to tell the user the reservation already exists and the reservation is not updated.
+
+        ![Reservation already exists message image](documentation/readme-images/reservation-already-exists-message.png)
+
+    * **Deleting/canceling reservations** - When users choose the option to delete a reservation, they are prompted to confirm the deletion/cancelation first and a warning is displayed informing the user what effect the deletion will have. If they confirm it, the reservation is deleted, otherwise they are returned to the previous page.
+        * If the reservation date and time is in the future, the warning will refer to cancelation.
+
+        ![Reservation cancelation prompt image](documentation/readme-images/reservation-cancel-prompt.png)
+
+        * If the reservation date and time has past, the prompt will refer to record deletion.
+
+        ![Reservation record deletion prompt image](documentation/readme-images/reservation-record-delete-prompt.png)
+
+* ##### Staff reservation management
+
+    * **Reservation management section** - In the staff dashboard there is a section dedicated to reservations which has options to view all the existing reservations according to status.
+
+    ![Staff reservation management section image](documentation/readme-images/reservation-management-section.png)
+
+    * **Pending reservations** - When a staff user selects the option to view pending reservations, all relevant reservation requests are displayed. It was decided that only details for the date, time and number of people were important to be taken into consideration when approving or denying reservations and so only those details are displayed. Buttons are also displayed to give the user the ability to approve or deny reservations. If no pending reservations exist then a message is displayed stating so.
+
+    ![Pending reservations image](documentation/readme-images/pending-reservations.png)
+
+    The display changes slightly on smaller screens.
+
+    ![Pending reservations image](documentation/readme-images/pending-reservations-small-screen.png)
+
+    * **Reservation approval** - When a staff member clicks the button to approve a reservation, the reservation status is set to "approved" and a message is displayed to inform the user. Once a reservation is approved, an email is sent to the relevant customer to let them know.
+
+    ![Approved reservation message image](documentation/readme-images/approved-reservation-message.png)
+
+    * **Reservation denial** - When a staff member clicks the button to deny a reservation, the reservation status is set to "denied" and a message is displayed to inform the user. Once a reservation is denied, an email is sent to the relevant customer to let them know.
+
+    ![Denied reservation message image](documentation/readme-images/denied-reservation-message.png)
+
+    * **Deleted reservation response** - If a user deletes a reservation request whilst a staff is viewing pending reservations and has not refreshed the page. When the staff user tries to approve/deny the deleted reservation, a message appears to inform them that the reservation no longer exists.
+
+    ![Reservation no longer exists message image](documentation/readme-images/non-existant-reservation-message.png)
+
+    * **Approved and denied reservations display** - When a staff user selects the option to view approved  or denied reservations, all relevant reservations are displayed in the same way that pending reservations are displayed but the email field is included for these incase the user wants to contact a customer who's reservation they have previously denied or approved. If no reservations exist then a message is displayed stating so.
+
+    * **Reservation search options** - I decided that it would be extremely beneficial to restaurant staff if they were able to search for specific reservations.   
+        * When considering approving or denying a reservation, a staff member may need to find out what has already been booked on the requested date. To make this process quicker I added a search bar in the staff dashboard for staff to search specific dates for approved reservations. Once a search has been submitted, all relevant reservations are displayed. If there are no results, a message is displayed stating so. The search bar is also available in the results page for the user to search again quickly. The results page is displayed using the same layout as the pending, approved and denied reservations pages and shows details for names, time, number of people and email address.
+
+        ![Reservation date search bar image](documentation/readme-images/date-search-bar.png)
+
+        * A staff member may also need to search for a specific name in reservations. This helps in various ways such as when a customer arrives for their reservation and the staff member needs to quickly confirm that their reservation exists and has been approved or if a customer were to call the restaurant regarding a pending reservation. Unlike the date search option, this search gets all relevant reservations regardless of status. The search bar is also available in the results page for the user to search again quickly. This results page is also displayed using the same layout as the pending, approved and denied reservations pages but shows all the reservation details. If a search result shows a reservation that is still pending and has not expired, options to approve or deny the reservation are available.
+        
+        ![Reservation name search bar image](documentation/readme-images/name-search-bar.png)
+
+#### Background Features
+
+* ##### Automatic expired reservation denial
+    * Although it is the duty of staff members to ensure that they respond to requests on time, there is a chance that it may not always happen. To improve user experience and ensure customer feedback, whenever a staff user opens the pending reservations page, any pending reservations that have expired are automatically denied and an apology email is sent to the relevant customer.
+
+* ##### Cloudinary image management
+    * In order to save space and prevent unnecessary images being stored in cloudinary, I have used django signals and custom function code to delete unused cloudinary images.
+        * When a menu item is updated, I use the pre_save signal to get the image from the old instance. I then compare the old instance image to the new instance image in the post_save signal. If the image has changed and if the old image is not the default, the image is deleted in cloudinary.
+        * When a menu item is deleted, I use the post_delete signal to delete the image in cloudinary given that it is not the default.
+
 ### Future Features
+
+There are a few features that I may add in the future that may improve the overall performance and functionality of the restaurant site. I have left the original user stories that were developed in the project kanban board as future development opportunities. The features I may add to the site in the future are:
+
+* The ability to sign in via social media networks.
+* A menu rating system where customers can rate menu items and share opinions on the site.
+* Staff reservation crud functionality so that staff can create reservations on behalf of customers and input their relevant details in a separate reservation model that is not linked to specific users.
 
 ## Technologies Used
 * [Balsamiq](https://balsamiq.com/wireframes/)
