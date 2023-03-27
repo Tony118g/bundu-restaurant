@@ -12,7 +12,7 @@ def home_page(request):
     """
 
     if request.user.is_staff:
-        return render(request, "dashboard.html")
+        return redirect("staff/dashboard/")
     else:
         return render(request, "index.html")
 
