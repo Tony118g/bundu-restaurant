@@ -84,31 +84,31 @@ Below are the completed user stories for this version of the project's release l
 I created basic wireframes of how I wanted the general layout of the site to look using [Balsamiq](https://balsamiq.com/). I created a wireframe for each main page layout and used it as a base to guide the way I structured and styled my pages. Although the site contains other pages, the layout is mostly the same and therefore I adopt their structure from these main wireframes.
 
 ##### Sign Up In Wireframe
-![home page wireframe](documentation/sign-up-wireframe.png)
+![home page wireframe](documentation/readme-images/sign-up-wireframe.png)
 
 ##### Log In Wireframe
-![home page wireframe](documentation/login-wireframe.png)
+![home page wireframe](documentation/readme-images/login-wireframe.png)
 
 ##### Home Page Wireframe
-![home page wireframe](documentation/home-wireframe.png)
+![home page wireframe](documentation/readme-images/home-wireframe.png)
 
 ##### Profile Page Wireframe
-![home page wireframe](documentation/profile-wireframe.png)
+![home page wireframe](documentation/readme-images/profile-wireframe.png)
 
 ##### Reservation Page Wireframe
-![home page wireframe](documentation/reservation-wireframe.png)
+![home page wireframe](documentation/readme-images/reservation-wireframe.png)
 
 ##### Menu Page Wireframe
-![home page wireframe](documentation/menu-wireframe.png)
+![home page wireframe](documentation/readme-images/menu-wireframe.png)
 
 ##### Menu Modal Wireframe
-![home page wireframe](documentation/menu-modal-wireframe.png)
+![home page wireframe](documentation/readme-images/menu-modal-wireframe.png)
 
 ##### Staff Dashboard Page Wireframe
-![home page wireframe](documentation/dashboard-wireframe.png)
+![home page wireframe](documentation/readme-images/dashboard-wireframe.png)
 
 ##### Staff Reservations Page Wireframe
-![home page wireframe](documentation/staff-reservations-wireframe.png)
+![home page wireframe](documentation/readme-images/staff-reservations-wireframe.png)
 
 #### Database Schema
 For this project I utilised the built in Django User Model for user accounts and created two other custom models for reservations and the menu. The reservation model is linked to the user model through a foreign key. I decided that when a user makes a reservation, their personal details would be automatically filled in using their user account information to create a better user experience. A separate model was created for menu items to be created and stored.
@@ -117,7 +117,7 @@ The database schema seen below was created using [DrawSql.app](https://drawsql.a
 
 The true field choices are reflected in the models within the project apps.
 
-![The Database schema](documentation/database-schema.png)
+![The Database schema](documentation/readme-images/database-schema.png)
 
 ### Design Choices
 
@@ -126,7 +126,7 @@ The true field choices are reflected in the models within the project apps.
     * I chose to use these fonts as they are elegant and easy to read. This helps give a modern touch to the site whilst maintaining a degree of professionalism.
 
 #### Colour Palette
-![Colour pallete](documentation/color-palette.png)
+![Colour pallete](documentation/readme-images/color-palette.png)
 * The color palette was chosen with the help of [coolers](https://coolors.co/) and consists of two simple colours as seen above.
 * This simple combination creates an attractive and minimalistic look and does not overwhelm the user or distract them from the site content.
     * The blue (2D3E59) is the main colour featured throughout the site and is most evident in the navbar and footer.
@@ -206,6 +206,7 @@ Although this project was developed by myself individually, the agile principles
 
 
 ## Testing
+A combination of manual and automated tests were carried out for the development of the site. Click [here](TESTING.md) for more information on the testing done.
 
 ## Deployment and Development
 * The project was developed using [Gitpod](https://www.gitpod.io/#get-started) to create the code and overall file structure.
