@@ -103,17 +103,12 @@ html {
     color: white;
 }
 
-#nav-logo:hover {
-    color: white;
-}
-
 .navbar {
     background-color: #2D3E59;
 }
 
 .nav-link {
     font-size: 1.2rem;
-    font-weight: 100;
     color: white !important;
 }
 
@@ -141,8 +136,7 @@ html {
 }
 
 .sub-heading {
-    font-weight: 200;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 /* Home page main section */
@@ -156,7 +150,6 @@ html {
     background: url('https://res.cloudinary.com/tony118g/image/upload/v1679312603/pp4-practice/restaurant-table_ioprbm.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 300px;
 }
 
 .menu-card {
