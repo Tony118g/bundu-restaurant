@@ -14,31 +14,31 @@
 
 <div class="container fill-screen below-nav">
     <div class="row">
-      <div class="col-lg-6">
-        <h2>Search Results</h2>
-        <hr>
-      </div>
-      <div class="col-lg-6">
-        <form class="float-start float-lg-end" action="{% url 'search_name' %}" method="GET">
-          {% csrf_token %}
-          <label class="d-block d-md-inline" for="search_name">Search again</label>
-          <input id="search_name" type="text" name="name" required>
-          <button class="btn" type="submit"><i class="fa fa-search"></i></button>
-        </form>
-      </div>
+        <div class="col-lg-6">
+            <h2>Search Results</h2>
+            <hr>
+        </div>
+        <div class="col-lg-6">
+            <form class="float-start float-lg-end" action="{% url 'search_name' %}" method="GET">
+                {% csrf_token %}
+                <label class="d-block d-md-inline" for="search_name">Search again</label>
+                <input id="search_name" type="text" name="name" required>
+                <button class="btn" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
     </div>
     {% if search_results %}
     <table class="table tabel-striped table-hover table-bordered">
         <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col" >Date</th>
-            <th scope="col" >Time</th>
-            <th scope="col" >&#8470;</th>
-            <th scope="col" >Email</th>
-            <th scope="col">Status</th>
-            <th scope="col">Staff Action</th>
-          </tr>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col" >Date</th>
+                <th scope="col" >Time</th>
+                <th scope="col" >&#8470;</th>
+                <th scope="col" >Email</th>
+                <th scope="col">Status</th>
+                <th scope="col">Staff Action</th>
+            </tr>
         </thead>
         <tbody>
             {% for reservation in search_results %}
@@ -49,23 +49,25 @@
                 <td data-label="Number">{{reservation.no_of_people}}</td>
                 <td data-label="Email">{{reservation.email}}</td>
                 <td data-label="Status">
-                  {{ reservation.status }}
-                  {% if reservation.is_past_date %}
-                  (Expired)
-                  {% endif %}
+                    {{ reservation.status }}
+                    {% if reservation.is_past_date %}
+                    (Expired)
+                    {% endif %}
                 </td>
                 {% if reservation.status == 'pending' and reservation.is_past_time is False %}
                 <td data-label="Staff Action">
-                  <form class="d-inline" action="{% url 'deny_reservation' reservation.id %}" method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="next" value="{{request.get_full_path}}">
-                    <button class="btn btn-warning py-0 px-2" type="submit">Deny</button>
-                  </form>
-                  <form class="d-inline" action="{% url 'approve_reservation' reservation.id %}" method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="next" value="{{request.get_full_path}}">
-                    <button class="btn btn-success py-0 px-2" type="submit">Approve</button>
-                  </form>
+                    <!-- Form to deny reservations -->
+                    <form class="d-inline" action="{% url 'deny_reservation' reservation.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{request.get_full_path}}">
+                        <button class="btn btn-warning py-0 px-2" type="submit">Deny</button>
+                    </form>
+                    <!-- Form to approve reservations -->
+                    <form class="d-inline" action="{% url 'approve_reservation' reservation.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{request.get_full_path}}">
+                        <button class="btn btn-success py-0 px-2" type="submit">Approve</button>
+                    </form>
                 </td>
                 {% else %}
                 <td data-label="Staff Action">N/A</td>
@@ -73,7 +75,7 @@
             </tr>
             {% endfor %}
         </tbody>
-      </table>
+    </table>
     {% else %}
     <p>There are no results matching your search. If you are searching for both name and surname please ensure you use only one white space between names.</p>
     {% endif %}

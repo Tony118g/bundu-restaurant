@@ -1,97 +1,101 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 {% if messages %}
 {% for message in messages %}
-<div class="mx-auto alert alert-dismissible fade show alert-{{ message.tags }}">
-    {{ message }}
-    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
-    </button>
-</div>
+    <div class="mx-auto alert alert-dismissible fade show alert-{{ message.tags }}" role="alert">
+        <span>{{ message }}</span>
+        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+        </button>
+    </div>
 {% endfor %}
 {% endif %}
 
 <div class="container pt-5 fill-screen below-nav">
+    <!-- The account information section -->
     <div class="row">
-      <div class="col-md-6">
-        <h2 class="text-capitalize">Welcome {{ f_name }} {{ l_name }}!</h2>
-        <hr>
-        <p><span class="fw-bold">Username</span>: {{ username }}</p>
-        <p><span class="fw-bold">Email address</span>: {{ email_address }}</p>
-        <a class="btn btn-warning" href="{% url 'edit_account' request.user.id %}">Edit Details</a>
-        <a class="btn btn-danger" href="{% url 'delete_account' request.user.id %}">Delete Account</a>
-      </div>
-      <div class="col-md-6 border-start border-5 mt-3">
-        <p class="lead">This is where you can manage your account and reservations!</p>
-        <ul>
-          <li>If you have made reservations, you will see details of such below.</li>
-          <li>If you would like to edit or cancel/delete a reservation, simply click on it to reveal more options.</li>
-          <li><span class="fw-bold">Please note:</span>You can only edit reservations for future dates, if you would like to make a reservation for today then please contact the restaurant directly.</li>
-        </ul>
-      </div>
+        <div class="col-md-6">
+            <h2 class="text-capitalize">Welcome {{ f_name }} {{ l_name }}!</h2>
+            <hr>
+            <p><span class="fw-bold">Username</span>: {{ username }}</p>
+            <p><span class="fw-bold">Email address</span>: {{ email_address }}</p>
+            <a class="btn btn-warning" href="{% url 'edit_account' request.user.id %}">Edit Details</a>
+            <a class="btn btn-danger" href="{% url 'delete_account' request.user.id %}">Delete Account</a>
+        </div>
+        <div class="col-md-6 border-start border-5 mt-3">
+            <p class="lead">This is where you can manage your account and reservations!</p>
+            <ul>
+                <li>If you have made reservations, you will see details of such below.</li>
+                <li>If you would like to edit or cancel/delete a reservation, simply click on it to reveal more options.</li>
+                <li><span class="fw-bold">Please note:</span>You can only edit reservations for future dates, if you would like to make a reservation for today then please contact the restaurant directly.</li>
+            </ul>
+        </div>
     </div>
-    
 
+    <!-- Section for reservations -->
     <div class="container pt-5">
-      <h2>Your Reservations</h2>
-      <hr>
-      {% if reservations %}
-      <table class="table tabel-striped mb-5">
-        <thead class="customer-res-thead">
-          <tr class="customer-res-tr">
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
-            <th scope="col">Status</th>
-          </tr>
-        </thead>
-            {% for reservation in reservations %}
-              <tr class='clickable-row customer-res-tr' data-bs-toggle="modal" data-bs-target="#modal{{ reservation.id }}">
-                <td class="customer-res-td">{{ reservation.date }}</td>
-                <td class="customer-res-td">{{ reservation.time }}</td>
-                <td class="customer-res-td">
-                  {% if reservation.is_past_time %}
-                  Expired
-                  {% else %}
-                  {{ reservation.status }}
-                  {% endif %}
-                </td>
-              </tr>
-            {% endfor %}
-      </table>
+        <h2>Your Reservations</h2>
+        <hr>
+        {% if reservations %}
+        <table class="table tabel-striped mb-5">
+            <thead class="customer-res-thead">
+                <tr class="customer-res-tr">
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation in reservations %}
+                <tr class='clickable-row customer-res-tr' data-bs-toggle="modal" data-bs-target="#modal{{ reservation.id }}">
+                    <td class="customer-res-td">{{ reservation.date }}</td>
+                    <td class="customer-res-td">{{ reservation.time }}</td>
+                    <td class="customer-res-td">
+                        {% if reservation.is_past_time %}
+                        Expired
+                        {% else %}
+                        {{ reservation.status }}
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 
     <!-- Modal -->
     {% for reservation in reservations %}
     <div class="modal fade" id="modal{{ reservation.id }}" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">{{ reservation.date }}</h5>
-            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p><span class="fw-bold">Time: </span>{{ reservation.time }}</p>
-            <p class="text-capitalize"><span class="fw-bold">Name: </span>{{ reservation.first_name }} {{ reservation.last_name }}</p>
-            <p><span class="fw-bold">Number of people: </span>{{ reservation.no_of_people }}</p>
-            <p><span class="fw-bold">Email: </span>{{ reservation.email }}</p>
-            <p>
-              <span class="fw-bold">Status: </span>
-              {% if reservation.is_past_time %}
-              Expired
-              {% else %}
-              {{ reservation.status }}
-              {% endif %}
-            </p>
-            {% if reservation.is_past_date is False %}
-            <a class="btn btn-primary" href="{% url 'edit_reservation' reservation.id %}">Edit</a>
-            {% endif %}
-            <a class="btn btn-danger" href="{% url 'delete_reservation' reservation.id %}">Delete</a>
-          </div>
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ reservation.date }}</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><span class="fw-bold">Time: </span>{{ reservation.time }}</p>
+                    <p class="text-capitalize"><span class="fw-bold">Name: </span>{{ reservation.first_name }} {{ reservation.last_name }}</p>
+                    <p><span class="fw-bold">Number of people: </span>{{ reservation.no_of_people }}</p>
+                    <p><span class="fw-bold">Email: </span>{{ reservation.email }}</p>
+                    <p>
+                        <span class="fw-bold">Status: </span>
+                        {% if reservation.is_past_time %}
+                        Expired
+                        {% else %}
+                        {{ reservation.status }}
+                        {% endif %}
+                    </p>
+                    {% if reservation.is_past_date is False %}
+                    <a class="btn btn-primary" href="{% url 'edit_reservation' reservation.id %}">Edit</a>
+                    {% endif %}
+                    <a class="btn btn-danger" href="{% url 'delete_reservation' reservation.id %}">Delete</a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     {% endfor %}
     {% else %}

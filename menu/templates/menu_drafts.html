@@ -24,7 +24,8 @@
                 <th class="w-50" scope="col">Management Options</th>
             </tr>
         </thead>
-        {% for menu_draft in menu_drafts %}
+        <tbody>
+            {% for menu_draft in menu_drafts %}
             <tr class="menu-tr">
                 <td class="menu-td"><p class="lead mb-0 mt-2">{{ menu_draft.title }}</p></td>
                 <td class="menu-td">
@@ -32,12 +33,12 @@
                     <span><a class="btn btn-danger ms-md-3 mt-2" href="{% url 'delete_item' menu_draft.id %}">Delete</a></span>
                 </td>
             </tr>
-        {% endfor %}
+            {% endfor %}
+        </tbody>
     </table>
 
     {% else %}
     <h4 class="text-center mt-5">There are no drafts at the moment.</h4>
-
     {% endif %}
 </div>
 
