@@ -41,6 +41,7 @@ def profile_page(request):
         }
         return render(request, 'profile.html', context)
     else:
+        messages.warning(request, ('You are not authorized to view this page'))
         return redirect('home')
 
 
