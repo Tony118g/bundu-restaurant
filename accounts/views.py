@@ -47,7 +47,7 @@ def profile_page(request):
 
 def edit_account(request, pk):
     """
-    Handles the editing of the specified user
+    Handles the editing of the specified users details
     """
 
     user_instance = get_object_or_404(User, id=pk)
@@ -73,7 +73,7 @@ def edit_account(request, pk):
 
 def delete_account(request, pk):
     """
-    Handles the deletion of a specified user
+    Handles the deletion of a specified users account
     """
 
     user_instance = get_object_or_404(User, id=pk)

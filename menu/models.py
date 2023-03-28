@@ -14,6 +14,9 @@ MENU_CATEGORIES = (
 
 
 class MenuItem(models.Model):
+    """
+    The model for menu items
+    """
 
     title = models.CharField(max_length=200, unique=True)
     featured_image = CloudinaryField(

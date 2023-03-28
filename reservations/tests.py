@@ -1,4 +1,3 @@
-from django.http import HttpRequest
 from django.test import TestCase
 from django.contrib.auth.models import User
 from .models import Reservation
@@ -15,7 +14,7 @@ from .views import (
 
 class TestReservationViews(TestCase):
     """
-    Tests the views for the reservations app.
+    Tests the views for the reservations app
     """
 
     def setUp(self):
@@ -49,9 +48,9 @@ class TestReservationViews(TestCase):
             no_of_people='2',
         )
 
-    def test_user_logged_out_make_reservation(self):
+    def test_unauthorized_user_make_reservation_redirect(self):
         """
-        Test unauthorized users are redirected
+        Tests if unauthorized users are redirected with a message
         when they try access reservation page
         """
 
@@ -94,7 +93,7 @@ class TestReservationViews(TestCase):
 
     def test_double_booked_response(self):
         """
-        Test functionality to prevent double bookings
+        Tests if functionality to prevent double bookings
         works correctly
         """
 
@@ -114,10 +113,10 @@ class TestReservationViews(TestCase):
         self.assertEquals(resolve(url).func, make_reservation)
         self.assertTemplateUsed(response, "double_booked.html")
 
-    def test_user_logged_out_edit_reservation(self):
+    def test_unauthorized_user_edit_reservation_redirect(self):
         """
-        Test unauthorized users are redirected
-        when they try access edit reservation page
+        Tests if unauthorized users are redirected with a message
+        when they try access the edit reservation page
         """
 
         response = self.client.get("/reservations/edit_reservation/1/")
@@ -130,8 +129,8 @@ class TestReservationViews(TestCase):
 
     def test_user_logged_in_edit_reservation(self):
         """
-        Test functionality to edit a reservation
-        works for logged in user
+        Tests if functionality to edit a reservation
+        works for logged in users
         """
         self.client.force_login(self.user)
         response = self.client.get("/reservations/edit_reservation/1/")
@@ -171,8 +170,8 @@ class TestReservationViews(TestCase):
 
     def test_edit_reservation_past_date_response(self):
         """
-        Test to see if correct response is given when user tries to edit
-        a reservation on past date
+        Tests if the correct response is given when a user tries to edit
+        a reservation for a past date
         """
 
         self.client.force_login(self.user)
@@ -184,10 +183,10 @@ class TestReservationViews(TestCase):
                         )
         self.assertEqual(response.status_code, 302)
 
-    def test_no_changes_edit_response(self):
+    def test_reservation_already_exists_edit_response(self):
         """
-        Test functionality for when user submits an edit form
-        without any changes
+        Tests functionality for when a user submits an edit form
+        with details that already exist
         """
 
         self.client.force_login(self.user)
@@ -209,10 +208,10 @@ class TestReservationViews(TestCase):
                         )
         self.assertEqual(response.status_code, 200)
 
-    def test_user_logged_out_delete_reservation(self): 
+    def test_unauthorized_user_delete_reservation_redirect(self):
         """
-        Test unauthorized users are redirected when
-        they try access the delete reservation page
+        Tests if unauthorized users are redirected with a message
+        when they try access the delete reservation page
         """
 
         response = self.client.get('/reservations/delete_reservation/1/')
@@ -225,8 +224,8 @@ class TestReservationViews(TestCase):
 
     def test_user_logged_in_delete_reservation(self):
         """
-        Test delete reservation functionality works correctly
-        for logged in users for both past and futue dates
+        Tests if delete reservation functionality works correctly
+        for logged in users for both past and future dates
         """
 
         self.client.force_login(self.user)
@@ -286,14 +285,14 @@ class TestReservationModels(TestCase):
 
     def test_status_value_defaults_to_pending(self):
         """
-        Tests that reservation value for status defaults to pending
+        Tests that the reservation value for status defaults to pending
         """
 
         self.assertEqual(self.reservation.status, 'pending')
 
     def test_model_returns_first_name_string(self):
         """
-        Tests if the model returns the first_name of reservation
+        Tests if the model returns the first_name of the reservation
         as a string
         """
 

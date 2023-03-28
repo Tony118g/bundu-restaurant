@@ -37,6 +37,9 @@ reservation_times = (
 
 
 class Reservation(models.Model):
+    """
+    The model for reservations
+    """
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=35, null=False, blank=False)

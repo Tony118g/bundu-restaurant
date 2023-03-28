@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 from django.conf import settings
@@ -86,7 +86,8 @@ def reservation_list(request, status):
 
 def approve_reservation(request, pk):
     """
-    Sets status to approved and sends an approval email
+    Sets the status for the specified reservation
+    to approved and sends an approval feedback email
     """
 
     next = request.POST.get('next', '/')
@@ -120,7 +121,8 @@ def approve_reservation(request, pk):
 
 def deny_reservation(request, pk):
     """
-    Sets status to denied for the specified reservation
+    Sets the status for the specified reservation
+    to denied and sends a denial feedback email
     """
 
     next = request.POST.get('next', '/')
@@ -129,8 +131,6 @@ def deny_reservation(request, pk):
     except Reservation.DoesNotExist:
         messages.warning(request, ('This reservation no longer exists'))
         return redirect(next)
-
-    print(reservation)
 
     if request.user.is_staff:
         reservation.status = 'denied'

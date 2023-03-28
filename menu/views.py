@@ -5,6 +5,9 @@ from .forms import MenuItemForm
 
 
 def add_menu_item(request):
+    """
+    Handles the creation of menu items
+    """
 
     if request.user.is_staff:
         heading = 'Add a menu item below'
@@ -78,7 +81,8 @@ def menu_drafts(request):
 
 def edit_menu_item(request, pk):
     """
-    Updates the specified menu item with the new details input by the user
+    Handles the editing of the specified menu item
+    using the new details input by the user
     """
 
     item_instance = get_object_or_404(MenuItem, id=pk)
@@ -121,7 +125,7 @@ def edit_menu_item(request, pk):
 
 def delete_menu_item(request, pk):
     """
-    Deletes the specified menu item
+    Handles deletion of the specified menu item
     """
 
     item_instance = get_object_or_404(MenuItem, id=pk)

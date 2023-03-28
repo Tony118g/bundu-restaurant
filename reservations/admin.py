@@ -5,7 +5,7 @@ from .models import Reservation
 @admin.register(Reservation)
 class BookingAdmin(admin.ModelAdmin):
     """
-    The class used to display reservations in admin panel
+    The class used to display reservations in the admin panel
     """
     list_filter = (
         'user',

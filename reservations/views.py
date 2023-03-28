@@ -7,7 +7,7 @@ from datetime import date
 
 def make_reservation(request):
     """
-    Handles reservation requests by users
+    Handles the creation of reservation requests by users
     """
 
     if request.user.is_authenticated and request.user.is_staff is False:
@@ -51,7 +51,8 @@ def make_reservation(request):
 
 def edit_reservation(request, pk):
     """
-    Updates the specified reservation with new details input by the user.
+    Handles the editing of the specified reservation
+    using new details input by the user.
     """
     res_instance = get_object_or_404(Reservation, id=pk)
 

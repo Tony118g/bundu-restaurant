@@ -4,6 +4,9 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 class SignUpForm(UserCreationForm):
+    """
+    The form used for signing up
+    """
 
     email = forms.EmailField(required=True)
     first_name = forms.CharField(
@@ -28,6 +31,10 @@ class SignUpForm(UserCreationForm):
 
 
 class EditUserForm(forms.ModelForm):
+    """
+    The form used to edit account details.
+    """
+
     email = forms.EmailField(required=True)
     first_name = forms.CharField(
                                 max_length=35,

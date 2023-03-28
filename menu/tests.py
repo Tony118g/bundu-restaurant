@@ -54,7 +54,7 @@ class TestMenuViews(TestCase):
 
     def test_menu_page_view(self):
         """
-        Tests the menu page renders correctly
+        Tests if the menu page renders correctly
         """
 
         response = self.client.get('/menu/')
@@ -79,7 +79,7 @@ class TestMenuViews(TestCase):
 
     def test_menu_drafts_view_unauthorized_user_redirect(self):
         """
-        Tests unauthorized users are redirected
+        Tests if unauthorized users are redirected with a message
         when they try access the menu drafts page
         """
         self.client.force_login(self.user)
@@ -93,7 +93,7 @@ class TestMenuViews(TestCase):
 
     def test_staff_add_menu_item_page(self):
         """
-        Tests add menu item page renders correctly for
+        Tests if the add menu item page renders correctly for
         staff users
         """
         self.client.force_login(self.staff_user)
@@ -201,7 +201,7 @@ class TestMenuViews(TestCase):
 
         self.assertEqual(response.status_code, 302)
 
-    def test_edit_menu_item_unauthorised_user(self):
+    def test_edit_menu_item_unauthorised_user_redirect(self):
         """
         Tests if unauthorised users are redirected with
         a message if they try access the edit menu item page
@@ -248,7 +248,7 @@ class TestMenuViews(TestCase):
 
         self.assertEqual(response.status_code, 302)
 
-    def test_delete_menu_item_unauthorised_user(self):
+    def test_delete_menu_item_unauthorised_user_redirect(self):
         """
         Tests if unauthorised users are redirected with
         a message if they try access the delete menu item page

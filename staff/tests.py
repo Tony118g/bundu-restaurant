@@ -41,7 +41,7 @@ class TestStaffViews(TestCase):
 
     def test_staff_dashboard_render(self):
         """
-        Tests the dashboard page renders correctly
+        Tests if the dashboard page renders correctly
         for staff users
         """
         self.client.force_login(self.staff_user)
@@ -54,7 +54,7 @@ class TestStaffViews(TestCase):
 
     def test_staff_dashboard_unauthorized_user_redirect(self):
         """
-        Tests unauthorized users are redirected with a message
+        Tests if unauthorized users are redirected with a message
         when they try access the dashboard page
         """
         self.client.force_login(self.user)
@@ -68,7 +68,7 @@ class TestStaffViews(TestCase):
 
     def test_staff_reservations_list_render(self):
         """
-        Tests the reservations list page renders each
+        Tests if the reservations list page renders each
         reservation category correctly for staff users
         """
         self.client.force_login(self.staff_user)
@@ -93,7 +93,7 @@ class TestStaffViews(TestCase):
 
     def test_staff_reservations_list_unauthorized_user_redirect(self):
         """
-        Tests unauthorized users are redirected with a message
+        Tests if unauthorized users are redirected with a message
         when they try access the staff reservations page
         """
         self.client.force_login(self.user)

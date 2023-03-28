@@ -48,18 +48,23 @@ class TestViews(TestCase):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 302)
 
-    def test_profile_page(self):
+    def test_unauthorized_profile_page_redirect(self):
         """
-        Test unauthorized users are redirected
-        when they try access profile page
+        Tests if unauthorized users are redirected
+        with a message when they try access the profile page
         """
 
         response = self.client.get("/accounts/profile/")
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(
+                        str(messages[0]),
+                        'You are not authorized to view this page'
+                        )
         self.assertEqual(response.status_code, 302)
 
     def test_user_logged_in_profile_page(self):
         """
-        Test profile page renders correctly for logged in users
+        Tests if the profile page renders correctly for logged in users
         """
 
         self.client.force_login(self.user)
@@ -70,9 +75,9 @@ class TestViews(TestCase):
         self.assertEquals(resolve(url).func, profile_page)
         self.assertTemplateUsed(response, "profile.html")
 
-    def test_user_logged_out_edit_account_redirect(self):
+    def test_unauthorized_user_edit_account_redirect(self):
         """
-        Test unauthorized users are redirected with a message
+        Tests if unauthorized users are redirected with a message
         when they try access the edit account page
         """
 
@@ -86,7 +91,7 @@ class TestViews(TestCase):
 
     def test_user_logged_in_edit_account(self):
         """
-        Test edit account functionality works correctly for logged in users
+        Tests if edit account functionality works correctly for logged in users
         """
 
         self.client.force_login(self.user)
@@ -113,9 +118,9 @@ class TestViews(TestCase):
         self.assertEqual(str(messages[0]), 'Account updated successfully')
         self.assertEqual(response.status_code, 302)
 
-    def test_user_logged_out_delete_account(self):
+    def test_unauthorized_user_delete_account_redirect(self):
         """
-        Test unauthorized users are redirected with a message
+        Tests if unauthorized users are redirected with a message
         when they try access the delete account page
         """
 
