@@ -3,16 +3,38 @@
 ## Code Validation
 All code written for the project has been validated. The final validation results can be seen below.
 
-### W3C HTML Validator Final Results
+### W3C HTML Validation Results
 All HTML code has been run through the [W3C HTML Validator](https://validator.w3.org/).
 
 * During validation, a few problems were presented but after correcting the relevant issues, no warnings or errors were shown.
 
     * For more information on the warnings and errors that were presented, please go to the known Bugs section.
 
-All pages presented the following message after validation.
+All pages presented the following message after final validation.
 
-![Screenshot of html validator result](documentation/testing-images/html-validation.png)
+![Screenshot of html validation result](documentation/testing-images/html-validation.png)
+
+### W3C CSS Validation Results
+All custom CSS code has been run through the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).
+
+* No errors were presented for custom css.
+    * Warnings shown are in relation to bootstrap classes.
+
+![Screenshot of css validation result](documentation/testing-images/css-validation-result.png)
+
+### JSHint Validation Results
+All custom javascript code has been run through [JSHint](https://jshint.com/).
+
+* No warnings or errors were presented.
+
+![Screenshot of JSHint result](documentation/testing-images/jshint-validation-result.png)
+
+### CI Python Linter Validation Results
+All python code written by myself for this project was developed following PEP8 guidelines and was run through the [CI Python Linter](https://pep8ci.herokuapp.com/).
+
+* All final python files presented no warnings or errors.
+
+![Screenshot of python validation result](documentation/testing-images/python-validation-result.png)
 
 ## Automated Testing
 
