@@ -3,8 +3,9 @@
 
 {% block content %}
 
-<div class="container below-nav fill-screen pt-5">
+<div class="container below-nav fill-screen">
     <h2>Edit your details</h2>
+    <hr>
     <p>If you would like to change your password, click <a href="{% url 'account_change_password' %}">here</a></p>
     <div class="form-group">
         <form method="POST">
@@ -14,7 +15,7 @@
             <input class="btn btn-success" type="submit" name="submit">
         </form>
     </div>
-    <p>
+    <p class="mt-4">
         <span class="fw-bold">Please note:</span> 
         Any reservations you have made before editing your account details will contain your old user details.
         You can still find out the status of your reservations along with the related user details in your profile page. Should you require any assistance please feel free to call us.
