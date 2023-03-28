@@ -63,8 +63,10 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% endif %}
     </div>
 
+    {% if reservations %}
     <!-- Modal -->
     {% for reservation in reservations %}
     <div class="modal fade" id="modal{{ reservation.id }}" tabindex="-1" role="dialog" aria-hidden="true">
