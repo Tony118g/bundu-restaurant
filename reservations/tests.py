@@ -21,15 +21,22 @@ class TestReservationViews(TestCase):
     def setUp(self):
 
         self.user = User.objects.create_user(
-            username="test", password="password", email="admin@example.com"
+            username="Tony",
+            password="password",
+            email="admin@example.com",
+            first_name="Tony",
+            last_name="Guimaraes",
         )
 
         self.user2 = User.objects.create_user(
             username="tester", password="password1", email="test@example.com"
         )
 
-        reservation = Reservation.objects.create(
+        self.reservation = Reservation.objects.create(
             user=self.user,
+            first_name=self.user.first_name,
+            last_name=self.user.last_name,
+            email=self.user.email,
             date='2023-11-11',
             time='10:00:00',
             no_of_people='2',
@@ -184,8 +191,11 @@ class TestReservationViews(TestCase):
         """
 
         self.client.force_login(self.user)
-
         form = {
+            'user': 'test',
+            'first_name': 'Tony',
+            'last_name': 'Guimaraes',
+            'email': 'admin@example.com',
             'date': '2023-11-11',
             'time': '10:00:00',
             'no_of_people': '2',
@@ -195,11 +205,11 @@ class TestReservationViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
                         str(messages[0]),
-                        'No changes have been made'
+                        'Reservation details already exist'
                         )
         self.assertEqual(response.status_code, 200)
 
-    def test_user_logged_out_delete_reservation(self):
+    def test_user_logged_out_delete_reservation(self): 
         """
         Test unauthorized users are redirected when
         they try access the delete reservation page

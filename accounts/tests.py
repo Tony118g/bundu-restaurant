@@ -40,17 +40,13 @@ class TestViews(TestCase):
         self.assertEquals(resolve(url).func, home_page)
         self.assertTemplateUsed(response, "index.html")
 
-    def test_staff_login_dashboard_render(self):
+    def test_staff_login_dashboard_redirect(self):
         """
-        Test dashboard page is rendered for staff users upon login
+        Tests if staff users are redirected to the dashboard page upon login
         """
         self.client.force_login(self.staff_user)
         response = self.client.get('/')
-        self.assertEqual(response.status_code, 200)
-
-        url = reverse("home")
-        self.assertEquals(resolve(url).func, home_page)
-        self.assertTemplateUsed(response, "dashboard.html")
+        self.assertEqual(response.status_code, 302)
 
     def test_profile_page(self):
         """

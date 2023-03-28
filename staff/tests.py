@@ -238,3 +238,29 @@ class TestStaffViews(TestCase):
         self.client.force_login(self.staff_user)
         response = self.client.get('/staff/reservations/pending/')
         self.assertEqual(Reservation.objects.last().status, 'denied')
+
+    def test_deleted_reservation_staff_feedback(self):
+        """
+        Tests if the correct feedback is provided when a staff member
+        has not refreshed the page and tries to approve or deny a
+        reservation that has been deleted.
+        """
+        self.client.force_login(self.staff_user)
+
+        self.reservation.delete()
+
+        response = self.client.post('/staff/approve_reservation/1/')
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(
+                        str(messages[0]),
+                        'This reservation no longer exists'
+                        )
+        self.assertEqual(response.status_code, 302)
+
+        response = self.client.post('/staff/deny_reservation/1/')
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(
+                        str(messages[0]),
+                        'This reservation no longer exists'
+                        )
+        self.assertEqual(response.status_code, 302)
