@@ -28,12 +28,12 @@ def add_menu_item(request):
                         ('Menu item saved as draft')
                         )
                 return redirect('staff_dashboard')
-        else:
-            context = {
-                'form': form,
-                'heading': heading,
-                }
-            return render(request, "add_item.html", context)
+
+        context = {
+            'form': form,
+            'heading': heading,
+            }
+        return render(request, "add_item.html", context)
     else:
         messages.warning(
             request,
