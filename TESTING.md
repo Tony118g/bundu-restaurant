@@ -1,5 +1,7 @@
 # Testing
 
+Return to [README.md](README.md)
+
 ## Code Validation
 All code written for the project has been validated. The final validation results can be seen below.
 
@@ -35,6 +37,26 @@ All python code written by myself for this project was developed following PEP8 
 * All final python files presented no warnings or errors.
 
 ![Screenshot of python validation result](documentation/testing-images/python-validation-result.png)
+
+## Responsiveness Testing
+Tests were carried out throughout development of the site using [Google Chrome Devtools](https://developer.chrome.com/docs/devtools/) to test responsiveness.
+
+The testing produced suitable results across multiple devices. The site has been adapted to be used on small to large screen sizes (from mobile phones to laptops). I think there are improvements that could be made in future when it comes to responsive design but I am pleased with the results at the current moment.
+
+Main device screens used for testing throughout development were:
+* Moto G4
+* iphone XR
+* Samsung A53
+* Asus vivobook (14inch)
+* Nest Hub max
+* ipad Pro
+
+## Browser Compatibility
+The site was tested on the following browsers and the appearance, functionality and responsiveness were consistent throughout.
+
+* Google Chrome
+* Microsoft Edge
+* Safari
 
 ## Manual Testing
 Throughout the development process, each user story was tested and developed using related acceptance criteria and tasks which can be found in the [kanbad board](https://github.com/users/Tony118g/projects/8).
@@ -115,3 +137,54 @@ To run the automated tests, use the command - "python3 manage.py test"
 ![Screenshot of automated tests result](documentation/testing-images/automated-test-result.png)
 
 ![Screenshot of automated tests coverage report](documentation/testing-images/test-coverage-report.png)
+
+## Known Bugs
+
+### Resolved
+
+* #### HTML
+   * During HTML validation, a few errors were raised. The errors were in regards to:
+        * Duplicate id's 
+            * This was due to reusing code blocks and forgetting to remove the original id attributes. This error was resolved.
+        * Opening tags without closing tags.
+            * This was because I deleted  a block of code that was no longer needed and in doing so, I deleted a closing div tag by mistake. This error was resolved.
+        * Table heads had a colspan of 2 columns but did not have two columns to accomodate this.
+            * This was because I had adjusted styles to change the way tables were displayed and did not remove the colspan attributes. This error was resolved.
+
+* #### Python
+    * During python code validation, a few warnings were presented in regards to white space and line length.
+        * These warnings are self explanatory and were easily and promptly resolved.
+
+* #### Other Major bugs
+    * During manual and automated testing of the site, a few bugs were encountered which can be seen below.
+        * When searching for reservations by name, the search would be case sensitive and therefore was not as effective as it ould be.
+            * This was resolved by using the casefold() method to ensure searches would match no matter what case the letters are in.
+        * When creating a menu item, if the form was invalid, the view would not return any page to render or reedirect. This resulted in an error. To fix this bug, a return was added to the view for the condition.
+        * Name search functionality was searching reservations that included user's names. The problem with this was that if a user changed thier name in account details, any old reservations would not be picked up by the search.
+            * To resolve this, I changed the functionality to search reservation name records instead of user name records.
+        *  A few other small bugs were noted and resolved which were due to typos and wrong indentations. These were easily resolved and I do regard them as major bugs to note.
+
+### Unresolved
+
+Due to extensive testing, I am confident that there are no unresolved bugs to the best of my knowledge.
+
+## Additional testing
+
+### Lighthouse
+I used the [Google lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) test in Chrome Developer Tools to test pages on the site. This was used to test the following:
+
+* Performance
+* Accessibility
+* Best Practices
+* SEO
+
+The results vary between pages and some pages could be improved upon. As I was mainly focusing on the functionality aspect of this site, I allowed less time for ensuring high quality performance. Although the results are not to a very high standard, they are still acceptable and the site functions and displays as intended.
+
+Below is an example of the lighthouse results for the home page. Other pages results were slighlty better or worse but were not majorly different.
+
+![Screenshot of the lighthouse report](documentation/testing-images/lighthouse-report.png)
+
+### Peer Review
+In addition to the above tests and procedures, the site was reviewed by my friends and family. This helped me get other people's opinions and receive real world feedback. The feedback was mostly positive and helped confirm that the site met necessary standards.
+
+Return to [README.md](README.md)
