@@ -64,7 +64,7 @@
                 </div>
                 <div class="modal-body">
                     <img class="card-img-top" src=" {{ menu_item.featured_image.url }}" alt="starter item image">
-                    <p>{{menu_item.description}}</p>
+                    <p class="pt-3">{{menu_item.description}}</p>
                     {% if user.is_staff %}
                     <span><a class="btn btn-primary" href="{% url 'edit_menu_item' menu_item.id %}">Edit</a></span>
                     <span><a class="btn btn-danger ms-5" href="{% url 'delete_item' menu_item.id %}">Delete</a></span>
@@ -111,7 +111,7 @@
                 </div>
                 <div class="modal-body">
                     <img class="card-img-top" src=" {{ menu_item.featured_image.url }}" alt="Main menu item image"> 
-                    <p>{{menu_item.description}}</p>
+                    <p class="pt-3">{{menu_item.description}}</p>
                     {% if user.is_staff %}
                     <span><a class="btn btn-primary" href="{% url 'edit_menu_item' menu_item.id %}">Edit</a></span>
                     <span><a class="btn btn-danger ms-5" href="{% url 'delete_item' menu_item.id %}">Delete</a></span>
@@ -158,7 +158,7 @@
                 </div>
                 <div class="modal-body">
                     <img class="card-img-top" src=" {{ menu_item.featured_image.url }}" alt="Desert item image">
-                    <p>{{menu_item.description}}</p>
+                    <p class="pt-3">{{menu_item.description}}</p>
                     {% if user.is_staff %}
                     <span><a class="btn btn-primary" href="{% url 'edit_menu_item' menu_item.id %}">Edit</a></span>
                     <span><a class="btn btn-danger ms-5" href="{% url 'delete_item' menu_item.id %}">Delete</a></span>
