@@ -42,7 +42,7 @@ The Bundu Bar and Restaurant site is intended to be used as an advertising and m
 ## Project Goals
 This site was developed for a fictional small restaurant to provide an easier way to manage reservations for both the restaurant staff and customers. The site also employs functionality for staff to manage the menu advertised to customers which allows control over what they offer as a restaurant.
 
-This version of the project includes necessary functionality for customers and staff to provide a pleasant user experience. In the future, the site may be further developed to include more features that may become necessary as the restaurant grows.
+This version of the project includes the necessary functionality for customers and staff to provide a pleasant user experience. In the future, the site may be further developed to include more features that may become necessary as the restaurant grows.
 
 This project was developed to showcase competency in web development particularly using the Django framework and agile methodology. It is purely for educational purposes.
 
@@ -50,7 +50,7 @@ This project was developed to showcase competency in web development particularl
 
 ## User Experience
 ### Epics
-During the planning stage of the project I created 7 epics which I then broke down further into a total of 38 user stories. These can be found in the [project kanban board](https://github.com/users/Tony118g/projects/8) or they can be viewed individually through the links below.
+During the planning stage of the project, I created 7 epics which I then broke down further into a total of 38 user stories. These can be found in the [project kanban board](https://github.com/users/Tony118g/projects/8) or they can be viewed individually through the links below.
 
 1. [Initial Django Setup](https://github.com/Tony118g/bundu-restaurant/issues/1)
 2. [User Account Management](https://github.com/Tony118g/bundu-restaurant/issues/2)
@@ -124,9 +124,9 @@ Below are the completed user stories for this version of the project's release l
 #### Wireframes
 I created basic wireframes of how I wanted the general layout of the site to look using [Balsamiq](https://balsamiq.com/). I created a wireframe for each main page layout and used it as a base to guide the way I structured and styled my pages. Although the site contains other pages, the layout is mostly the same and therefore I adopt their structure from these main wireframes.
 
-I decided to make wireframes for larger screens as I used a column based layout which meant the content would look more or less the same and would just be pushed down for smaller devices. The only aspect that I ended up styling differently for smaller devices were tables which I decided were better off being displayed in a different structure so that I could avoid overcrowded content.
+I decided to make wireframes for larger screens as I used a column-based layout which meant the content would look more or less the same and would just be pushed down for smaller devices. The only aspect that I ended up styling differently for smaller devices were tables which I decided were better off being displayed in a different structure so that I could avoid overcrowded content.
 
-The final site pages are a bit different to the original wireframes and this was an expected occurance. I knew how I wanted the site to be structured and made wireframes to reflect my ideas so that I could use it as a guide when developing different pages. The main layout is the same but small details differ from page to page due to decisions made during development in order to maintain good functionality and presentation.
+The final site pages are a bit different from the original wireframes and this was an expected occurrence. I knew how I wanted the site to be structured and made wireframes to reflect my ideas so that I could use them as a guide when developing different pages. The main layout is the same but small details differ from page to page due to decisions made during development in order to maintain good functionality and presentation.
 
 ##### Sign Up In Wireframe
 ![home page wireframe](documentation/readme-images/sign-up-wireframe.png)
@@ -158,9 +158,9 @@ The final site pages are a bit different to the original wireframes and this was
 [Back to top](#contents)
 
 #### Database Schema
-For this project I utilised the built in Django User Model for user accounts and created two other custom models for reservations and the menu. The reservation model is linked to the user model through a foreign key. I decided that when a user makes a reservation, their personal details would be automatically filled in using their user account information to create a better user experience. A separate model was created for menu items to be created and stored.
+For this project, I utilized the built-in Django User Model for user accounts and created two other custom models for reservations and the menu. The reservation model is linked to the user model through a foreign key. I decided that when a user makes a reservation, their personal details would be automatically filled in using their user account information to create a better user experience. A separate model was created for menu items to be created and stored.
 
-The database schema seen below was created using [DrawSql.app](https://drawsql.app/). Limitations within the app prevented some of the field types from being labelled correctly as there was no option to overide the available types which did not include all the fields used in the app models such as cloudinary and email fields however the diagram still shows the general layout of the models.
+The database schema seen below was created using [DrawSql.app](https://drawsql.app/). Limitations within the app prevented some of the field types from being labelled correctly as there was no option to override the available types which did not include all the fields used in the app models such as cloudinary and email fields however the diagram still shows the general layout of the models.
 
 The true field choices are reflected in the models within the project apps.
 
@@ -185,12 +185,12 @@ The true field choices are reflected in the models within the project apps.
 [Back to top](#contents)
 
 ### Project Management
-I used agile methodology throughout the development of this project utilising GitHub projects and issues. 
+I used agile methodology throughout the development of this project utilizing GitHub projects and issues. 
 Using issues I was able to create epics and user stories which I could then label and categorize. I then added these 
-issues to the project kandban board where I could easily manage the development process. I found this extremely useful 
+issues to the project kanban board where I could easily manage the development process. I found this extremely useful 
 in helping me break down the development process into individual sections and stages which improved the overall efficiency and quality  of development.
 
-Although this project was developed by myself individually, the agile principles enabled me to track my progress in all aspects and ensure the site can be easily maintained in future. If a team were to collaborate on the project, this agile aproach would be extremely beneficial.
+Although this project was developed by myself individually, the agile principles enabled me to track my progress in all aspects and ensure the site can be easily maintained in future. If a team were to collaborate on the project, this agile approach would be extremely beneficial.
 
 [Back to top](#contents)
 
@@ -210,9 +210,9 @@ The site includes various features that work together to create desired function
 
 * ##### The Home Page Content
     * The home page is rendered to all users that are not logged in and to logged-in users that are not staff.
-    * This page is essential as it is the first impression on the user when they visit the site. It helps intice users to sign up and make reservations to the restaurant.
+    * This page is essential as it is the first impression on the user when they visit the site. It helps entice users to sign up and make reservations to the restaurant.
     * The home page also contains key informational content about the restaurant.
-    * At the top is an attrative hero section displaying the name of the restaurant.
+    * At the top is an attractive hero section displaying the name of the restaurant.
     ![Hero section image](documentation/readme-images/hero-section.png)
     ![home page main section image](documentation/readme-images/home-main-section.png)
     ![About us image](documentation/readme-images/about-us.png)
@@ -233,7 +233,7 @@ The site includes various features that work together to create desired function
 #### User Permissions
 * The site functionality and interactivity is different for staff users and customer users. To maintain security and correct use of the site, I have added functionality to restrict access to certain features depending on the type of user.
     * **Customer users can:**
-        * Register, login and logout.
+        * Register, login, and logout.
         * View the home page.
         * View the menu.
         * Perform full crud functionality on reservations (they cannot however approve or deny them and cannot manage other users reservations).
@@ -262,13 +262,13 @@ The site includes various features that work together to create desired function
 
     * **Login and Logout** - Registered users have the ability to login and logout of the site as they please. This can be done via the navbar links. When a user is logged in, an option to logout is available in the navbar and vice versa.
         * When a user wants to log in, they have to fill in a form with their username and password for authentication.
-        * Once a user has logged in, a message is displayed to confirm their log in.
+        * Once a user has logged in, a message is displayed to confirm their login.
 
         ![Login image](documentation/readme-images/login.png)
         ![Logged in messaged](documentation/readme-images/logged-in-message.png)
 
-        * When a user wants to log out, they have to confirm their intention to logout first. If they confirm the log out, then the user is logged out of the site, otherwise they are returned to the previous page.
-        * * Once a user has logged out, a message is displayed to confirm their log out.
+        * When a user wants to log out, they have to confirm their intention to logout first. If they confirm the log out, then the user is logged out of the site, otherwise, they are returned to the previous page.
+        * * Once a user has logged out, a message is displayed to confirm their logout.
 
         ![Logout image](documentation/readme-images/logout.png)
         ![Logged out messaged](documentation/readme-images/logged-out-message.png)
@@ -302,8 +302,8 @@ The site includes various features that work together to create desired function
 
 #### The Menu
 * ##### User Menu Display
-    * The menu page is available to all users. This is where users can view the restaurant menu. Menu items include details such as the item description, price and availability.
-    * The page is separated into three sections for starters, mains and deserts.
+    * The menu page is available to all users. This is where users can view the restaurant menu. Menu items include details such as the item description, price, and availability.
+    * The page is separated into three sections for starters, mains, and desserts.
     * When a menu item is clicked, a modal appears with a picture of the food item.
     * If a custom image has not been added then a default image is used to inform the user that a picture of the item is not available yet.
     * If the staff user marks the item as unavailable, a label will appear to inform users that the item is unavailable. This enables the restaurant to still advertise an item but make it known that it is currently not available.
@@ -335,9 +335,9 @@ The site includes various features that work together to create desired function
 
     ![Staff menu item draft image](documentation/readme-images/menu-item-draft.png)
 
-    * **Editing a menu item** - When a staff user chooses an option to edit a menu item, they are presented with the same form as they were when they created one. This form however will be prepopulated with existing data and when submitted it will update the item instead of creating a new one. The heading also changes to indicate that the item is being edited. Once an update is made, a message is provided for feedback.
+    * **Editing a menu item** - When a staff user chooses an option to edit a menu item, they are presented with the same form as they were when they created one. This form however will be pre-populated with existing data and when submitted it will update the item instead of creating a new one. The heading also changes to indicate that the item is being edited. Once an update is made, a message is provided for feedback.
 
-    * **Deleting menu items** - When staff users choose the option to delete a menu item, they are prompted to confirm the deletion first. If they confirm it, the item is deleted, otherwise they are returned to the previous page.
+    * **Deleting menu items** - When staff users choose the option to delete a menu item, they are prompted to confirm the deletion first. If they confirm it, the item is deleted, otherwise, they are returned to the previous page.
 
     ![Staff delete menu item image](documentation/readme-images/menu-item-delete-confirmation.png)
 
@@ -349,12 +349,12 @@ The site includes various features that work together to create desired function
 * ##### User reservation management
     * **Login required** - Users are required to be logged in for them to make a reservation. If they are not logged in, when they click the options to book, they are directed to the login page with a message prompting them to login before booking.
 
-    * **Customers only** - For this version of the project, staff members do not have the ability to make reservations within the site except in the admin panel as a superuser. It was decided that it is not essential and since reservations use user account data then a new model and functionality would be required for staff  members to book reservations on behalf of guests. If staff were to be allowed to make reservations using the functionality of this current version of the project, the reservations would be booked for the staff member themself and would result in confusing and counterproductive records. For these reasons staff members are restricted from making reservations. This may be revisited in a future development of the site if the need were to arise with the growth of the restaurant.
+    * **Customers only** - For this version of the project, staff members do not have the ability to make reservations within the site except in the admin panel as a superuser. It was decided that it is not essential and since reservations use user account data then a new model and functionality would be required for staff members to book reservations on behalf of guests. If staff were to be allowed to make reservations using the functionality of this current version of the project, the reservations would be booked for the staff member themself and would result in confusing and counterproductive records. For these reasons, staff members are restricted from making reservations. This may be revisited in a future development of the site if the need were to arise with the growth of the restaurant.
 
     * **Creating reservations** - When a user selects the option to book, they are presented with a form to make a reservation. Along with the form is a section for informational content regarding reservations. Once they submit the form they are presented with relevant feedback for their request.
         * Reservations can only be made for future dates so the form includes functionality not to allow the user to select a current or past date.
         * Date and time fields are chosen from a list of options.
-        * Personal details are automaticaly filled in using the users account details.
+        * Personal details are automatically filled in using the users account details.
 
     ![Reservation form image](documentation/readme-images/reservation-form.png)
 
@@ -364,7 +364,7 @@ The site includes various features that work together to create desired function
 
     ![Failed reservation request image](documentation/readme-images/failed-reservation-request.png)
 
-    * **Customer reservations display** - When users navigate to their profile page, they are able to view their reservations in a table. If they don't have any reservations, then a message is provided stating so. The table displays the reservation date, time and status (pending, approved or denied).
+    * **Customer reservations display** - When users navigate to their profile page, they are able to view their reservations in a table. If they don't have any reservations, then a message is provided stating so. The table displays the reservation date, time, and status (pending, approved, or denied).
 
     ![Customer reservations image](documentation/readme-images/profile-reservations.png)
 
@@ -376,22 +376,22 @@ The site includes various features that work together to create desired function
 
     ![Reservation modal image](documentation/readme-images/reservation-modal.png)
 
-    * **Editing reservations** - When a user selects the option to edit a reservation, they are presented with the same form as they were when they created one. This form however will be prepopulated with existing data and when submitted it will update the reservation instead of creating a new one. The updated reservation automatically has a pending status regardless of the status before the edit as a staff member will need to assess the new details. The heading also changes to indicate that the reservation is being edited and a warning message is displayed to warn the user that the update will be subject to approval.
+    * **Editing reservations** - When a user selects the option to edit a reservation, they are presented with the same form as they were when they created one. This form however will be pre-populated with existing data and when submitted it will update the reservation instead of creating a new one. The updated reservation automatically has a pending status regardless of the status before the edit as a staff member will need to assess the new details. The heading also changes to indicate that the reservation is being edited and a warning message is displayed to warn the user that the update will be subject to approval.
         * If the update is successful, the user is directed to the same feedback page as they are when making a reservation.
         * If no details are changed or the entered details are the same as another reservation, a message appears to tell the user the reservation already exists and the reservation is not updated.
 
         ![Reservation already exists message image](documentation/readme-images/reservation-already-exists-message.png)
 
-    * **Deleting/canceling reservations** - When users choose the option to delete a reservation, they are prompted to confirm the deletion/cancelation first and a warning is displayed informing the user what effect the deletion will have. If they confirm it, the reservation is deleted and feedback is provided, otherwise they are returned to the previous page.
+    * **Deleting/canceling reservations** - When users choose the option to delete a reservation, they are prompted to confirm the deletion/cancelation first and a warning is displayed informing the user what effect the deletion will have. If they confirm it, the reservation is deleted and feedback is provided, otherwise, they are returned to the previous page.
         * If the reservation date and time is in the future, the warning will refer to cancelation.
 
         ![Reservation cancelation prompt image](documentation/readme-images/reservation-cancel-prompt.png)
 
-        * If the reservation date and time has past, the prompt will refer to record deletion.
+        * If the reservation date and time has passed, the prompt will refer to record deletion.
 
         ![Reservation record deletion prompt image](documentation/readme-images/reservation-record-delete-prompt.png)
 
-        ![deleted reservation message image](documentation/readme-images/deleted-reservation-message.png)
+        ![Deleted reservation message image](documentation/readme-images/deleted-reservation-message.png)
 
 * ##### Staff reservation management
 
@@ -399,7 +399,7 @@ The site includes various features that work together to create desired function
 
     ![Staff reservation management section image](documentation/readme-images/reservation-management-section.png)
 
-    * **Pending reservations** - When a staff user selects the option to view pending reservations, all relevant reservation requests are displayed. It was decided that only details for the date, time and number of people were important to be taken into consideration when approving or denying reservations and so only those details are displayed. Buttons are also displayed to give the user the ability to approve or deny reservations. If no pending reservations exist then a message is displayed stating so.
+    * **Pending reservations** - When a staff user selects the option to view pending reservations, all relevant reservation requests are displayed. It was decided that only details for the date, time, and number of people were important to be taken into consideration when approving or denying reservations and so only those details are displayed. Buttons are also displayed to give the user the ability to approve or deny reservations. If no pending reservations exist then a message is displayed stating so.
 
     ![Pending reservations image](documentation/readme-images/pending-reservations.png)
 
@@ -419,10 +419,10 @@ The site includes various features that work together to create desired function
 
     ![Reservation no longer exists message image](documentation/readme-images/non-existant-reservation-message.png)
 
-    * **Approved and denied reservations display** - When a staff user selects the option to view approved  or denied reservations, all relevant reservations are displayed in the same way that pending reservations are displayed but the email field is included for these incase the user wants to contact a customer who's reservation they have previously denied or approved. If no reservations exist then a message is displayed stating so.
+    * **Approved and denied reservations display** - When a staff user selects the option to view approved or denied reservations, all relevant reservations are displayed in the same way that pending reservations are displayed but the email field is included for these in case the user wants to contact a customer who's reservation they have previously denied or approved. If no reservations exist then a message is displayed stating so.
 
     * **Reservation search options** - I decided that it would be extremely beneficial to restaurant staff if they were able to search for specific reservations.   
-        * When considering approving or denying a reservation, a staff member may need to find out what has already been booked on the requested date. To make this process quicker I added a search bar in the staff dashboard for staff to search specific dates for approved reservations. Once a search has been submitted, all relevant reservations are displayed. If there are no results, a message is displayed stating so. The search bar is also available in the results page for the user to search again quickly. The results page is displayed using the same layout as the pending, approved and denied reservations pages and shows details for names, time, number of people and email address.
+        * When considering approving or denying a reservation, a staff member may need to find out what has already been booked on the requested date. To make this process quicker I added a search bar in the staff dashboard for staff to search specific dates for approved reservations. Once a search has been submitted, all relevant reservations are displayed. If there are no results, a message is displayed stating so. The search bar is also available in the results page for the user to search again quickly. The results page is displayed using the same layout as the pending, approved, and denied reservations pages and shows details for names, time, number of people, and email address.
 
         ![Reservation date search bar image](documentation/readme-images/date-search-bar.png)
 
@@ -430,7 +430,7 @@ The site includes various features that work together to create desired function
         
         ![Reservation name search bar image](documentation/readme-images/name-search-bar.png)
 
-        * As well as the ability to search resevations, an option is available in the staff dashboard to view reservations for the current date. This provides a quick way of checking what the restaurant has booked for the day.
+        * As well as the ability to search for reservations, an option is available in the staff dashboard to view reservations for the current date. This provides a quick way of checking what the restaurant has booked for the day.
 
 [Back to top](#contents)
 
@@ -461,7 +461,7 @@ There are a few features that I may add in the future that may improve the overa
 * [HTML5](https://html.spec.whatwg.org/)
     * Used to create structure and content for the site.
 * [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
-    * Used to add cutoms styles to the HTML.
+    * Used to add custom styles to the HTML.
 * [Django](https://www.djangoproject.com/)
     * The python framework used to develop the site.
 * [Bootstrap](https://getbootstrap.com/)
@@ -491,7 +491,7 @@ There are a few features that I may add in the future that may improve the overa
 * [crispy-bootstrap-5](https://pypi.org/project/crispy-bootstrap5/)
     * The bootstrap5 template pack used for django-crispy-forms.
 * [dj-database-url](https://pypi.org/project/django-database-url/)
-    * Used to parse the database url in the production environment.
+    * Used to parse the database URL in the production environment.
 * [dj3-cloudinary-storage](https://pypi.org/project/dj3-cloudinary-storage/)
     * Used to provide Cloudinary storages for media files as well as management commands for removing unnecessary files.
 * [Django](https://pypi.org/project/Django/)
@@ -567,7 +567,7 @@ To clone the repository through GitHub, follow these steps:
 7. Press the "enter" key to create the clone.
 
 ### The ElephantSQL Database
-The [ElephantSQL](https://www.elephantsql.com/) PostgresSQL Database was used for this project.
+The [ElephantSQL](https://www.elephantsql.com/) PostgreSQL Database was used for this project.
 
 To set up a database, follow these steps:
 
