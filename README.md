@@ -50,7 +50,7 @@ This project was developed to showcase competency in web development particularl
 
 ## User Experience
 ### Epics
-During the planning stage of the project I created 7 epics which I then broke down further into a total of 44 user stories. These can be found in the [project kanban board](https://github.com/users/Tony118g/projects/8) or they can be viewed individually through the links below.
+During the planning stage of the project I created 7 epics which I then broke down further into a total of 38 user stories. These can be found in the [project kanban board](https://github.com/users/Tony118g/projects/8) or they can be viewed individually through the links below.
 
 1. [Initial Django Setup](https://github.com/Tony118g/bundu-restaurant/issues/1)
 2. [User Account Management](https://github.com/Tony118g/bundu-restaurant/issues/2)
@@ -123,6 +123,10 @@ Below are the completed user stories for this version of the project's release l
 
 #### Wireframes
 I created basic wireframes of how I wanted the general layout of the site to look using [Balsamiq](https://balsamiq.com/). I created a wireframe for each main page layout and used it as a base to guide the way I structured and styled my pages. Although the site contains other pages, the layout is mostly the same and therefore I adopt their structure from these main wireframes.
+
+I decided to make wireframes for larger screens as I used a column based layout which meant the content would look more or less the same and would just be pushed down for smaller devices. The only aspect that I ended up styling differently for smaller devices were tables which I decided were better off being displayed in a different structure so that I could avoid overcrowded content.
+
+The final site pages are a bit different to the original wireframes and this was an expected occurance. I knew how I wanted the site to be structured and made wireframes to reflect my ideas so that I could use it as a guide when developing different pages. The main layout is the same but small details differ from page to page due to decisions made during development in order to maintain good functionality and presentation.
 
 ##### Sign Up In Wireframe
 ![home page wireframe](documentation/readme-images/sign-up-wireframe.png)
@@ -240,6 +244,7 @@ The site includes various features that work together to create desired function
         * View the dashboard page.
         * View and search all reservations.
         * Approve or deny reservations.
+        * Perform full crud functionality on menu items.
 
 * If either type of user tries to access any features that are not mentioned above for each one, they will be redirected and presented with a message stating that they are not authorized to do so.
 
@@ -257,12 +262,16 @@ The site includes various features that work together to create desired function
 
     * **Login and Logout** - Registered users have the ability to login and logout of the site as they please. This can be done via the navbar links. When a user is logged in, an option to logout is available in the navbar and vice versa.
         * When a user wants to log in, they have to fill in a form with their username and password for authentication.
+        * Once a user has logged in, a message is displayed to confirm their log in.
 
         ![Login image](documentation/readme-images/login.png)
+        ![Logged in messaged](documentation/readme-images/logged-in-message.png)
 
-        * When a user wants to log out, they have to confirm their intention to logout first. If they confirm the log out, then the user is logged out of the site, otherwise they are returned to the previous page
+        * When a user wants to log out, they have to confirm their intention to logout first. If they confirm the log out, then the user is logged out of the site, otherwise they are returned to the previous page.
+        * * Once a user has logged out, a message is displayed to confirm their log out.
 
         ![Logout image](documentation/readme-images/logout.png)
+        ![Logged out messaged](documentation/readme-images/logged-out-message.png)
     
     * **User profile page** - Registered users have access to a profile page where they are able to manage all information related to them including account details and reservations.
 
@@ -278,7 +287,7 @@ The site includes various features that work together to create desired function
         ![Account updated successfuly message image](documentation/readme-images/account-updated-message.png)
     
     * **Password change and reset** - Registered users are able to change their passwords if they are logged in. The option to do so is in the page used to edit account details. If a user forgets their password, they have the ability to reset it via a link in the login form using their account email address.
-        * This functionality is provided by Django Allauth and I adapted the templates to suit the theme of the site..
+        * This functionality is provided by Django Allauth and I adapted the templates to suit the theme of the site.
 
     * **Deleting an account** - Registered users also have an option in their profile page to delete their account. I decided that users should have the ability to remove all of their records and information from the site. Since this is a fictional site and is made for educational purposes I thought it was especially important to allow users to have full control of their data.
         * When a user selects the option to delete their account, they are prompted to confirm their intent to do so first. In the confirmation prompt, a warning is provided to inform the users that all their data will be lost including all their account details and reservations.
@@ -318,15 +327,21 @@ The site includes various features that work together to create desired function
 
     ![Staff menu item modal image](documentation/readme-images/add-menu-item.png)
 
-    * **Menu drafts page** - If a staff user saves a menu as a draft, they are able to view it in the menu drafts page. Here they are able to edit or delete the item.
+    ![Menu draft saved image](documentation/readme-images/menu-item-draft-message.png)
+    
+    ![Menu item saved image](documentation/readme-images/menu-item-saved-message.png)
+
+    * **Menu drafts page** - If a staff user saves a menu item as a draft, they are able to view it in the menu drafts page. Here they are able to edit or delete the item.
 
     ![Staff menu item draft image](documentation/readme-images/menu-item-draft.png)
 
-    * **Editing a menu item** - When a staff user chooses an option to edit a menu item, they are presented with the same form as they were when they created one. This form however will be prepopulated with existing data and when submitted it will update the item instead of creating a new one. The heading also changes to indicate that the item is being edited.
+    * **Editing a menu item** - When a staff user chooses an option to edit a menu item, they are presented with the same form as they were when they created one. This form however will be prepopulated with existing data and when submitted it will update the item instead of creating a new one. The heading also changes to indicate that the item is being edited. Once an update is made, a message is provided for feedback.
 
     * **Deleting menu items** - When staff users choose the option to delete a menu item, they are prompted to confirm the deletion first. If they confirm it, the item is deleted, otherwise they are returned to the previous page.
 
     ![Staff delete menu item image](documentation/readme-images/menu-item-delete-confirmation.png)
+
+    ![Menu item deleted message image](documentation/readme-images/menu-item-deleted-message.png)
 
 [Back to top](#contents)
 
@@ -367,7 +382,7 @@ The site includes various features that work together to create desired function
 
         ![Reservation already exists message image](documentation/readme-images/reservation-already-exists-message.png)
 
-    * **Deleting/canceling reservations** - When users choose the option to delete a reservation, they are prompted to confirm the deletion/cancelation first and a warning is displayed informing the user what effect the deletion will have. If they confirm it, the reservation is deleted, otherwise they are returned to the previous page.
+    * **Deleting/canceling reservations** - When users choose the option to delete a reservation, they are prompted to confirm the deletion/cancelation first and a warning is displayed informing the user what effect the deletion will have. If they confirm it, the reservation is deleted and feedback is provided, otherwise they are returned to the previous page.
         * If the reservation date and time is in the future, the warning will refer to cancelation.
 
         ![Reservation cancelation prompt image](documentation/readme-images/reservation-cancel-prompt.png)
@@ -375,6 +390,8 @@ The site includes various features that work together to create desired function
         * If the reservation date and time has past, the prompt will refer to record deletion.
 
         ![Reservation record deletion prompt image](documentation/readme-images/reservation-record-delete-prompt.png)
+
+        ![deleted reservation message image](documentation/readme-images/deleted-reservation-message.png)
 
 * ##### Staff reservation management
 
@@ -398,7 +415,7 @@ The site includes various features that work together to create desired function
 
     ![Denied reservation message image](documentation/readme-images/denied-reservation-message.png)
 
-    * **Deleted reservation response** - If a user deletes a reservation request whilst a staff is viewing pending reservations and has not refreshed the page. When the staff user tries to approve/deny the deleted reservation, a message appears to inform them that the reservation no longer exists.
+    * **Deleted reservation response** - If a user deletes a reservation request whilst a staff member is viewing pending reservations and has not refreshed the page. When the staff user tries to approve/deny the deleted reservation, a message appears to inform them that the reservation no longer exists.
 
     ![Reservation no longer exists message image](documentation/readme-images/non-existant-reservation-message.png)
 
@@ -412,6 +429,8 @@ The site includes various features that work together to create desired function
         * A staff member may also need to search for a specific name in reservations. This helps in various ways such as when a customer arrives for their reservation and the staff member needs to quickly confirm that their reservation exists and has been approved or if a customer were to call the restaurant regarding a pending reservation. Unlike the date search option, this search gets all relevant reservations regardless of status. The search bar is also available in the results page for the user to search again quickly. This results page is also displayed using the same layout as the pending, approved and denied reservations pages but shows all the reservation details. If a search result shows a reservation that is still pending and has not expired, options to approve or deny the reservation are available.
         
         ![Reservation name search bar image](documentation/readme-images/name-search-bar.png)
+
+        * As well as the ability to search resevations, an option is available in the staff dashboard to view reservations for the current date. This provides a quick way of checking what the restaurant has booked for the day.
 
 [Back to top](#contents)
 
