@@ -6,12 +6,47 @@ The Bundu Bar and Restaurant site is intended to be used as an advertising and m
 
 ## Contents
 
+* [Project Goals](#project-goals)
+* [User Experience](#user-experience)
+    * [Epics](#epics)
+    * [User Stories](#user-stories)
+    * [Site Structure](#site-structure)
+        * [Wireframes](#wireframes)
+        * [Database Schema](#database-schema)
+    * [Design Choices](#design-choices)
+        * [Typography](#typography)
+        * [Colour Palette](#colour-palette)
+* [Project Management](#project-management)
+* [Features](#features)
+    * [Existing Features](#existing-features)
+        * [The Landing page And General Site Content](#the-landing-page-and-general-site-content)
+        * [User Permissions](#user-permissions)
+        * [User Accounts](#user-accounts)
+        * [The Menu](#the-menu)
+        * [Reservations](#reservations)
+        * [Background Features](#background-features)
+    * [Future Features](#future-features)
+* [Technologies Used](#technologies-used)
+* [Python Packages Used](#python-packages-used)
+* [Testing](#testing)
+* [Deployment and Development](#deployment-and-development)
+    * [Deploying the Site](#deployment)
+    * [Forking the Repository](#forking-the-repository)
+    * [Cloning the Repository](#cloning-the-repository)
+    * [The ElephantSQL Database](#the-elephantsql-database)
+    * [The Cloudinary API](#the-cloudinary-api)
+* [Credits](#credits)
+* [Acknoledgements](#acknowledgements)
+
+
 ## Project Goals
 This site was developed for a fictional small restaurant to provide an easier way to manage reservations for both the restaurant staff and customers. The site also employs functionality for staff to manage the menu advertised to customers which allows control over what they offer as a restaurant.
 
 This version of the project includes necessary functionality for customers and staff to provide a pleasant user experience. In the future, the site may be further developed to include more features that may become necessary as the restaurant grows.
 
 This project was developed to showcase competency in web development particularly using the Django framework and agile methodology. It is purely for educational purposes.
+
+[Back to top](#contents)
 
 ## User Experience
 ### Epics
@@ -24,6 +59,8 @@ During the planning stage of the project I created 7 epics which I then broke do
 5. [Staff Reservation Management](https://github.com/Tony118g/bundu-restaurant/issues/5)
 6. [Staff Menu Management](https://github.com/Tony118g/bundu-restaurant/issues/6)
 7. [User Menu Interaction](https://github.com/Tony118g/bundu-restaurant/issues/7)
+
+[Back to top](#contents)
 
 ### User Stories
 The epics mentioned above were further broken down into user stories. These stories were developed using MoSCoW (must have, should have, could have, and won't have) prioritization and each story was assigned a label in accordance with its level of priority. Each story was also assigned user story points using labels. I assigned the story points based on my best estimation of the time and difficulty of completing each user story.
@@ -80,6 +117,8 @@ Below are the completed user stories for this version of the project's release l
 * Epic - user menu interaction
     * As a user I can view images of menu items so that I can visualize the food item.
 
+[Back to top](#contents)
+
 ### Site Structure
 
 #### Wireframes
@@ -112,6 +151,8 @@ I created basic wireframes of how I wanted the general layout of the site to loo
 ##### Staff Reservations Page Wireframe
 ![home page wireframe](documentation/readme-images/staff-reservations-wireframe.png)
 
+[Back to top](#contents)
+
 #### Database Schema
 For this project I utilised the built in Django User Model for user accounts and created two other custom models for reservations and the menu. The reservation model is linked to the user model through a foreign key. I decided that when a user makes a reservation, their personal details would be automatically filled in using their user account information to create a better user experience. A separate model was created for menu items to be created and stored.
 
@@ -120,6 +161,8 @@ The database schema seen below was created using [DrawSql.app](https://drawsql.a
 The true field choices are reflected in the models within the project apps.
 
 ![The Database schema](documentation/readme-images/database-schema.png)
+
+[Back to top](#contents)
 
 ### Design Choices
 
@@ -135,6 +178,8 @@ The true field choices are reflected in the models within the project apps.
     * The brown (887456) is used to contrast the blue and is in keeping with the restaurant theme.
     * A few of the bootstrap standard colours are utilized as well for buttons and emphasis on certain text and messages.
 
+[Back to top](#contents)
+
 ### Project Management
 I used agile methodology throughout the development of this project utilising GitHub projects and issues. 
 Using issues I was able to create epics and user stories which I could then label and categorize. I then added these 
@@ -142,6 +187,8 @@ issues to the project kandban board where I could easily manage the development 
 in helping me break down the development process into individual sections and stages which improved the overall efficiency and quality  of development.
 
 Although this project was developed by myself individually, the agile principles enabled me to track my progress in all aspects and ensure the site can be easily maintained in future. If a team were to collaborate on the project, this agile aproach would be extremely beneficial.
+
+[Back to top](#contents)
 
 ## Features
 
@@ -177,6 +224,8 @@ The site includes various features that work together to create desired function
     * The footer helps provide structure to the site. It contains important information regarding contact details and restaurant operating hours.
     ![Hero section image](documentation/readme-images/footer.png)
 
+[Back to top](#contents)
+
 #### User Permissions
 * The site functionality and interactivity is different for staff users and customer users. To maintain security and correct use of the site, I have added functionality to restrict access to certain features depending on the type of user.
     * **Customer users can:**
@@ -196,6 +245,7 @@ The site includes various features that work together to create desired function
 
 ![Not authorized access message image](documentation/readme-images/not-authorized-message.png)
 
+[Back to top](#contents)
 
 #### User Accounts
 * ##### Account management
@@ -239,6 +289,8 @@ The site includes various features that work together to create desired function
 
         ![Account deletion success message image](documentation/readme-images/account-deletion-success-message.png)
 
+[Back to top](#contents)
+
 #### The Menu
 * ##### User Menu Display
     * The menu page is available to all users. This is where users can view the restaurant menu. Menu items include details such as the item description, price and availability.
@@ -276,8 +328,9 @@ The site includes various features that work together to create desired function
 
     ![Staff delete menu item image](documentation/readme-images/menu-item-delete-confirmation.png)
 
-#### Reservations
+[Back to top](#contents)
 
+#### Reservations
 * ##### User reservation management
     * **Login required** - Users are required to be logged in for them to make a reservation. If they are not logged in, when they click the options to book, they are directed to the login page with a message prompting them to login before booking.
 
@@ -360,8 +413,9 @@ The site includes various features that work together to create desired function
         
         ![Reservation name search bar image](documentation/readme-images/name-search-bar.png)
 
-#### Background Features
+[Back to top](#contents)
 
+#### Background Features
 * ##### Automatic expired reservation denial
     * Although it is the duty of staff members to ensure that they respond to requests on time, there is a chance that it may not always happen. To improve user experience and ensure customer feedback, whenever a staff user opens the pending reservations page, any pending reservations that have expired are automatically denied and an apology email is sent to the relevant customer.
 
@@ -370,6 +424,8 @@ The site includes various features that work together to create desired function
         * When a menu item is updated, I use the pre_save signal to get the image from the old instance. I then compare the old instance image to the new instance image in the post_save signal. If the image has changed and if the old image is not the default, the image is deleted in cloudinary.
         * When a menu item is deleted, I use the post_delete signal to delete the image in cloudinary given that it is not the default.
 
+[Back to top](#contents)
+
 ### Future Features
 
 There are a few features that I may add in the future that may improve the overall performance and functionality of the restaurant site. I have left the original user stories that were developed in the project kanban board as future development opportunities. The features I may add to the site in the future are:
@@ -377,6 +433,8 @@ There are a few features that I may add in the future that may improve the overa
 * The ability to sign in via social media networks.
 * A menu rating system where customers can rate menu items and share opinions on the site.
 * Staff reservation crud functionality so that staff can create reservations on behalf of customers and input their relevant details in a separate reservation model that is not linked to specific users.
+
+[Back to top](#contents)
 
 ## Technologies Used
 * [Balsamiq](https://balsamiq.com/wireframes/)
@@ -401,6 +459,8 @@ There are a few features that I may add in the future that may improve the overa
     * Used to create code/content and file structure for the respository.
 * [GitHub](https://github.com/)
     * Used to store the repository.
+
+[Back to top](#contents)
 
 ## Python Packages Used
 * [asgiref](https://pypi.org/project/asgiref/)
@@ -438,6 +498,7 @@ There are a few features that I may add in the future that may improve the overa
 * [sqlparse](https://pypi.org/project/sqlparse/)
     * A non-validating SQL parser for Python.
 
+[Back to top](#contents)
 
 ## Testing
 A combination of manual and automated tests were carried out for the development of the site. Click [here](TESTING.md) for more information on the testing done.
@@ -512,6 +573,7 @@ To set up Cloudinary, follow these steps:
 
 NB - You can change your assigned cloud name to something more memorable.
 
+[Back to top](#contents)
 
 ## Credits
 ## Acknowledgements
