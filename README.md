@@ -2,6 +2,8 @@
 
 The Bundu Bar and Restaurant site is intended to be used as an advertising and management site for the restaurant to attract customers by providing compelling and informational content as well as a way to make a reservation online. The site also aids the restaurant staff in handling reservations for the restaurant and provides the ability to have more manageable interactions with customers.
 
+The live site can be viewed [here](https://bundu-restaurant.herokuapp.com/).
+
 ![Am I responsive screenshot](documentation/readme-images/am-i-responsive-screenshot.png)
 
 ## Contents
@@ -595,4 +597,26 @@ NB - You can change your assigned cloud name to something more memorable.
 [Back to top](#contents)
 
 ## Credits
+
+* Code
+    * I used multiple videos on the [Codemy.com](https://www.youtube.com/@Codemycom) youtube channel to better grasp Django concepts.
+    * I used this [stackoverflow](https://stackoverflow.com/questions/35796195/how-to-redirect-to-previous-page-in-django-after-post-request) post to learn how to return users to the previous page after a post request.
+    * I used the [Django Documentation](https://docs.djangoproject.com/en/4.1/) extensively to better understand Django concepts and learn how to perform various Django functions.
+
+* Content
+    * I used[Cloudinary](https://cloudinary.com/) for image storage.
+    * I used the [Favicon Generator](https://www.favicongenerator.com/) to generate the favicon.
+    * I used [Pexels](https://www.pexels.com/) for all images used in the site.
+    * The font used was taken from [Google Fonts](https://fonts.google.com/).
+    * The color palette was generated using [coolers](https://coolors.co/).
+    * [Temp-mail](https://temp-mail.org/en/) was used to test email functionality using temporary emails.
+
 ## Acknowledgements
+
+This site was developed as a fourth portfolio project for the [Code Institute](https://codeinstitute.net/global/) course in Full Stack Software Development. I would like to thank the following for all of the support throughout the development phase.
+
+* The Code Institute community, including fellow students and staff.
+* My family, friends, and peers who have helped and supported me with suggestions and feedback during development.
+* My mentor, [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/?original_referer=https%3A%2F%2Fgithub.com%2FTony118g%2Fthe-everything-quiz) for providing me with advice throughout the development process.
+
+Antony Guimaraes 2023
